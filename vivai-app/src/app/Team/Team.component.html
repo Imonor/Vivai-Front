@@ -1,0 +1,18 @@
+<section class="testimonials text-center bg-light">
+  <div class="container">
+    <h2 class="mb-5">Team Members</h2>
+      <div class="row justify-content-center">
+        <div *ngFor="let team of team">
+          <div class="col-lg-15">
+            <div class="mx-auto testimonial-item mb-5 mb-lg-10"><img class="rounded-circle img-fluid mb-3"
+              src="./../assets/img/testimonials-1.jpg">
+              <h5>{{team.name}}</h5>
+              <p class="font-weight-light mb-0">{{team.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+
