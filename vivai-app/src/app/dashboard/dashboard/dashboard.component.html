@@ -1,5 +1,29 @@
-<h2>Voila les plantes que vous possédez</h2>
+<mat-sidenav-container class="dashboard-container">
+    <mat-sidenav #sidenav mode="side">
+        <mat-nav-list>
+            <a mat-list-item routerLink=".">Blablabla</a>
+            <a mat-list-item routerLink=".">Blbalabla</a>
+            <a mat-list-item routerLink=".">Blbalabla</a>
+            <a mat-list-item routerLink=".">Blablalab</a>
+        </mat-nav-list>
+    </mat-sidenav>
 
-<app-plant-card>
-
-</app-plant-card>
+    <mat-sidenav-content>
+        <div class="container">
+            <div class="menuBtnContainer">
+                <button mat-raised-button  (click)="sidenav.toggle()">
+                    <mat-icon color="white" class="menubtn">menu</mat-icon>
+                </button>
+            </div>
+            <div class="header" style="text-align: right; margin-top: -0.5em;">
+                <h1>Bonjour, Martin</h1>
+            </div>
+            <div style="margin-top: 2em;">
+                <h1>Vos plantes :</h1>
+                <app-plant-card></app-plant-card>
+            </div>
+           
+            
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
