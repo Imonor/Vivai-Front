@@ -11,7 +11,7 @@
     <mat-sidenav-content>
         <div class="container">
             <div class="menuBtnContainer">
-                <button mat-raised-button  (click)="sidenav.toggle()">
+                <button mat-raised-button (click)="sidenav.toggle()">
                     <mat-icon color="white" class="menubtn">menu</mat-icon>
                 </button>
             </div>
@@ -21,9 +21,24 @@
             <div style="margin-top: 2em;">
                 <h1>Vos plantes :</h1>
                 <app-plant-card></app-plant-card>
+                <div style="width: auto; overflow-y: scroll; margin-top: 20px">
+                    <div class="container-fluid">
+                        <div class="row flex-nowrap">
+                            <div class="col-9 col-sm-6 col-md-6 col-lg-4">
+                                <mat-card class="example-card" [routerLink]="['/']">
+                                    <img mat-card-image src="https://resize.prod.femina.ladmedia.fr/rblr/652,438/img/var/2019-12/plantes-interieur-qui-aiment-l-ombre.jpg"
+                                        alt="Photo of a Shiba Inu">
+                                    <mat-card-content>
+                                    <p style="font-size: 1.5em;">Nom de la plante</p>
+                                    </mat-card-content>
+                                </mat-card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-           
-            
+
+
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

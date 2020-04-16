@@ -4,6 +4,7 @@
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 2em;
+    z-index: 1000;
 }
 ::ng-deep .menuBtn{
     height:8em !important;

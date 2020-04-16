@@ -15,6 +15,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 
@@ -32,6 +34,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     RouterModule.forRoot([
       { path: '', component: LandingPageComponent},
       { path: 'dashboard', component: DashboardComponent },
+      { path: 'plantes', component: DashboardComponent },
     ]),
     BrowserAnimationsModule,
     MatSidenavModule,
@@ -40,7 +43,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatIconModule,
     MatButtonToggleModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
