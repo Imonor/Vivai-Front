@@ -6,11 +6,14 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { PlantCardComponent} from './dashboard/dashboard/plant-card/plant-card.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    PlantCardComponent
   ],
   imports: [
     BrowserModule,
