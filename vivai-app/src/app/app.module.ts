@@ -4,6 +4,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { RouterModule } from '@angular/router';
+import { LandingPageComponent } from 'src/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,11 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    RouterModule.forRoot([
+      { path: '', component: LandingPageComponent},
+      { path: 'dashboard', component: DashboardComponent },
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
