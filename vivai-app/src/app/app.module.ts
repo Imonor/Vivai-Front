@@ -4,15 +4,42 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LandingpageComponent } from './landingpage/landingpage/landingpage.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { PlantListComponent } from './dashboard/plantList/plant-list/plant-list.component';
+import { PlantCardComponent } from './dashboard/plantCard/plant-card/plant-card.component';
+import { InfoCardComponent } from './dashboard/infoCard/info-card/info-card.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule} from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingpageComponent,
+    DashboardComponent,
+    PlantListComponent,
+    PlantCardComponent,
+    InfoCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonToggleModule,
+    MatListModule,
+    MatToolbarModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
