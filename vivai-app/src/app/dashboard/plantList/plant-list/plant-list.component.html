@@ -1,7 +1,9 @@
 <div style="width: auto; overflow-y: scroll; margin-top: 20px">
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <vivai-plant-card></vivai-plant-card>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-4" *ngFor="let coucou of coucouTab">
+                <vivai-plant-card></vivai-plant-card>
+            </div>
         </div>
     </div>
 </div>
