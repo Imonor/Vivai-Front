@@ -1,7 +1,7 @@
 {
-  "name": "vivai-app",
-  "short_name": "vivai-app",
-  "theme_color": "#1976d2",
+  "name": "Vivai",
+  "short_name": "Vivai",
+  "theme_color": "#fafafa",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",

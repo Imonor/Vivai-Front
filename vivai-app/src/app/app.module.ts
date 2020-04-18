@@ -14,6 +14,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { MenubtnComponent } from './dashboard/menubtn/menubtn.component';
 import { HomeComponent } from './home/home.component';
+import { IosInstallComponent } from './ios-install/ios-install.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomeComponent } from './home/home.component';
     PlantCardComponent,
     InfoCardComponent,
     MenubtnComponent,
-    HomeComponent
+    HomeComponent,
+    IosInstallComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { HomeComponent } from './home/home.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [IosInstallComponent],
 })
 export class AppModule { 
 }
