@@ -1,0 +1,9 @@
+{
+	"auth": {
+		"vivaiappf1b33180": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}
