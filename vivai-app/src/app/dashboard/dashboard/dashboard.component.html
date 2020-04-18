@@ -1,68 +1,29 @@
-<mat-sidenav-container class="dashboard-container">
-    <mat-sidenav #sidenav mode="side">
-        <mat-nav-list>
-            <a mat-list-item routerLink=".">Blablabla</a>
-            <a mat-list-item routerLink=".">Blbalabla</a>
-            <a mat-list-item routerLink=".">Blbalabla</a>
-            <a mat-list-item routerLink=".">Blablalab</a>
-        </mat-nav-list>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-        <div class="container">
-            <div class="menuBtnContainer">
-                <button mat-fab (click)="sidenav.toggle()">
-                    <mat-icon color="white" class="menubtn">menu</mat-icon>
-                </button>
-            </div>
-            <div class="header" style="text-align: right; margin-top: -0.5em;">
-                <h1>Bonjour, Martin</h1>
-            </div>
-            <div style="margin-top: 2em;">
-                <h1>Vos plantes :</h1>
-                <vivai-plant-list></vivai-plant-list>
-            </div>
-            <div class="row" style="margin-top: 2em;">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                    <mat-card class="example-card">
-                        <mat-card-content>
-                            <p>des info</p>
-                            <p>des info</p>
-                            <p>des info</p>
-                            <p>des info</p>
-                            <p>des info</p>
-                            <p>des info</p>
-                            <p>des info</p>
-                            <p>des info</p>
-                            <p>des info</p>
-                            <p>des info</p>
-
-                            <p>des info</p>
-                            <p>des info</p>
-
-                            <p>des info</p>
-
-                            <p>des info</p>
-                            <p>des info</p>
-
-                            <p>des info</p>
-                            <p>des info</p>
-                            <p>des info</p>
-                            <p>des info</p>
-                            <p>des info</p>
-
-                            <p>des info</p>
-
-                        </mat-card-content>
-                    </mat-card>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="col-lg-6 order-lg-2 text-white showcase-img"
-                        style="background-image:url(&quot;assets/illustration/pablo-done.png&quot;);"><span></span></div>
-                </div>
-            </div>
+<div class="container">
 
 
+    <div class="header" style="text-align: right;">
+        <h2>Bonjour, Martin</h2>
+    </div>
+    <div style="margin-top: 2em;">
+        <h2>Vos plantes :</h2>
+        <vivai-plant-list></vivai-plant-list>
+    </div>
+    <div class="row" style="margin-top: 2em;">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <mat-card class="example-card">
+                <mat-card-content>
+                    <p>des info</p>
+                    <p>des info</p>
+                    <p>des info</p>
+                    <p>des info</p>
+
+                    <p>des info</p>
+                </mat-card-content>
+            </mat-card>
         </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="col-lg-6 order-lg-2 text-white showcase-img"
+                style="background-image:url(&quot;assets/illustration/pablo-done.png&quot;);"><span></span></div>
+        </div>
+    </div>
+</div>

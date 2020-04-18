@@ -10,7 +10,10 @@ import { PlantListComponent } from './dashboard/plantList/plant-list/plant-list.
 import { PlantCardComponent } from './dashboard/plantCard/plant-card/plant-card.component';
 import { InfoCardComponent } from './dashboard/infoCard/info-card/info-card.component';
 import { MaterialModule } from './material/material.module';
-
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { MenubtnComponent } from './dashboard/menubtn/menubtn.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,15 +22,19 @@ import { MaterialModule } from './material/material.module';
     DashboardComponent,
     PlantListComponent,
     PlantCardComponent,
-    InfoCardComponent
+    InfoCardComponent,
+    MenubtnComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}
