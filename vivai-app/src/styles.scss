@@ -1,0 +1,95 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$vivai-app-primary: mat-palette($mat-grey, 50);
+$vivai-app-accent: mat-palette($mat-green, A50, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$vivai-app-warn: mat-palette($mat-orange);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$vivai-app-theme: mat-light-theme($vivai-app-primary, $vivai-app-accent, $vivai-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($vivai-app-theme);
+
+/* You can add global styles to this file, and also import other style files */
+.active {
+    color: mat-color($vivai-app-accent);
+}
+.valid, .primary {
+    color: mat-color($vivai-app-primary);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+form {
+    width: 100%;
+}
+
+form > * {
+    //margin-bottom: 1.5em;
+    width: 100%;
+}
+
+a {
+    color: mat-color($vivai-app-accent);
+}
+
+.sidenav-content {
+    flex-direction: column;
+}
+
+.sidenav-container {
+    height: 90%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.active {
+    color: mat-color($vivai-app-accent);
+}
+
+.vivaidesktop{
+    font-weight: 400;
+    font-size: 2em;
+    color: rgba(black, 0.8);
+    font-family: 'Gugi', cursive;
+}
+
+.vivaidesktop img{
+    height:2em !important;
+    width:2em!important;
+}
+
+.vivaidesktop{
+    font-weight: 400;
+    font-size: 2em;
+    color: rgba(black, 0.8);
+    font-family: 'Gugi', cursive;
+}
+
+.vivaimobile button{
+    height:2.2em !important;
+    width:2.2em!important;
+    font-size: 1.3em;
+}

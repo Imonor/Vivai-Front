@@ -1,0 +1,21 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'vivai-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
+})
+export class DashboardComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  displayImageLila() {
+    if (window.innerWidth > 1000) {
+      return true;
+    } else return false;
+  }
+
+}
