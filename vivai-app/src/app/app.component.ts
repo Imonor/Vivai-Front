@@ -22,12 +22,14 @@ export class AppComponent implements OnInit {
   mobileQuery: MediaQueryList;
   nav = [
     {
-      'title': 'L',
-      'path': '/'
+      'title': 'Dashboard',
+      'icon': 'dashboard',
+      'path': '/dashboard'
     },
     {
-      'title': 'D',
-      'path': '/dashboard'
+      'title': 'Lila',
+      'icon': 'sms',
+      'path': '/lila'
     }
   ];
   private _mobileQueryListener: () => void;
@@ -62,5 +64,11 @@ export class AppComponent implements OnInit {
     if (this.mobileQuery.matches) {
       nav.toggle();
     }
+  }
+
+  displayButtonLila() {
+    if (window.innerWidth < 1000) {
+      return true;
+    } else return false;
   }
 }

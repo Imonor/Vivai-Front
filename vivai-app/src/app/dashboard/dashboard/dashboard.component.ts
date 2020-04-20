@@ -12,4 +12,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  displayImageLila() {
+    if (window.innerWidth > 1000) {
+      return true;
+    } else return false;
+  }
+
 }

@@ -1,65 +1,66 @@
 <div class="container">
-  <mat-sidenav-container 
-    fullscreen
-    [hasBackdrop]="mobileQuery.matches">
-    <mat-sidenav #lnav
-      mode="over" 
-      class="sidenav">
-      <div class="content"> 
+  <mat-sidenav-container fullscreen [hasBackdrop]="mobileQuery.matches">
+    <mat-sidenav #lnav mode="over" class="sidenav">
+      <div class="content">
         <nav>
           <mat-list>
             <mat-list-item *ngFor="let route of nav">
-              <a mat-button 
-                routerLink="{{route.path}}" 
-                routerLinkActive="active" 
-                (click)="toggleMobileNav(lnav)">{{route.title}}</a>
+              <a mat-icon-button routerLink="{{route.path}}" routerLinkActive="active" (click)="toggleMobileNav(lnav)"
+                title="{{route.title}}" [routerLinkActive]="['is-active']">
+                <mat-icon mat-list-icon>{{route.icon}}</mat-icon>
+              </a>
+            </mat-list-item>
+            <mat-list-item>
+              <a mat-icon-button routerLink="notify" routerLinkActive="active" (click)="toggleMobileNav(lnav)"
+                title="notifications" [routerLinkActive]="['is-active']">
+                <mat-icon mat-list-icon matBadge="15" matBadgeColor="warn" matBadgeSize="medium">notification_important</mat-icon>
+              </a>
             </mat-list-item>
           </mat-list>
         </nav>
       </div>
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
-      <mat-toolbar 
-        class="toolbar" 
-        [class.app-is-mobile]="mobileQuery.matches" 
-        color="primary">
+      <mat-toolbar class="toolbar shadow-sm" [class.app-is-mobile]="mobileQuery.matches" color="primary">
         <div class="vivaidesktop" *ngIf="!mobileQuery.matches">
           <img src="assets/svg/plant.svg" alt="vivai-logo">
           {{title}}
         </div>
-        <div class="vivaimobile" *ngIf="mobileQuery.matches">
-          <button 
-            mat-icon-button 
-            aria-label="Menu"
-            (click)="lnav.toggle()" 
-            >
+        <div class="vivaimobile row" *ngIf="mobileQuery.matches">
+          <button class="col" mat-icon-button aria-label="Menu" (click)="lnav.toggle()">
+            <mat-icon style="font-size:2em; margin-left: -0.2em; margin-top: 0.15em; margin-right: 0.1em;" matBadge="15" matBadgeColor="warn" matBadgeSize="small" [matBadgeHidden]="false">more_vert</mat-icon>
             <img src="assets/svg/plant.svg" alt="vivai-logo">
           </button>
         </div>
       </mat-toolbar>
-        <mat-drawer-container class="sidenav-container">
-          <mat-drawer 
-            mode="side" 
-            [opened]="!mobileQuery.matches">
-            <div class="content">
-              <mat-list>
-                <mat-list-item *ngFor="let route of nav">
-                  <a mat-button 
-                    routerLink="{{route.path}}" 
-                    routerLinkActive="active" 
-                    (click)="toggleMobileNav(lnav)">{{route.title}}</a>
-                </mat-list-item>
-              </mat-list>
-            </div>
-          </mat-drawer>
-          <mat-drawer-content>
-              <div class="content">
-                <main>
-                  <router-outlet></router-outlet>
-                </main>
-              </div>
-          </mat-drawer-content>
-        </mat-drawer-container>
+      <mat-drawer-container class="sidenav-container">
+        <mat-drawer mode="side" [opened]="!mobileQuery.matches">
+          <div class="content">
+            <mat-list>
+              <mat-list-item *ngFor="let route of nav">
+                <a mat-icon-button routerLink="{{route.path}}" routerLinkActive="active" (click)="toggleMobileNav(lnav)"
+                  title="{{route.title}}" [routerLinkActive]="['is-active']">
+                  <mat-icon mat-list-icon>{{route.icon}}</mat-icon>
+                </a>
+              </mat-list-item>
+              <mat-list-item>
+                <a mat-icon-button routerLink="notify" routerLinkActive="active" (click)="toggleMobileNav(lnav)"
+                  title="notifications" [routerLinkActive]="['is-active']">
+                  <mat-icon mat-list-icon matBadge="15" matBadgeColor="warn">notification_important</mat-icon>
+                </a>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </mat-drawer>
+        <mat-drawer-content>
+          <div class="content">
+            <main>
+              <router-outlet></router-outlet>
+              <button *ngIf="displayButtonLila()" class="lilaButton"mat-icon-button> <img style="width: 2em; max-height: 2em" src="assets/illustration/pablo-cut-nobg.png" alt="Lila"></button>
+            </main>
+          </div>
+        </mat-drawer-content>
+      </mat-drawer-container>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

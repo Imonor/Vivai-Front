@@ -9,3 +9,29 @@
     width:8em!important;
     font-size:8em !important;
 }
+
+a:hover {
+    color: rgba(105,172,105, $alpha: 0.5) !important;
+}
+
+.is-active {
+    border-color: rgba(105,172,105, $alpha: 1.0);
+    color: rgba(105,172,105, $alpha: 1.0);
+}
+
+.fill-space {
+    // This fills the remaining space, by using flexbox.
+    // Every toolbar row uses a flexbox row layout.
+    flex: 1 1 auto;
+  }
+
+.lilaButton {
+    overflow: hidden;
+    height:2em !important;
+    width:2em!important;
+    font-size:2em !important;
+    position: absolute;
+    bottom: 0.5em;
+    right: 1em;
+    background-color: rgba(250, 250, 250, 0.9)!important;
+}

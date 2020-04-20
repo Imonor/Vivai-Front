@@ -1,17 +1,36 @@
 <div class="container">
-
-
     <div class="header" style="text-align: right;">
-        <h2>Bonjour, Martin</h2>
+        <h3>Bonjour, <a class="settings" routerLink="settings" routerLinkActive="active" (click)="toggleMobileNav(lnav)"
+            title="Options"><u>Martin</u></a></h3>
     </div>
-    <div style="margin-top: 2em;">
-        <h2>Vos plantes :</h2>
+    <div style="margin-top: 1em;">
+        <h3>Vos plantes :</h3>
         <vivai-plant-list></vivai-plant-list>
     </div>
-    <div class="row" style="margin-top: 2em;">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-            <mat-card class="example-card">
-                <mat-card-content>
+    <div class="row p-2" style="margin-top: 1em; ">
+        <div class="col-12 col-sm-12 col-md col-lg-7">
+            <mat-card>
+                <mat-card-content style="max-height: 20em; overflow: hidden; overflow-x: scroll;">
+                    <p>des info</p>
+                    <p>des info</p>
+                    <p>des info</p>
+                    <p>des info</p>
+
+                    <p>des info</p>
+                    <p>des info</p>
+                    <p>des info</p>
+                    <p>des info</p>
+
+                    <p>des info</p>
+                    <p>des info</p>
+                    <p>des info</p>
+                    <p>des info</p>
+
+                    <p>des info</p>
+                    <p>des info</p>
+                    <p>des info</p>
+                    <p>des info</p>
+
                     <p>des info</p>
                     <p>des info</p>
                     <p>des info</p>
@@ -21,9 +40,10 @@
                 </mat-card-content>
             </mat-card>
         </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="col-lg-6 order-lg-2 text-white showcase-img"
-                style="background-image:url(&quot;assets/illustration/pablo-done.png&quot;);"><span></span></div>
+        <div class="col-md-3 col-lg-3" style="overflow:hiden" *ngIf="displayImageLila()">
+            <div class="arrow-up"></div>
+            <button mat-raised-button class="p-2 dialog"> Tu peux me demander ce que tu veux! <u> Clique ici.</u></button>
+            <img style="width: auto; max-height: 20em;" src="assets/illustration/pablo-done-nbg.png" alt="Lila">
         </div>
     </div>
 </div>

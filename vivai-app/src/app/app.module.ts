@@ -15,6 +15,7 @@ import { environment } from '../environments/environment';
 import { MenubtnComponent } from './dashboard/menubtn/menubtn.component';
 import { HomeComponent } from './home/home.component';
 import { IosInstallComponent } from './ios-install/ios-install.component';
+import { NotifyComponent } from './dashboard/notify/notify.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { IosInstallComponent } from './ios-install/ios-install.component';
     InfoCardComponent,
     MenubtnComponent,
     HomeComponent,
-    IosInstallComponent
+    IosInstallComponent,
+    NotifyComponent
   ],
   imports: [
     BrowserModule,
