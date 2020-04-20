@@ -16,6 +16,8 @@ import { MenubtnComponent } from './dashboard/menubtn/menubtn.component';
 import { HomeComponent } from './home/home.component';
 import { IosInstallComponent } from './ios-install/ios-install.component';
 import { NotifyComponent } from './dashboard/notify/notify.component';
+import { LilaComponent } from './lila/lila.component';
+import { MatDialogModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { NotifyComponent } from './dashboard/notify/notify.component';
     MenubtnComponent,
     HomeComponent,
     IosInstallComponent,
-    NotifyComponent
+    NotifyComponent,
+    LilaComponent
   ],
   imports: [
     BrowserModule,
@@ -36,10 +39,11 @@ import { NotifyComponent } from './dashboard/notify/notify.component';
     BrowserAnimationsModule,
     MaterialModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [IosInstallComponent],
+  entryComponents: [IosInstallComponent, LilaComponent],
 })
-export class AppModule { 
+export class AppModule {
 }
