@@ -1,11 +1,14 @@
-<h2 mat-dialog-title>Ass vocale</h2>
+<h2 mat-dialog-title>Assistance vocale</h2>
 
 <mat-dialog-content>
+  <p>Bienvenue dans Lila, l'assitance vocale</p>
 
-<p>Bienvenue dans Lila, l'assitance vocale</p>
+  <div *ngIf="router.url === '/dashboard'">Vous venez du dashboard</div>
+  <div *ngIf="router.url === '/notify'">Vous venez du notify</div>
 
+  <button class="micButton"><img style="width: 2em; max-height: 2em" src="assets/illustration/icone-micro.png" alt="Micro"> </button>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-    <button class="mat-raised-button"(click)="close()">Close</button>
+    <button class="mat-raised-button"(click)="close()">Fin de la conversation</button>
 </mat-dialog-actions>

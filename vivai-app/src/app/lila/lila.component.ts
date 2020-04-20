@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import {Router } from '@angular/router'
 
 @Component({
   selector: 'vivai-lila',
@@ -8,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class LilaComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<LilaComponent>) { }
+  constructor(public dialogRef: MatDialogRef<LilaComponent>, public router: Router) { }
 
   ngOnInit() {
   }
