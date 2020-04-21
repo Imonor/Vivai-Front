@@ -1,7 +1,5 @@
 import { Injectable, EventEmitter, NgZone } from '@angular/core';
 import { MatDialog, MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
-import { YesNo } from './yes-no-dialog/yes-no.enum';
-import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
 
 export interface AppWindow extends Window {
   webkitSpeechRecognition: any;
@@ -19,18 +17,18 @@ const { msSpeechRecognition }: AppWindow = <AppWindow>window;
 })
 export class SpeechSupportService {
 
-  private _isListening: boolean;
-  private _supportRecognition: boolean;
-  private _speech: any;
-  private _lastResult: RecognitionResult = null;
-  private _snackOpened: MatSnackBarRef<SimpleSnackBar>;
+  private isListening: boolean;
+  private supportRecognition: boolean;
+  private speech: any;
+  private lastResult: RecognitionResult = null;
+  private snackOpened: MatSnackBarRef<SimpleSnackBar>;
 
   public get IsListening(): boolean {
-    return this._isListening;
+    return this.isListening;
   }
 
   public get SupportRecognition(): boolean {
-    return this._supportRecognition;
+    return this.supportRecognition;
   }
 
   public Result: EventEmitter<RecognitionResult> = new EventEmitter<RecognitionResult>();
@@ -42,54 +40,51 @@ export class SpeechSupportService {
   }
 
   private init(): void {
-    this._supportRecognition = true;
+    this.supportRecognition = true;
     console.log(window['SpeechRecognition']);
-    if (window['SpeechRecognition']) {
-      this._speech = new SpeechRecognition();
-    } else if (window['webkitSpeechRecognition']) {
-      this._speech = new webkitSpeechRecognition();
-    } else if(window['msSpeechRecognition']){
-      this._speech = new msSpeechRecognition();
+
+    if (window['webkitSpeechRecognition']) {
+      this.speech = new webkitSpeechRecognition();
     } else {
-      this._supportRecognition = false;
+      this.supportRecognition = false;
     }
-    console.log(`Speech supported: ${this._supportRecognition}`);
+    console.log(`Speech supported: ${this.supportRecognition}`);
   }
 
   private setupListener(selectedLanguage: string): void {
-    this._speech.lang = selectedLanguage; //'en-US' 'pt-BR' 'it-IT'
-    this._speech.interimResults = false; // We don't want partial results
-    this._speech.maxAlternatives = 1; // By now we are interested only on the most accurate alternative
+    this.speech.lang = selectedLanguage; //'en-US' 'pt-BR' 'it-IT'
+    this.speech.interimResults = false; // We don't want partial results
+    this.speech.maxAlternatives = 1; // By now we are interested only on the most accurate alternative
 
-    if (!this._speech.onstart) {
-      this._speech.onspeechstart = (event) => { this.handleSpeechStart(event) };
+    if (!this.speech.onstart) {
+      this.speech.onspeechstart = (event) => { this.handleSpeechStart(event) };
     }
 
-    if (!this._speech.onresult) {
+    if (!this.speech.onresult) {
       // VERY IMPORTANT: To preserve the lexical scoping of 'this' across closures in TypeScript, you use Arrow Function Expressions
-      this._speech.onresult = (event) => { this.handleResultevent(event) };
+      this.speech.onresult = (event) => { this.handleResultevent(event) };
     }
 
-    if (!this._speech.onend) {
+    if (!this.speech.onend) {
       // VERY IMPORTANT: To preserve the lexical scoping of 'this' across closures in TypeScript, you use Arrow Function Expressions
-      this._speech.onend = (event) => { this.handleEndEvent(event) };
+      this.speech.onend = (event) => { this.handleEndEvent(event) };
     }
 
-    if (!this._speech.onspeechend) {
+    if (!this.speech.onspeechend) {
       // VERY IMPORTANT: To preserve the lexical scoping of 'this' across closures in TypeScript, you use Arrow Function Expressions
-      this._speech.onspeechend = (event) => { this.handleSpeechEndEvent(event) };
+      this.speech.onspeechend = (event) => { this.handleSpeechEndEvent(event) };
     }
 
-    if (!this._speech.nomatch) {
+    if (!this.speech.nomatch) {
       // VERY IMPORTANT: To preserve the lexical scoping of 'this' across closures in TypeScript, you use Arrow Function Expressions
-      this._speech.nomatch = (event) => { this.handleNoRecognitionAvaliable(event) };
+      this.speech.nomatch = (event) => { this.handleNoRecognitionAvaliable(event) };
     }
 
   }
   handleSpeechStart(event: any): void {
-    this._lastResult = null;
+    this.lastResult = null;
     console.log('Listening...');
-    this._snackOpened = this.snackBar.open('Listening...');
+    this.snackOpened = this.snackBar.open('Listening...');
   }
 
   handleNoRecognitionAvaliable(event: any): any {
@@ -99,68 +94,46 @@ export class SpeechSupportService {
   private handleResultevent(event: any): void {
     console.log('Handling recognition event.')
     const result = event.results[0][0];
-    this._lastResult = { confidence: result.confidence, transcript: result.transcript };
+    this.lastResult = { transcript: result.transcript };
 
-    console.log(this._lastResult);
+    console.log(this.lastResult);
   }
 
   private handleEndEvent(event: any): void {
     console.log('Handling end event.')
     console.log(event);
-    this._isListening = false;
-    if (this._lastResult) {
-      (() => { this.showDialog(this._lastResult) })();
+    this.isListening = false;
+    if (this.lastResult) {
+      (() => { this.showDialog(this.lastResult) })();
     } else {
       this.Result.emit(null);
     }
-    this._lastResult = null;
-    if (this._snackOpened) {
-      this._snackOpened.dismiss();
+    this.lastResult = null;
+    if (this.snackOpened) {
+      this.snackOpened.dismiss();
     }
   }
 
   private handleSpeechEndEvent(event: any): void {
     console.log('Handling speech end event.')
     console.log(event);
-    this._isListening = false;
+    this.isListening = false;
   }
 
   public requestListening(selectedLanguage: string): void {
-    this._isListening = true;
+    this.isListening = true;
     this.setupListener(selectedLanguage);
-    this._speech.start();
+    this.speech.start();
     console.log('Request listening');
   }
 
   public stopListening(): void {
-    this._isListening = false;
+    this.isListening = false;
     this._speech.stop();
     console.log('Listening stopped');
   }
-
-  private showDialog(recognitionResult: RecognitionResult): void {
-
-    this.zone.run(() => {
-      const dialogRef = this.dialog.open(YesNoDialogComponent, {
-        width: '250px',
-        data: recognitionResult,
-        id: "yesnodlg"
-      });
-
-      dialogRef.afterClosed().subscribe(result => {
-
-        console.log(result);
-        if (result.choice === YesNo.yes) {
-          this.Result.emit(result.response);
-        }
-      });
-
-    });
-  }
-
 }
 
 export interface RecognitionResult {
   transcript: string;
-  confidence: number;
 }
