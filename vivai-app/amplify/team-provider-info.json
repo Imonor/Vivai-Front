@@ -1,15 +1,20 @@
 {
     "dev": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-vivai-app-dev-185052-authRole",
-            "UnauthRoleArn": "arn:aws:iam::602384113088:role/amplify-vivai-app-dev-185052-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::602384113088:role/amplify-vivai-app-dev-185052-authRole",
+            "AuthRoleName": "amplify-vivai-dev-222740-authRole",
+            "UnauthRoleArn": "arn:aws:iam::602384113088:role/amplify-vivai-dev-222740-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::602384113088:role/amplify-vivai-dev-222740-authRole",
             "Region": "eu-west-1",
-            "DeploymentBucketName": "amplify-vivai-app-dev-185052-deployment",
-            "UnauthRoleName": "amplify-vivai-app-dev-185052-unauthRole",
-            "StackName": "amplify-vivai-app-dev-185052",
-            "StackId": "arn:aws:cloudformation:eu-west-1:602384113088:stack/amplify-vivai-app-dev-185052/cead0590-8194-11ea-ae83-064577b832c8",
-            "AmplifyAppId": "d1obte94ci55ln"
+            "DeploymentBucketName": "amplify-vivai-dev-222740-deployment",
+            "UnauthRoleName": "amplify-vivai-dev-222740-unauthRole",
+            "StackName": "amplify-vivai-dev-222740",
+            "StackId": "arn:aws:cloudformation:eu-west-1:602384113088:stack/amplify-vivai-dev-222740/8d01dea0-840e-11ea-8156-0609dbbf2116",
+            "AmplifyAppId": "d13jbom54lcvmu"
+        },
+        "categories": {
+            "auth": {
+                "vivaiad7ddd28": {}
+            }
         }
     }
 }

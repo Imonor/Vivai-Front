@@ -16,6 +16,15 @@ import { MenubtnComponent } from './dashboard/menubtn/menubtn.component';
 import { HomeComponent } from './home/home.component';
 import { IosInstallComponent } from './ios-install/ios-install.component';
 import { NotifyComponent } from './dashboard/notify/notify.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthComponent } from './auth/auth.component';
+import { LoaderComponent } from './loader/loader.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { ConfirmCodeComponent } from './auth/confirm-code/confirm-code.component';
+import { CountryCodeSelectComponent } from './auth/country-code-select/country-code-select.component';
+import { FilterPipe } from './auth/country-code-select/filter.pipe';
+import { ProfileComponent } from './auth/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -28,18 +37,28 @@ import { NotifyComponent } from './dashboard/notify/notify.component';
     MenubtnComponent,
     HomeComponent,
     IosInstallComponent,
-    NotifyComponent
+    NotifyComponent,
+    AuthComponent,
+    LoaderComponent,
+    SignInComponent,
+    SignUpComponent,
+    ConfirmCodeComponent,
+    CountryCodeSelectComponent,
+    FilterPipe,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,    
+    ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [IosInstallComponent],
+  entryComponents: [IosInstallComponent, LoaderComponent, CountryCodeSelectComponent],
 })
 export class AppModule { 
 }
