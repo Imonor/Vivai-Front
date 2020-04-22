@@ -1,4 +1,4 @@
-import { Component, OnInit, Ngmodel } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LilaMessage } from '../Models/lila-message';
