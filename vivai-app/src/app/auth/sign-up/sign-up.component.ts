@@ -17,7 +17,7 @@ export class SignUpComponent implements OnInit {
   signupForm: FormGroup = new FormGroup({
     email: new FormControl("", [Validators.email, Validators.required]),
     password: new FormControl("", [Validators.required]),
-    phone: new FormControl("", [Validators.min(10)]),
+    // phone: new FormControl("", [Validators.min(10)]),
     fname: new FormControl("", [Validators.min(2)]),
     lname: new FormControl("", [Validators.min(2)])
   });
@@ -36,9 +36,9 @@ export class SignUpComponent implements OnInit {
   get lnameInput() {
     return this.signupForm.get("lname");
   }
-  get phoneInput() {
-    return this.signupForm.get("phone");
-  }
+  // get phoneInput() {
+  //   return this.signupForm.get("phone");
+  // }
 
   constructor(
     private _bottomSheet: MatBottomSheet,
@@ -77,8 +77,8 @@ export class SignUpComponent implements OnInit {
       !this.emailInput.valid ||
       !this.passwordInput.valid ||
       !this.fnameInput.valid ||
-      !this.lnameInput.valid ||
-      !this.phoneInput.valid
+      !this.lnameInput.valid 
+      //|| !this.phoneInput.valid
     );
   }
 
@@ -89,7 +89,7 @@ export class SignUpComponent implements OnInit {
         password: this.passwordInput.value,
         firstName: this.fnameInput.value,
         lastName: this.lnameInput.value,
-        phone: this.countryCode + this.phoneInput.value
+        phone: "+20000000000"
       })
       .then(data => {
         environment.confirm.email = this.emailInput.value;
