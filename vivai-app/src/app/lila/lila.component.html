@@ -22,6 +22,13 @@
     </div>
   </div>
 
+<mat-form-field>
+  <div class="row flex-nowrap p-2">
+    <input #message (keyup.enter)="sendMessage(message.value)"  matInput placeholder = "Votre message" class="UserMessage">
+    <button mat-raised-button color="primary" (click)="sendMessage(message.value)">Envoyer</button>
+  </div>
+</mat-form-field>
+
   <button class="micButton"><img style="width: 2em; max-height: 2em" src="assets/illustration/icone-micro.png" alt="Micro"> </button>
 </mat-dialog-content>
 

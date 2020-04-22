@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Ngmodel } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LilaMessage } from '../Models/lila-message';
+import { NgModel } from '@angular/'
 
 @Component({
   selector: 'vivai-lila',
@@ -22,5 +23,11 @@ export class LilaComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+  }
+
+  sendMessage(message: string) {
+    if (message) {
+      this.messages.push(new LilaMessage(message, true));
+    }
   }
 }

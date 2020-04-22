@@ -78,7 +78,10 @@ export class AppComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.height = '500px';
+    dialogConfig.width = '500px';
 
     this.dialog.open(LilaComponent, dialogConfig);
+
   }
 }

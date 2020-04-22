@@ -1,13 +1,15 @@
 .micButton {
   overflow: hidden;
-  height:2em !important;
-  width:2em!important;
+  height:1em !important;
+  width:1em!important;
   font-size:2em !important;
   background-color: rgba(250, 250, 250, 0.9)!important;
 }
 
 .userMessage {
   background-color: cyan !important;
+  position: relative;
+  left: 10em;
 }
 
 .lilaMessage {
