@@ -30,4 +30,10 @@ export class LilaComponent implements OnInit {
       this.messages.push(new LilaMessage(message, true));
     }
   }
+
+  receiveMessage(message: string){
+    if (message) {
+      this.messages.push(new LilaMessage(message, false));
+    }
+  }
 }
