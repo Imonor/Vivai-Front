@@ -6,6 +6,7 @@ import { CountryCode } from "../country-code-select/country-codes";
 import { AuthService } from "../auth.service";
 import { environment } from "src/environments/environment";
 import { Router } from "@angular/router";
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: "app-sign-up",
@@ -43,6 +44,7 @@ export class SignUpComponent implements OnInit {
   constructor(
     private _bottomSheet: MatBottomSheet,
     private _authService: AuthService,
+    private _notification: NotificationService, 
     private _router: Router
   ) {}
 
@@ -96,6 +98,8 @@ export class SignUpComponent implements OnInit {
         environment.confirm.password = this.passwordInput.value;
         this._router.navigate(["auth/confirm"]);
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        this._notification.show(error.message);
+      });
   }
 }
