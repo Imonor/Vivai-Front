@@ -3,12 +3,37 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { NotifyComponent } from './dashboard/notify/notify.component';
+import { AuthComponent } from './auth/auth.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { UnauthGuard } from './auth/unauth.guard';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { ConfirmCodeComponent } from './auth/confirm-code/confirm-code.component';
+import { AuthGuard } from './auth/auth.guard';
+import { ProfileComponent } from './auth/profile/profile.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'notify', component: NotifyComponent },
+  { path: 'auth', component: AuthComponent, children: [    
+    {      
+       path: 'signin',      
+       component: SignInComponent,      
+       canActivate: [UnauthGuard]    
+    },    
+    {      
+       path: 'signup',
+       component: SignUpComponent,
+       canActivate: [UnauthGuard]    
+    },    
+    {
+       path: 'confirm',
+       component: ConfirmCodeComponent,
+       canActivate: [UnauthGuard]    
+    }
+ ]},  
+  { path: '', component: HomeComponent, canActivate: [UnauthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'notify', component: NotifyComponent, canActivate: [AuthGuard] },
+  { path: 'settings', component: ProfileComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

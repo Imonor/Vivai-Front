@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" *ngIf="displayName">
     <div class="header" style="text-align: right;">
-        <h3>Bonjour, <a class="settings" routerLink="settings" routerLinkActive="active"
-            title="Options"><u>Martin</u></a></h3>
+        <h3>Bonjour, <a class="settings" routerLink="/settings" routerLinkActive="active"
+            title="Options"><u>{{profile.attributes['given_name'] }}</u></a></h3>
     </div>
     <div style="margin-top: 1em;">
         <h3>Vos plantes :</h3>
