@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlantCardComponent implements OnInit {
 
+  photo = "https://media.ooreka.fr/public/image/plant/16/mainImage-full-9167564.jpg"
   constructor() { }
 
   ngOnInit() {

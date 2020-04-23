@@ -1,7 +1,10 @@
-<div style="width: auto; overflow-y: scroll; margin-top: 20px">
-    <div class="container-fluid">
-        <div class="row flex-nowrap p-2">
-            <div class="col-6 col-sm-4 col-md-4 col-lg-3" *ngFor="let coucou of coucouTab">
+<div style="width: auto; overflow-y: scroll;">
+    <div class="container-fluid p-3">
+        <div class="row flex-nowrap">
+            <div class="col-6 col-sm-4 col-md-4 col-lg-3 mr-n2 ml-n2 d-flex justify-content-center align-items-center">
+                <button mat-fab class="btn">+</button>
+            </div>
+            <div class="col-6 col-sm-4 col-md-4 col-lg-3 d-flex" *ngFor="let coucou of coucouTab">
                 <vivai-plant-card></vivai-plant-card>
             </div>
         </div>

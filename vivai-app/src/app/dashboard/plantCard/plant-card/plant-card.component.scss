@@ -1,0 +1,13 @@
+.card-img-top {
+    width: 100%;
+    height: 17vw;
+    object-fit: cover;
+    border-radius: 5% 10% 5% 10%;
+    // -webkit-filter: blur(1px);
+    // filter: blur(1px);
+    overflow: hidden;
+}
+
+.card {
+    border-radius: 5% 10% 5% 10%;
+}
