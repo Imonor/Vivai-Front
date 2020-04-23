@@ -4,8 +4,8 @@
             <div class="col-6 col-sm-4 col-md-4 col-lg-3 mr-n3 ml-n3 d-flex justify-content-center align-items-center">
                 <button mat-fab class="btn">+</button>
             </div>
-            <div class="col-6 col-sm-4 col-md-4 col-lg-3 d-flex" *ngFor="let coucou of coucouTab">
-                <vivai-plant-card></vivai-plant-card>
+            <div class="col-6 col-sm-4 col-md-4 col-lg-3 d-flex" *ngFor="let plante of listPlante">
+                <vivai-plant-card [plante]="plante"></vivai-plant-card>
             </div>
         </div>
     </div>
