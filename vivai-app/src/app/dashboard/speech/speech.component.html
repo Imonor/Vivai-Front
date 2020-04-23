@@ -1,0 +1,11 @@
+<p>app works</p>
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="messageDiv">
+      <label>Message</label>
+      <input id="{{messageHeardField}}" placeholder="the text will appear here">
+      <button (click)="toggleListening(messageHeardField)" *ngIf="speech.SupportRecognition">Appuyer pour parler</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+<router-outlet></router-outlet>
