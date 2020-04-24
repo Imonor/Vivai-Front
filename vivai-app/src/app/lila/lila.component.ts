@@ -54,6 +54,7 @@ export class LilaComponent implements OnInit {
   sendMessage(message: string) {
     if (message) {
       this.messages.push(new LilaMessage(message, true));
+      this.Message.setValue(null);
     }
   }
 

@@ -4,6 +4,8 @@
   width:1em!important;
   font-size:2em !important;
   background-color: rgba(250, 250, 250, 0.9)!important;
+  display: -webkit-flex;
+  position: relative;
 }
 
 .userMessage {
@@ -18,5 +20,6 @@
 
 .communicationButton {
   position: relative;
-  left: 0.5em;
+  left: 6em;
+  display: -webkit-flex;
 }
