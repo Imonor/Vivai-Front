@@ -39,16 +39,22 @@ export class SpeechSupportService {
     this.init();
    }
 
-  private init(): void {
+   private init(): void {
     this._supportRecognition = true;
-    //console.log(window.SpeechRecognition);
-    //if (window.SpeechRecognition) {
+    console.log(window.SpeechRecognition);
+    if (window.SpeechRecognition) {
+      this._speech = new SpeechRecognition();
+    } else if (window.webkitSpeechRecognition) {
       this._speech = new webkitSpeechRecognition();
-    //} else {
-      //this._supportRecognition = false;
-    //}
-    console.log(`Speech supported: ${this._supportRecognition}`);
+    } else if(window.msSpeechRecognition){
+      this._speech = new msSpeechRecognition();
+    } else {
+      this._supportRecognition = false;
+    }
+    console.log('speech : ' + this._speech);
+    console.log('Speech supported : ' + this._supportRecognition);
   }
+
   private setupListener(selectedLanguage: string): void {
   this._speech.lang = selectedLanguage;
   this._speech.interimResults = false; // We don't want partial results
