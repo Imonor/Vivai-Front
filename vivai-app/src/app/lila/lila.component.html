@@ -25,7 +25,9 @@
 <mat-form-field>
   <div class="row flex-nowrap">
     <div class ="col">
-      <input #message (keyup.enter)="sendMessage(message.value)"  matInput placeholder = "Votre message" class="UserMessage">
+      <form [formGroup]="messageDiv">
+        <input id="{{messageHeardField}}" formControlName="message" #message (keyup.enter)="sendMessage(message.value)"  matInput placeholder = "Votre message" class="UserMessage">
+      </form>
     </div>
     <div class="col">
     <div class ="communicationButton">
