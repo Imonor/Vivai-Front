@@ -7,15 +7,36 @@
   <div *ngIf="router.url === '/notify'">Vous venez du notify</div>
   <div *ngIf="router.url === '/'">Vous venez du home</div>
 
-  <div class="col">
+  <div class="col" *ngIf = "!mobileQuery.matches">
     <div class="row flex-nowrap p-2" *ngFor="let message of messages">
-      <div *ngIf="!message.fromUser">
-        <div class = "lilaMessage">
+      <div class="row flex-nowrap p-2" *ngIf="!message.fromUser">
+        <div class = "iconLila">
+          <img style="width: 2em; max-height: 2em" src="../../assets/illustration/pablo-cut-nobg.png" alt="Lila">
+        </div>
+        <div class = "lilaMessageDesktop">
           {{message.message}}
         </div>
       </div>
       <div *ngIf="message.fromUser">
-        <div class = "userMessage">
+        <div class = "userMessageDesktop">
+          {{message.message}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col" *ngIf = "mobileQuery.matches">
+    <div class="row flex-nowrap p-2" *ngFor="let message of messages">
+      <div class="row flex-nowrap p-2" *ngIf="!message.fromUser">
+        <div class = "iconLila">
+          <mat-icon><img style="width: 2em; max-height: 2em" src="../../assets/illustration/pablo-cut-nobg.png" alt="Lila">
+        </div>
+        <div class = "lilaMessageMobile">
+          {{message.message}}
+        </div>
+      </div>
+      <div *ngIf="message.fromUser">
+        <div class = "userMessageMobile">
           {{message.message}}
         </div>
       </div>
@@ -42,3 +63,4 @@
 <mat-dialog-actions>
     <button class="mat-icon-button"(click)="close()"><mat-icon>close</mat-icon></button>
 </mat-dialog-actions>
+

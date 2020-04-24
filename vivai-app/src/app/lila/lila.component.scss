@@ -8,18 +8,43 @@
   position: relative;
 }
 
-.userMessage {
+.userMessageDesktop {
   background-color: cyan !important;
   position: relative;
-  left: 10em;
+  left: 8em;
+  display: -webkit-flex
 }
 
-.lilaMessage {
+.userMessageMobile {
+  background-color: cyan !important;
+  position: relative;
+  left: 6em;
+  display: -webkit-flex;
+  font-size: small;
+  max-width: 170px
+}
+
+.lilaMessageDesktop {
   background-color: green !important;
+  display: -webkit-flex;
+  left: 1em;
+}
+
+.lilaMessageMobile {
+  background-color: green !important;
+  position: relative;
+  left: 1em;
+  display: -webkit-flex;
+  font-size: small;
+  max-width: 170px
 }
 
 .communicationButton {
   position: relative;
   left: 6em;
   display: -webkit-flex;
+}
+
+.iconLila {
+  position: relative;
 }

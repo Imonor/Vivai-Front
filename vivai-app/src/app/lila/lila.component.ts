@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, EventEmitter, OnChanges } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LilaMessage } from '../Models/lila-message';
 import { SpeechSupportService, RecognitionResult } from '../service/speech-support.service';
 import { FormGroup, FormBuilder, AbstractControl, ReactiveFormsModule } from '@angular/forms';
-
+import { MediaMatcher } from '@angular/cdk/layout';
 
 
 @Component({
@@ -13,6 +13,10 @@ import { FormGroup, FormBuilder, AbstractControl, ReactiveFormsModule } from '@a
   styleUrls: ['./lila.component.scss']
 })
 export class LilaComponent implements OnInit {
+
+  mobileQuery: MediaQueryList;
+  private _mobileQueryListener: () => void;
+
   messages = [];
   private targetElementName: string;
   private SelectedLanguage = 'fr-FR';
@@ -25,7 +29,13 @@ export class LilaComponent implements OnInit {
   }
 
   constructor(public dialogRef: MatDialogRef<LilaComponent>, public router: Router,
-              private fb: FormBuilder, public speech: SpeechSupportService) { }
+              private fb: FormBuilder, public speech: SpeechSupportService,
+              changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+
+      this.mobileQuery = media.matchMedia('(max-width: 600px)');
+      this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+      this.mobileQuery.addListener(this._mobileQueryListener);
+    }
 
   ngOnInit() {
     this.messageDiv = this.fb.group({
@@ -61,6 +71,7 @@ export class LilaComponent implements OnInit {
   receiveMessage(message: string) {
     if (message) {
       this.messages.push(new LilaMessage(message, false));
+      this.Message.setValue(null);
     }
   }
 

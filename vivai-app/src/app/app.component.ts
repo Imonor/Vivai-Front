@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
   private _mobileQueryListener: () => void;
   @Output() toggleSideNav = new EventEmitter();
 
-  constructor( changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,private toast: MatSnackBar, private dialog: MatDialog ) {
+  constructor( changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private toast: MatSnackBar, private dialog: MatDialog ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
