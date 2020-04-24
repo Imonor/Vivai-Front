@@ -38,7 +38,7 @@
   </div>
 </mat-form-field>
 
-  <button class="micButton"><img style="width: 2em; max-height: 2em" src="assets/illustration/icone-micro.png" alt="Micro"> </button>
+  <button class="mat-icon-button" (click)=toggleListening(messageHeardField) *ngIf="speech.SupportRecognition"><mat-icon>mic</mat-icon></button>
 </mat-dialog-content>
 
 <mat-dialog-actions>
