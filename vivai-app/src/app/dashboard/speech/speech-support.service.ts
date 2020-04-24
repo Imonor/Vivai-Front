@@ -101,15 +101,12 @@ private handleEndEvent(event: any): void {
   console.log('Handling end event.');
   console.log(event);
   this._isListening = false;
-  /*if (this._lastResult) {
-    (() => { this.showDialog(this._lastResult) })();
+  if (this._lastResult) {
+    (() => { this.Result.emit(this._lastResult)})();
   } else {
     this.Result.emit(null);
   }
-  this._lastResult = null;
-  if (this._snackOpened) {
-    this._snackOpened.dismiss();
-  }*/
+
 }
 
 private handleSpeechEndEvent(event: any): void {

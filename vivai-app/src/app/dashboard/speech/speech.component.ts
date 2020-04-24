@@ -16,7 +16,7 @@ export class SpeechComponent implements OnInit {
 
   private targetElementName: string;
   private SelectedLanguage = 'fr-FR';
-  public readonly messageHeardField = 'messageHeard';
+  public readonly messageHeardField = 'message';
   public readonly selectedLanguageFieldName = 'selectedLanguage';
   public messageDiv: FormGroup;
 
@@ -30,18 +30,20 @@ constructor(private fb: FormBuilder, public speech: SpeechSupportService) {
 
 public ngOnInit(): void {
   this.messageDiv = this.fb.group({
-    messageHeard: [null]
+    message: [null]
   });
 
   this.speech.Result.subscribe((result: RecognitionResult) => {
     console.log('Result event on the controller.');
     console.log(result);
+    console.log("dans la boucle subscribe");
     window.document.getElementById(this.targetElementName).focus();
-    if (!result){
+    if (!result) {
       this.targetElementName = null;
       return;
     }
     if (this.targetElementName === this.messageHeardField) {
+      console.log("dans le setValue");
       this.Message.setValue(result.transcript);
     }
 
