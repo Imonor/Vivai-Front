@@ -1,8 +1,8 @@
-<div style="width: auto; overflow-y: scroll; overflow-x:visible;">
+<div class="list">
     <div class="container-fluid">
-        <div class="row flex-nowrap p-3">
+        <div class="row flex-nowrap pb-3">
             <div class="col-4 col-sm-4 col-md-2 col-lg-2 mr-n3 ml-n3 d-flex justify-content-center align-items-center">
-                <button mat-fab class="btn">+</button>
+                <button mat-fab class="btn" (click)="openNewPlant()">+</button>
             </div>
             <div class="col-8 col-sm-4 col-md-4 col-lg-3 d-flex" *ngFor="let plante of listPlante">
                 <vivai-plant-card [plante]="plante"></vivai-plant-card>

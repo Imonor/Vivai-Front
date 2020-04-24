@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef, MatDialog } from '@angular/material';
+import { AddPlantDialogComponent } from '../../add-plant-dialog/add-plant-dialog.component';
 
 @Component({
   selector: 'vivai-plant-list',
@@ -6,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./plant-list.component.scss']
 })
 export class PlantListComponent implements OnInit {
+
+  addPlantDialogRef: MatDialogRef<AddPlantDialogComponent>;
+
   listPlante = [
     {
       nom: "Marco",
@@ -32,9 +37,18 @@ export class PlantListComponent implements OnInit {
       piece: "Jardin",
     }
   ];
-  constructor() { }
+
+
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
+    // Get List Plant 
+    // Get List SupportedPlant
   }
 
+
+  openNewPlant() {
+    this.addPlantDialogRef = this.dialog.open(AddPlantDialogComponent, {
+    });
+  }
 }

@@ -1,0 +1,44 @@
+<form [formGroup]="plant" (ngSubmit)="submit(form)">
+    <div style="width: 100%;" class="d-flex justify-content-between align-content-center">
+        <h1 mat-dialog-title>Ajouter une nouvelle plante</h1><button mat-icon-button class="closeBtn" type="button"
+            color="warn" mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <mat-form-field appearance="outline">
+            <mat-label>Le Type de votre plante</mat-label>
+            <input matInput placeholder="Type de Plante" aria-label="Plante" [matAutocomplete]="auto" [formControl]="plantTypeControl">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let plantType of filtredPlantType | async" [value]="plantType.Species">
+                    <span>{{plantType.Species}}</span> |
+                </mat-option>
+            </mat-autocomplete>
+            <mat-icon matSuffix svgIcon="plant-type" aria-hidden="false"></mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Le nom de votre plante</mat-label>
+            <input matInput formControlName="name" placeholder="Entrez son Ptit nom">
+            <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Ou gardez vous votre plante ?</mat-label>
+            <input matInput formControlName="name" placeholder="Entrez son Ptit nom">
+            <mat-icon matSuffix>location_on</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Température moyenne de ce lieu</mat-label>
+            <input matInput formControlName="name" placeholder="Entrez son Ptit nom">
+            <mat-icon matSuffix svgIcon="temperature" aria-hidden="false"></mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Exposition au soleil</mat-label>
+            <input matInput formControlName="name" placeholder="Entrez son Ptit nom">
+            <mat-icon matSuffix svgIcon="sun" aria-hidden="false"></mat-icon>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions class="d-flex justify-content-end">
+        <button mat-raised-button color="accent" type="submit">Ajouter une plante</button>
+    </div>
+</form>

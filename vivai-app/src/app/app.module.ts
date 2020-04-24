@@ -25,6 +25,8 @@ import { ConfirmCodeComponent } from './auth/confirm-code/confirm-code.component
 import { CountryCodeSelectComponent } from './auth/country-code-select/country-code-select.component';
 import { FilterPipe } from './auth/country-code-select/filter.pipe';
 import { ProfileComponent } from './auth/profile/profile.component';
+import { AddPlantDialogComponent } from './dashboard/add-plant-dialog/add-plant-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { ProfileComponent } from './auth/profile/profile.component';
     CountryCodeSelectComponent,
     FilterPipe,
     ProfileComponent,
+    AddPlantDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,11 +57,12 @@ import { ProfileComponent } from './auth/profile/profile.component';
     MaterialModule,
     FormsModule,    
     ReactiveFormsModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [IosInstallComponent, LoaderComponent, CountryCodeSelectComponent],
+  entryComponents: [IosInstallComponent, LoaderComponent, CountryCodeSelectComponent,AddPlantDialogComponent ],
 })
 export class AppModule { 
 }
