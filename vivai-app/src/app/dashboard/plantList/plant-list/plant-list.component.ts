@@ -13,7 +13,7 @@ export class PlantListComponent implements OnInit {
 
   listPlante = [
     {
-      nom: "Marco",
+      nom: "",
       type: "Basilic",
       image: "https://media.ooreka.fr/public/image/plant/16/varietyImage/10l1k2476if4404sgowwc8kow-source-9229039.jpg",
       piece: "Jardin",
