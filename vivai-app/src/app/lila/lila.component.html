@@ -1,4 +1,9 @@
-<h2 mat-dialog-title>Assistance vocale</h2>
+<div style="width: 100%;" class="d-flex justify-content-between align-content-center">
+  <h1 mat-dialog-title>Assistance vocale</h1>
+  <button mat-icon-button class="closeBtn" type="button" color="warn" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+  </button>
+</div>
 
 <mat-dialog-content>
   <p>Bienvenue dans Lila, l'assitance vocale</p>
@@ -45,22 +50,19 @@
 
 
   <div class="row flex-nowrap">
-    <div class ="col">
-      <form [formGroup]="messageDiv" style="width:400px">
+    <div class ="d-flex">
+      <form [formGroup]="messageDiv">
         <textarea id="{{messageHeardField}}" #message formControlName="message" (keyup.enter)="sendMessage(message.value)"  matInput placeholder = "Votre message" [ngClass]="{'inputDesktop': !mobileQuery.matches, 'inputMobile': mobileQuery.matches}"></textarea>
       </form>
-      <div class ="communicationButton">
-        <button mat-raised-button color="primary" (click)="sendMessage(message.value)">Envoyer</button>
-        <button mat-raised-button color="primary" (click)="receiveMessage(message.value)">Recevoir</button>
-        <button class="mat-icon-button" (click)=toggleListening(messageHeardField) *ngIf="speech.SupportRecognition"><mat-icon>mic</mat-icon></button>
-      </div>
+        <div class="col">
+          <button mat-raised-button color="primary" (click)="sendMessage(message.value)" style="height: 40px; width: 65px; left: -0.75em"><mat-icon>send</mat-icon></button>
+          <button mat-raised-button color="primary" (click)="receiveMessage(message.value)" style="height: 40px; width: 65px; left: -0.75em"><mat-icon>call_received</mat-icon></button>
+          <button class="mat-icon-button" (click)=toggleListening(messageHeardField) *ngIf="speech.SupportRecognition" style="height: 40px"><mat-icon>mic</mat-icon></button>
+        </div>
     </div>
   </div>
 
 
 </mat-dialog-content>
 
-<mat-dialog-actions>
-    <button class="mat-icon-button"(click)="close()"><mat-icon>close</mat-icon></button>
-</mat-dialog-actions>
 
