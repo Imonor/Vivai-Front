@@ -43,11 +43,11 @@
     </div>
   </div>
 
-<mat-form-field>
+
   <div class="row flex-nowrap">
     <div class ="col">
-      <form [formGroup]="messageDiv">
-        <textarea id="{{messageHeardField}}" formControlName="message" #message (keyup.enter)="sendMessage(message.value)"  matInput placeholder = "Votre message" class="UserMessage"></textarea>
+      <form [formGroup]="messageDiv" style="width:400px">
+        <textarea id="{{messageHeardField}}" #message formControlName="message" (keyup.enter)="sendMessage(message.value)"  matInput placeholder = "Votre message" [ngClass]="{'inputDesktop': !mobileQuery.matches, 'inputMobile': mobileQuery.matches}"></textarea>
       </form>
       <div class ="communicationButton">
         <button mat-raised-button color="primary" (click)="sendMessage(message.value)">Envoyer</button>
@@ -56,7 +56,7 @@
       </div>
     </div>
   </div>
-</mat-form-field>
+
 
 </mat-dialog-content>
 

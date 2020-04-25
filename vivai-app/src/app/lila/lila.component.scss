@@ -12,21 +12,36 @@
   background-color: cyan !important;
   position: relative;
   left: 8em;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
   display: -webkit-flex
 }
 
 .userMessageMobile {
-  background-color: cyan !important;
   position: relative;
   left: 6em;
   display: -webkit-flex;
   font-size: small;
-  max-width: 170px
+  max-width: 170px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  background-color: rgba(68, 164, 219);
 }
 
 .lilaMessageDesktop {
   background-color: green !important;
   display: -webkit-flex;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
   left: 1em;
 }
 
@@ -36,6 +51,11 @@
   left: 1em;
   display: -webkit-flex;
   font-size: small;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
   max-width: 170px
 }
 
@@ -47,4 +67,32 @@
 
 .iconLila {
   position: relative;
+}
+
+.inputMobile {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 80px;
+    overflow: auto;
+    background: rgba(240,240,240);
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    width: fit-content;
+}
+
+.inputDesktop {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 80px;
+  overflow: auto;
+  background: rgba(240,240,240);
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 3px;
+  padding-bottom: 3px;
+  width:400px;
 }

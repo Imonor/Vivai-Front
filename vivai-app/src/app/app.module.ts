@@ -18,6 +18,7 @@ import { IosInstallComponent } from './ios-install/ios-install.component';
 import { NotifyComponent } from './dashboard/notify/notify.component';
 import { LilaComponent } from './lila/lila.component';
 import { MatDialogModule} from '@angular/material';
+import { MatInputModule } from '@angular/material';
 import { FormGroup, FormBuilder, AbstractControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -42,7 +43,8 @@ import { FormGroup, FormBuilder, AbstractControl, ReactiveFormsModule, FormsModu
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     MatDialogModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],
