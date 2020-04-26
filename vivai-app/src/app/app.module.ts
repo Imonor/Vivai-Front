@@ -38,7 +38,7 @@ import { ProfileComponent } from './auth/profile/profile.component';
     MenubtnComponent,
     HomeComponent,
     IosInstallComponent,
-    LilaComponent
+    LilaComponent,
     NotifyComponent,
     AuthComponent,
     LoaderComponent,
@@ -54,13 +54,11 @@ import { ProfileComponent } from './auth/profile/profile.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule,    
+    FormsModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    MatDialogModule,
     ReactiveFormsModule,
     FormsModule,
-    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],
