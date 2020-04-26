@@ -3,6 +3,7 @@ import { LilaComponent } from '../../lila/lila.component';
 import Auth, { CognitoUser } from '@aws-amplify/auth';
 import { LoaderService } from 'src/app/loader/loader.service';
 import { PlantService } from 'src/app/services/plant.service';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class DashboardComponent implements OnInit {
 
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.height = '500px';
+    // dialogConfig.height = '500px';
     dialogConfig.width = '500px';
 
     this.dialog.open(LilaComponent, dialogConfig);

@@ -21,8 +21,6 @@
 }
 
 .userMessageMobile {
-  position: relative;
-  left: 6em;
   display: -webkit-flex;
   font-size: small;
   max-width: 170px;
@@ -93,5 +91,12 @@
   padding-top: 10px;
   padding-right: 3px;
   padding-bottom: 3px;
-  width:390x;
+  width:390px;
+}
+
+
+.msgOverflow {
+  max-height: 30vh;
+  overflow: hidden;
+  overflow-y: scroll;
 }
