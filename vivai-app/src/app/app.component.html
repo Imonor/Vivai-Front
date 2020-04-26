@@ -21,7 +21,7 @@
       </div>
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
-      <mat-toolbar class="toolbar shadow-sm" [class.app-is-mobile]="mobileQuery.matches" color="primary">
+      <mat-toolbar class="toolbar shadow-sm customToolbar" [class.app-is-mobile]="mobileQuery.matches" color="primary">
         <div class="vivaidesktop" *ngIf="!mobileQuery.matches">
           <img src="assets/svg/plant.svg" alt="vivai-logo">
           {{title}}

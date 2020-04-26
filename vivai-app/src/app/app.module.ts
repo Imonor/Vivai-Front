@@ -17,9 +17,15 @@ import { HomeComponent } from './home/home.component';
 import { IosInstallComponent } from './ios-install/ios-install.component';
 import { NotifyComponent } from './dashboard/notify/notify.component';
 import { LilaComponent } from './lila/lila.component';
-import { MatDialogModule} from '@angular/material';
-import { MatInputModule } from '@angular/material';
 import { FormGroup, FormBuilder, AbstractControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AuthComponent } from './auth/auth.component';
+import { LoaderComponent } from './loader/loader.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { ConfirmCodeComponent } from './auth/confirm-code/confirm-code.component';
+import { CountryCodeSelectComponent } from './auth/country-code-select/country-code-select.component';
+import { FilterPipe } from './auth/country-code-select/filter.pipe';
+import { ProfileComponent } from './auth/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +38,24 @@ import { FormGroup, FormBuilder, AbstractControl, ReactiveFormsModule, FormsModu
     MenubtnComponent,
     HomeComponent,
     IosInstallComponent,
-    NotifyComponent,
     LilaComponent
+    NotifyComponent,
+    AuthComponent,
+    LoaderComponent,
+    SignInComponent,
+    SignUpComponent,
+    ConfirmCodeComponent,
+    CountryCodeSelectComponent,
+    FilterPipe,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,    
+    ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     MatDialogModule,
     ReactiveFormsModule,
@@ -48,7 +64,7 @@ import { FormGroup, FormBuilder, AbstractControl, ReactiveFormsModule, FormsModu
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [IosInstallComponent, LilaComponent],
+  entryComponents: [IosInstallComponent, LoaderComponent, CountryCodeSelectComponent, LilaComponent],
 })
 export class AppModule {
 }

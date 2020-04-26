@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LilaComponent } from '../../lila/lila.component';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import Auth, { CognitoUser } from '@aws-amplify/auth';
+import { LoaderService } from 'src/app/loader/loader.service';
+
 
 @Component({
   selector: 'vivai-dashboard',
@@ -9,11 +11,16 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  profile:any = {};
+  user: CognitoUser;
+  displayName: boolean = false;
+
+  constructor(public loading: LoaderService, private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.loading.show();
+    this.getUserInfo();
   }
-
   displayImageLila() {
     if (window.innerWidth > 1000) {
       return true;
@@ -29,6 +36,15 @@ export class DashboardComponent implements OnInit {
     dialogConfig.width = '500px';
 
     this.dialog.open(LilaComponent, dialogConfig);
+  }
+
+  async getUserInfo() {
+    this.profile = await Auth.currentUserInfo();
+    this.user = await Auth.currentAuthenticatedUser();
+    console.log("profile",this.profile);
+    console.log("user",this.user);
+    this.displayName = true;
+    this.loading.hide();
   }
 
 }
