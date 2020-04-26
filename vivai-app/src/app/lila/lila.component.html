@@ -1,0 +1,68 @@
+<div style="width: 100%;" class="d-flex justify-content-between align-content-center">
+  <h1 mat-dialog-title>Assistance vocale</h1>
+  <button mat-icon-button class="closeBtn" type="button" color="warn" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content>
+  <p>Bienvenue dans Lila, l'assitance vocale</p>
+
+  <div *ngIf="router.url === '/dashboard'">Vous venez du dashboard</div>
+  <div *ngIf="router.url === '/notify'">Vous venez du notify</div>
+  <div *ngIf="router.url === '/'">Vous venez du home</div>
+
+  <div class="col" *ngIf = "!mobileQuery.matches">
+    <div class="row flex-nowrap p-2" *ngFor="let message of messages">
+      <div class="row flex-nowrap p-2" *ngIf="!message.fromUser">
+        <div class = "iconLila">
+          <img style="width: 2em; max-height: 2em" src="../../assets/illustration/pablo-cut-nobg.png" alt="Lila">
+        </div>
+        <div class = "lilaMessageDesktop">
+          {{message.message}}
+        </div>
+      </div>
+      <div *ngIf="message.fromUser">
+        <div class = "userMessageDesktop">
+          {{message.message}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col" *ngIf = "mobileQuery.matches">
+    <div class="row flex-nowrap p-2" *ngFor="let message of messages">
+      <div class="row flex-nowrap p-2" *ngIf="!message.fromUser">
+        <div class = "iconLila">
+          <img style="width: 2em; max-height: 2em" src="../../assets/illustration/pablo-cut-nobg.png" alt="Lila">
+        </div>
+        <div class = "lilaMessageMobile">
+          {{message.message}}
+        </div>
+      </div>
+      <div *ngIf="message.fromUser">
+        <div class = "userMessageMobile">
+          {{message.message}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row flex-nowrap">
+    <div class ="d-flex">
+      <form [formGroup]="messageDiv">
+        <textarea id="{{messageHeardField}}" #message formControlName="message" (keyup.enter)="sendMessage(message.value)"  matInput placeholder = "Votre message" [ngClass]="{'inputDesktop': !mobileQuery.matches, 'inputMobile': mobileQuery.matches}"></textarea>
+      </form>
+        <div class="col">
+          <button mat-raised-button color="primary" (click)="sendMessage(message.value)" style="height: 40px; width: 65px; left: -0.75em"><mat-icon>send</mat-icon></button>
+          <button mat-raised-button color="primary" (click)="receiveMessage(message.value)" style="height: 40px; width: 65px; left: -0.75em"><mat-icon>call_received</mat-icon></button>
+          <button class="mat-icon-button" (click)=toggleListening(messageHeardField) *ngIf="speech.SupportRecognition" style="height: 40px"><mat-icon>mic</mat-icon></button>
+        </div>
+    </div>
+  </div>
+
+
+</mat-dialog-content>
+
+

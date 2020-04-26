@@ -56,7 +56,7 @@
           <div class="content">
             <main>
               <router-outlet></router-outlet>
-              <button *ngIf="displayButtonLila()" class="lilaButton"mat-icon-button> <img style="width: 2em; max-height: 2em" src="assets/illustration/pablo-cut-nobg.png" alt="Lila"></button>
+              <button *ngIf="displayButtonLila()" class="lilaButton"mat-icon-button (click)=openDialog()> <img style="width: 2em; max-height: 2em" src="assets/illustration/pablo-cut-nobg.png" alt="Lila"></button>
             </main>
           </div>
         </mat-drawer-content>

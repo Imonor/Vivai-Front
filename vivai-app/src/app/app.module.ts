@@ -16,7 +16,8 @@ import { MenubtnComponent } from './dashboard/menubtn/menubtn.component';
 import { HomeComponent } from './home/home.component';
 import { IosInstallComponent } from './ios-install/ios-install.component';
 import { NotifyComponent } from './dashboard/notify/notify.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LilaComponent } from './lila/lila.component';
+import { FormGroup, FormBuilder, AbstractControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import { LoaderComponent } from './loader/loader.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
@@ -39,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
     MenubtnComponent,
     HomeComponent,
     IosInstallComponent,
+    LilaComponent,
     NotifyComponent,
     AuthComponent,
     LoaderComponent,
@@ -55,14 +57,16 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule,    
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [IosInstallComponent, LoaderComponent, CountryCodeSelectComponent,AddPlantDialogComponent ],
+  entryComponents: [IosInstallComponent, LoaderComponent, CountryCodeSelectComponent, LilaComponent, AddPlantDialogComponent],
 })
-export class AppModule { 
+export class AppModule {
 }
