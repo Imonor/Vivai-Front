@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, EventEmitter, OnChanges } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { LilaMessage } from '../Models/lila-message';
+import { LilaMessage } from '../models/lila-message';
 import { SpeechSupportService, RecognitionResult } from '../services/speech-support.service';
 import { FormGroup, FormBuilder, AbstractControl, ReactiveFormsModule } from '@angular/forms';
 import { MediaMatcher } from '@angular/cdk/layout';
