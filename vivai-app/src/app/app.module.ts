@@ -16,7 +16,8 @@ import { MenubtnComponent } from './dashboard/menubtn/menubtn.component';
 import { HomeComponent } from './home/home.component';
 import { IosInstallComponent } from './ios-install/ios-install.component';
 import { NotifyComponent } from './dashboard/notify/notify.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LilaComponent } from './lila/lila.component';
+import { FormGroup, FormBuilder, AbstractControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import { LoaderComponent } from './loader/loader.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
@@ -25,6 +26,8 @@ import { ConfirmCodeComponent } from './auth/confirm-code/confirm-code.component
 import { CountryCodeSelectComponent } from './auth/country-code-select/country-code-select.component';
 import { FilterPipe } from './auth/country-code-select/filter.pipe';
 import { ProfileComponent } from './auth/profile/profile.component';
+import { AddPlantDialogComponent } from './dashboard/add-plant-dialog/add-plant-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { ProfileComponent } from './auth/profile/profile.component';
     MenubtnComponent,
     HomeComponent,
     IosInstallComponent,
+    LilaComponent,
     NotifyComponent,
     AuthComponent,
     LoaderComponent,
@@ -46,19 +50,23 @@ import { ProfileComponent } from './auth/profile/profile.component';
     CountryCodeSelectComponent,
     FilterPipe,
     ProfileComponent,
+    AddPlantDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule,    
+    FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [IosInstallComponent, LoaderComponent, CountryCodeSelectComponent],
+  entryComponents: [IosInstallComponent, LoaderComponent, CountryCodeSelectComponent, LilaComponent, AddPlantDialogComponent],
 })
-export class AppModule { 
+export class AppModule {
 }

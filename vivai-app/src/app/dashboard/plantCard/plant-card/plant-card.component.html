@@ -1,8 +1,10 @@
-<mat-card class="example-card" [routerLink]="['/']">
-    <img mat-card-image
-        src="https://resize.prod.femina.ladmedia.fr/rblr/652,438/img/var/2019-12/plantes-interieur-qui-aiment-l-ombre.jpg"
-        alt="Photo de plante">
-    <mat-card-content>
-        <p style="font-size: 1em;">Nom de la plante</p>
-    </mat-card-content>
-</mat-card>
+<div class="card flex-fill" onmouseover=""><img alt="plante" class="card-img-top img-fluid"
+        src={{plante.image}} />
+    <div class="card-img-overlay">
+        <h5 class="card-title text-white">{{plante?.nom}}</h5>
+        <p class="card-subtitle mb-2 text-white">{{plante.type}}</p>
+        <mat-chip-list class="d-flex justify-content-right align-items-center">
+            <mat-chip>{{plante.piece}}</mat-chip>
+        </mat-chip-list>
+    </div>
+</div>

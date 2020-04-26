@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { LilaComponent } from '../../lila/lila.component';
 import Auth, { CognitoUser } from '@aws-amplify/auth';
 import { LoaderService } from 'src/app/loader/loader.service';
+import { PlantService } from 'src/app/services/plant.service';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 
 
 @Component({
@@ -14,10 +17,10 @@ export class DashboardComponent implements OnInit {
   user: CognitoUser;
   displayName: boolean = false;
 
-  constructor(public loading: LoaderService ) { }
+  constructor(public _loading: LoaderService, private _plantService: PlantService , private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.loading.show();
+    this._loading.show();
     this.getUserInfo();
   }
   displayImageLila() {
@@ -26,13 +29,22 @@ export class DashboardComponent implements OnInit {
     } else return false;
   }
 
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    // dialogConfig.height = '500px';
+    dialogConfig.width = '500px';
+
+    this.dialog.open(LilaComponent, dialogConfig);
+  }
+
   async getUserInfo() {
     this.profile = await Auth.currentUserInfo();
     this.user = await Auth.currentAuthenticatedUser();
-    console.log("profile",this.profile);
-    console.log("user",this.user);
     this.displayName = true;
-    this.loading.hide();
+    this._loading.hide();
   }
 
 }
