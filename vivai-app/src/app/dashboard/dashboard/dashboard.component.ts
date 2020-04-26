@@ -31,9 +31,6 @@ export class DashboardComponent implements OnInit {
     this.profile = await Auth.currentUserInfo();
     this.user = await Auth.currentAuthenticatedUser();
     this.displayName = true;
-    this._plantService.getListPlants().subscribe(data => {
-      console.log(data);
-    });
     this._loading.hide();
   }
 

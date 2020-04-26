@@ -19,14 +19,14 @@ export class PlantService {
   }
 
   getPlant(id): Observable<UserPlant> {
-    return this.httpClient.get<UserPlant>(this.API_URL + 'getPlantId', { params: { species: id.toString() } });
+    return this.httpClient.get<UserPlant>(this.API_URL + 'getPlantId', { params: { plantId: id.toString() } });
   }
 
   getSupportedPlants(): Observable<SupportedPlant[]> {
     return this.httpClient.get<SupportedPlant[]>(this.API_URL + 'getSupportedPlants');
   }
 
-  getListPlants(): Observable<UserPlant[]> {
+  getListUserPlants(): Observable<UserPlant[]> {
     return this.httpClient.get<UserPlant[]>(this.API_URL + 'getListPlants', { params: { userId: this.user.getUsername() } });
   }
 
@@ -43,8 +43,8 @@ export class PlantService {
     let params = new HttpParams();
     console.log(this.user.getUsername());
     params = params.append('userId', this.user.getUsername());
-    params = params.append('plantId', "23");
-    //params = params.append('nickName', plant.nickName.toString());
+    params = params.append('species', plant.plantTypeControl.toString());
+    params = params.append('nickName', plant.nickName.toString());
     params = params.append('location', plant.location.toString());
     params = params.append('temperature', plant.temperature.toString());
     params = params.append('sunExpo', plant.sunExpo.toString());

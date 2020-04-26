@@ -96,9 +96,15 @@ export class AddPlantDialogComponent implements OnInit {
 
   addPlant() {
     let plantObj = this.plantForm.getRawValue(); // {name: '', description: ''}
-    let serializedPlant = JSON.stringify(plantObj);
-    console.log(serializedPlant);
-    this._plantService.insertPlant(plantObj).subscribe(data => console.log(data), error => console.log(error));
+    // let serializedPlant = JSON.stringify(plantObj); // ne marche pas mdr
+    this._plantService.insertPlant(plantObj).subscribe(data => {
+      console.log(data.message);
+      this.dialogRef.close("La plante à été ajoutée avec succes !");
+      this._notification.show(data.message, "ok");
+    },
+      error => { console.log(error);
+        this._notification.show(error, "ok"); }
+    );
   }
 
   shouldEnableAdd() {
