@@ -99,6 +99,7 @@ export class AddPlantDialogComponent implements OnInit {
     // let serializedPlant = JSON.stringify(plantObj); // ne marche pas mdr
     this._plantService.insertPlant(plantObj).subscribe(data => {
       console.log(data);
+      this.dialogRef.close();
       this._notification.show("La plante à été ajoutée avec succes !", "ok");
     },
       error => { console.log(error);

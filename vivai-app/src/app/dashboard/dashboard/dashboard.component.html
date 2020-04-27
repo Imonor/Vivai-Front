@@ -1,9 +1,9 @@
 <div class="container" *ngIf="displayName">
     <div class="header" style="text-align: right;">
-        <h3>Bonjour, <a class="settings" routerLink="/settings" routerLinkActive="active"
+        <h3 style=" margin-top: -0.8em;">Bonjour, <a class="settings" routerLink="/settings" routerLinkActive="active"
             title="Options"><u>{{profile.attributes['given_name'] }}</u></a></h3>
     </div>
-    <div style="margin-top: 1em;">
+    <div class="mt-3">
         <h3>Vos plantes :</h3>
         <vivai-plant-list></vivai-plant-list>
     </div>
@@ -36,7 +36,6 @@
                     <p>des info</p>
                     <p>des info</p>
 
-                    <p>des info</p>
                 </mat-card-content>
             </mat-card>
         </div>

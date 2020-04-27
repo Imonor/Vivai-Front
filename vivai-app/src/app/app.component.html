@@ -13,15 +13,16 @@
             <mat-list-item>
               <a mat-icon-button routerLink="notify" routerLinkActive="active" (click)="toggleMobileNav(lnav)"
                 title="notifications" [routerLinkActive]="['is-active']">
-                <mat-icon mat-list-icon matBadge="15" matBadgeColor="warn" matBadgeSize="medium">notification_important</mat-icon>
+                <mat-icon mat-list-icon matBadge="15" matBadgeColor="warn" matBadgeSize="medium">notification_important
+                </mat-icon>
               </a>
             </mat-list-item>
           </mat-list>
         </nav>
       </div>
     </mat-sidenav>
-    <mat-sidenav-content class="sidenav-content">
-      <mat-toolbar class="toolbar shadow-sm customToolbar" [class.app-is-mobile]="mobileQuery.matches" color="primary">
+    <mat-sidenav-content class="sidenav-content" style="height: 100% !important;">
+      <!--mat-toolbar class="toolbar shadow-sm customToolbar" [class.app-is-mobile]="mobileQuery.matches" color="primary">
         <div class="vivaidesktop" *ngIf="!mobileQuery.matches">
           <img src="assets/svg/plant.svg" alt="vivai-logo">
           {{title}}
@@ -32,8 +33,8 @@
             <img src="assets/svg/plant.svg" alt="vivai-logo">
           </button>
         </div>
-      </mat-toolbar>
-      <mat-drawer-container class="sidenav-container">
+      </mat-toolbar-->
+      <mat-drawer-container class="sidenav-container" style="height: 100% !important;">
         <mat-drawer mode="side" [opened]="!mobileQuery.matches">
           <div class="content">
             <mat-list>
@@ -55,8 +56,21 @@
         <mat-drawer-content>
           <div class="content">
             <main>
+              <button class="menuButton" *ngIf="mobileQuery.matches && router.url == '/dashboard' " mat-raised-button aria-label="Menu"
+                (click)="lnav.toggle()">
+                <mat-icon inline=true matBadge="15" matBadgeColor="warn" matBadgeSize="small" [matBadgeHidden]="false">
+                  menu</mat-icon>
+              </button>
+              <button class="menuButton" *ngIf="mobileQuery.matches && router.url != '/dashboard' " mat-raised-button aria-label="Menu"
+                (click)="lnav.toggle()">
+                <mat-icon inline=true>
+                  arrow_back_ios</mat-icon>
+              </button>
+              <div class="mt-5"></div>
+              <div style="height: 2em;" *ngIf="router.url !=='/dashboard'"></div>
               <router-outlet></router-outlet>
-              <button *ngIf="displayButtonLila()" class="lilaButton"mat-icon-button (click)=openDialog()> <img style="width: 2em; max-height: 2em" src="assets/illustration/pablo-cut-nobg.png" alt="Lila"></button>
+              <button *ngIf="displayButtonLila()" class="lilaButton" mat-icon-button (click)=openDialog()> <img
+                  style="width: 2em; max-height: 2em" src="assets/illustration/pablo-cut-nobg.png" alt="Lila"></button>
             </main>
           </div>
         </mat-drawer-content>

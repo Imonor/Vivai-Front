@@ -44,7 +44,7 @@ export class PlantService {
     console.log(this.user.getUsername());
     params = params.append('userId', this.user.getUsername());
     params = params.append('species', plant.plantTypeControl.toString());
-    params = params.append('nickName', plant.nickName.toString());
+    params = params.append('nickname', plant.nickName.toString());
     params = params.append('location', plant.location.toString());
     params = params.append('temperature', '"' + plant.temperature.toString() + '"');
     params = params.append('sunExpo', plant.sunExpo.toString());
