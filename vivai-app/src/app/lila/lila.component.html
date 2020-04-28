@@ -55,13 +55,13 @@
 <div class = "msgOverflow p-2" *ngIf="!mobileQuery.matches">
   <div *ngFor="let message of messages">
     <div *ngIf="message.fromUser">
-      <div class="d-flex justify-content-end">
+      <div class="d-flex justify-content-end mb-2">
         <div class="userMessageDesktop">{{message.message}}</div>
       </div>
     </div>
     <div *ngIf="!message.fromUser">
-      <div class="d-flex justify-content-start">
-        <div class = "iconLila">
+      <div class="d-flex justify-content-start  mb-2">
+        <div class = "iconLila ">
           <img style="width: 2em; max-height: 2em" src="../../assets/illustration/pablo-cut-nobg.png" alt="Lila">
         </div>
         <div class="lilaMessageDesktop">{{message.message}}</div>
@@ -73,14 +73,14 @@
 <div class = "msgOverflow p-2" *ngIf="mobileQuery.matches">
   <div *ngFor="let message of messages">
     <div *ngIf="message.fromUser">
-      <div class="d-flex justify-content-end">
-        <div class="userMessageMobile">{{message.message}}</div>
+      <div class="d-flex justify-content-end mb-2">
+        <div class="userMessageMobile ">{{message.message}}</div>
       </div>
     </div>
     <div *ngIf="!message.fromUser">
-      <div class="d-flex justify-content-start">
+      <div class="d-flex justify-content-start mb-2">
         <div class = "iconLila">
-          <img style="width: 1em; max-height: 1em" src="../../assets/illustration/pablo-cut-nobg.png" alt="Lila">
+          <img style="width: 1.5em; height: 1.5em" src="../../assets/illustration/pablo-cut-nobg.png" alt="Lila">
         </div>
         <div class="lilaMessageMobile">{{message.message}}</div>
       </div>
