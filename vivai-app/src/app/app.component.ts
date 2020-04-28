@@ -70,7 +70,8 @@ export class AppComponent implements OnInit {
   }
 
   displayButtonLila() {
-    if (window.innerWidth < 1000 && (this.router.url !== "/")) {
+    let route = this.router.url; 
+    if (window.innerWidth < 1025 && (route !== "/") && !route.includes("auth")) {
       return true;
     } else return false;
 

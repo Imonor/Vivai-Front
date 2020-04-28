@@ -65,7 +65,7 @@
                 <mat-icon>
                   menu</mat-icon>
                 </button>
-              <button class="leftButton d-flex justify-content-center align-items-center" *ngIf="mobileQuery.matches && router.url != '/dashboard' " aria-label="Menu"
+              <button class="leftButton d-flex justify-content-center align-items-center" *ngIf="mobileQuery.matches && router.url != '/dashboard' && router.url != '/'" aria-label="Menu"
                 (click)="returnNav()">
                 <mat-icon class="ml-2">
                   arrow_back_ios</mat-icon>

@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
     this.getUserInfo();
   }
   displayImageLila() {
-    if (window.innerWidth > 1000) {
+    if (window.innerWidth > 1025) {
       return true;
     } else return false;
   }
