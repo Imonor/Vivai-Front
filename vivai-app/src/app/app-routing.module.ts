@@ -10,6 +10,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { ConfirmCodeComponent } from './auth/confirm-code/confirm-code.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ProfileComponent } from './auth/profile/profile.component';
+import { LandingpageComponent } from './landingpage/landingpage/landingpage.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,7 @@ const routes: Routes = [
        canActivate: [UnauthGuard]    
     }
  ]},  
-  { path: '', component: HomeComponent, canActivate: [UnauthGuard] },
+  { path: '', component: LandingpageComponent, canActivate: [UnauthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'notify', component: NotifyComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: ProfileComponent, canActivate: [AuthGuard] },

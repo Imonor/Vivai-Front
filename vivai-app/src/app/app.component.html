@@ -35,7 +35,7 @@
         </div>
       </mat-toolbar-->
       <mat-drawer-container class="sidenav-container" style="height: 100% !important;">
-        <mat-drawer mode="side" [opened]="!mobileQuery.matches" style="border-radius: 0 30px 30px 0;">
+        <mat-drawer mode="side" [opened]="!mobileQuery.matches && router.url !='/'" style="border-radius: 0 30px 30px 0;">
           <div class="content">
             <img style="margin:2.2em" src="assets/svg/plant.svg" alt="vivai-logo">
             <mat-list>
@@ -70,8 +70,8 @@
                 <mat-icon class="ml-2">
                   arrow_back_ios</mat-icon>
               </button>
-              <div class="mt-5"></div>
-              <div style="height: 1.8em;" *ngIf="router.url !=='/dashboard'"></div>
+              <div class="mt-5" *ngIf="router.url !='/'"></div>
+              <div style="height: 1.8em;" *ngIf="router.url !=='/dashboard' && router.url !='/'"></div>
               <router-outlet></router-outlet>
               <button *ngIf="displayButtonLila()" class="lilaButton" mat-icon-button (click)=openDialog()> <img
                   style="width: 2em; max-height: 2em" src="assets/illustration/pablo-cut-nobg.png" alt="Lila"></button>
