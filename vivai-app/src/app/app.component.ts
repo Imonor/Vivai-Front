@@ -25,14 +25,14 @@ export class AppComponent implements OnInit {
   mobileQuery: MediaQueryList;
   nav = [
     {
-      'title': 'Dashboard',
+      'title': 'Tableau de Bord',
       'icon': 'dashboard',
       'path': '/dashboard'
     },
     {
-      'title': 'Assistance Lila',
-      'icon': 'sms',
-      'path': '/lila'
+      'title': 'Paramètres',
+      'icon': 'settings_applications',
+      'path': '/settings'
     }
   ];
   private _mobileQueryListener: () => void;
