@@ -27,6 +27,7 @@ $vivai-app-theme: mat-light-theme($vivai-app-primary, $vivai-app-accent, $vivai-
 @include angular-material-theme($vivai-app-theme);
 
 /* You can add global styles to this file, and also import other style files */
+
 .active {
     color: mat-color($vivai-app-accent);
 }

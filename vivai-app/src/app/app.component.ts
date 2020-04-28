@@ -11,6 +11,7 @@ import { MatSidenav, MatSnackBar, MatDialog, MatDialogConfig } from '@angular/ma
 import { IosInstallComponent } from './ios-install/ios-install.component';
 import { LilaComponent } from './lila/lila.component';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -24,20 +25,20 @@ export class AppComponent implements OnInit {
   mobileQuery: MediaQueryList;
   nav = [
     {
-      'title': 'Dashboard',
+      'title': 'Tableau de Bord',
       'icon': 'dashboard',
       'path': '/dashboard'
     },
     {
-      'title': 'Lila',
-      'icon': 'sms',
-      'path': '/lila'
+      'title': 'Paramètres',
+      'icon': 'settings_applications',
+      'path': '/settings'
     }
   ];
   private _mobileQueryListener: () => void;
   @Output() toggleSideNav = new EventEmitter();
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private toast: MatSnackBar, private dialog: MatDialog, public router: Router) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private toast: MatSnackBar, private dialog: MatDialog, public router: Router, private _location: Location) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -80,10 +81,13 @@ export class AppComponent implements OnInit {
 
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.height = '500px';
     dialogConfig.width = '500px';
 
     this.dialog.open(LilaComponent, dialogConfig);
 
+  }
+
+  returnNav() {
+    this._location.back();
   }
 }

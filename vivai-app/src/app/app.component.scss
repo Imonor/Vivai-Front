@@ -1,15 +1,3 @@
-.menuBtnContainer {
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 2em;
-    z-index: 1000;
-}
-::ng-deep .menuBtn{
-    height:8em !important;
-    width:8em!important;
-    font-size:8em !important;
-}
-
 a:hover {
     color: rgba(105,172,105, $alpha: 0.5) !important;
 }
@@ -19,23 +7,59 @@ a:hover {
     color: rgba(105,172,105, $alpha: 1.0);
 }
 
-.fill-space {
-    // This fills the remaining space, by using flexbox.
-    // Every toolbar row uses a flexbox row layout.
-    flex: 1 1 auto;
-  }
-
 .lilaButton {
     overflow: hidden;
     height:2em !important;
     width:2em!important;
     font-size:2em !important;
     position: absolute;
-    bottom: 0.5em;
+    bottom: 2em;
     right: 1em;
     background-color: rgba(250, 250, 250, 0.9)!important;
 }
 
 .customToolbar {
     background: #fafafa !important;
+}
+
+.leftButton {
+    // background-image: linear-gradient(to bottom right, red, yellow);
+    z-index: 100;
+    position: absolute;
+    height: 1.3em !important;
+    width: 1.3em !important;
+    font-size: 2em !important;
+    border-radius: 10px 20px 10px 20px;
+    background-color: white;
+    top: 0.5em;
+    left: 0.5em;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.rightButton {
+     // background-image: linear-gradient(to bottom right, red, yellow);
+     z-index: 100;
+    position: absolute;
+    height: 1.3em !important;
+    width: 1.3em !important;
+    font-size: 2em !important;
+    border-radius: 20px 10px 20px 10px;
+    background-color: white;
+    top: 0.5em;
+    right: 0.5em;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.content {
+    padding: 0.5em;
+}
+
+.footer {
+    position: absolute;
+    bottom: 1em;
+    font-weight: 400;
+    font-size: 0.7em;
+    color: rgba(black, 0.6);
+    font-family: 'Gugi', cursive;
+    margin-left: 20%;
 }

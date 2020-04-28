@@ -16,9 +16,9 @@
                 <mat-hint *ngIf="!lnameInput.value">Enter your last name</mat-hint>
             </mat-form-field>
 
-            <mat-form-field>
+            <!--mat-form-field>
                 <input type="tel" matInput placeholder="Telephone" formControlName="phone" autocomplete="tel">
-            </mat-form-field>
+            </mat-form-field-->
 
             <button mat-raised-button color="accent" (click)="editProfile()"
                 [disabled]="loading.loading || !profileForm.valid">Sauvegarder</button>
