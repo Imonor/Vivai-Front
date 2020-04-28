@@ -63,14 +63,14 @@ export class LilaComponent implements OnInit {
 
   sendMessage(message: string) {
     if (message) {
-      this.messages.push(new LilaMessage(message, true));
+      this.messages.unshift(new LilaMessage(message, true));
       this.Message.setValue(null);
     }
   }
 
   receiveMessage(message: string) {
     if (message) {
-      this.messages.push(new LilaMessage(message, false));
+      this.messages.unshift(new LilaMessage(message, false));
       this.Message.setValue(null);
     }
   }

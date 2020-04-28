@@ -33,8 +33,7 @@ export class DashboardComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-    // dialogConfig.height = '500px';
+    dialogConfig.autoFocus = false;
     dialogConfig.width = '500px';
 
     this.dialog.open(LilaComponent, dialogConfig);

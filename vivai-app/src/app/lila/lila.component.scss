@@ -9,21 +9,21 @@
 }
 
 .userMessageDesktop {
-  background-color: rgba(68, 164, 219) !important;
+  max-width: 18em;
+  background-color: #44a4db !important;
   position: relative;
-  left: 8em;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 20px;
-  display: -webkit-flex
+  display: -webkit-flex;
 }
 
 .userMessageMobile {
   display: -webkit-flex;
   font-size: small;
-  max-width: 170px;
+  max-width: 12em;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
@@ -33,14 +33,14 @@
 }
 
 .lilaMessageDesktop {
-  background-color: rgb(175, 240, 146) !important;
-  display: -webkit-flex;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-radius: 20px;
-  left: 1em;
+  background-color: #aff092 !important;
+    display: -webkit-flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 20px;
+    max-width: 18em;
 }
 
 .lilaMessageMobile {
@@ -54,7 +54,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 20px;
-  max-width: 170px
+  max-width: 12em;
 }
 
 .communicationButton {
@@ -99,4 +99,6 @@
   max-height: 30vh;
   overflow: hidden;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column-reverse;
 }
