@@ -5,7 +5,8 @@ import { LilaMessage } from '../models/lila-message';
 import { SpeechSupportService, RecognitionResult } from '../services/speech-support.service';
 import { FormGroup, FormBuilder, AbstractControl, ReactiveFormsModule } from '@angular/forms';
 import { MediaMatcher } from '@angular/cdk/layout';
-
+import { PlantService } from 'src/app/services/plant.service';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'vivai-lila',
@@ -18,11 +19,13 @@ export class LilaComponent implements OnInit {
   private _mobileQueryListener: () => void;
 
   messages = [];
+  plants = ['Basilic', 'Tulipe', 'Pommier'];
   private targetElementName: string;
   private SelectedLanguage = 'fr-FR';
   public readonly messageHeardField = 'message';
   public readonly selectedLanguageFieldName = 'selectedLanguage';
   public messageDiv: FormGroup;
+
 
   public get Message(): AbstractControl {
     return this.messageDiv.get(this.messageHeardField);
@@ -30,11 +33,12 @@ export class LilaComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<LilaComponent>, public router: Router,
               private fb: FormBuilder, public speech: SpeechSupportService,
-              changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+              changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _plantService: PlantService) {
 
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
+
     }
 
   ngOnInit() {
@@ -55,6 +59,9 @@ export class LilaComponent implements OnInit {
         this.Message.setValue(result.transcript);
       }
     });
+
+    let plantList = this._plantService.getListUserPlants();
+
   }
 
   close() {
