@@ -11,30 +11,32 @@ import { ConfirmCodeComponent } from './auth/confirm-code/confirm-code.component
 import { AuthGuard } from './auth/auth.guard';
 import { ProfileComponent } from './auth/profile/profile.component';
 import { LandingpageComponent } from './landingpage/landingpage/landingpage.component';
+import { PlantPageComponent } from './dashboard/plant-page/plant-page.component';
 
 
 const routes: Routes = [
-  { path: 'auth', component: AuthComponent, children: [    
-    {      
-       path: 'signin',      
-       component: SignInComponent,      
-       canActivate: [UnauthGuard]    
-    },    
-    {      
+  { path: 'auth', component: AuthComponent, children: [
+    {
+       path: 'signin',
+       component: SignInComponent,
+       canActivate: [UnauthGuard]
+    },
+    {
        path: 'signup',
        component: SignUpComponent,
-       canActivate: [UnauthGuard]    
-    },    
+       canActivate: [UnauthGuard]
+    },
     {
        path: 'confirm',
        component: ConfirmCodeComponent,
-       canActivate: [UnauthGuard]    
+       canActivate: [UnauthGuard]
     }
- ]},  
+ ]},
   { path: '', component: LandingpageComponent, canActivate: [UnauthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'notify', component: NotifyComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard/vivai-plant-page', component: PlantPageComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

@@ -28,6 +28,7 @@ import { FilterPipe } from './auth/country-code-select/filter.pipe';
 import { ProfileComponent } from './auth/profile/profile.component';
 import { AddPlantDialogComponent } from './dashboard/add-plant-dialog/add-plant-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PlantPageComponent } from './dashboard/plant-page/plant-page.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { HttpClientModule } from '@angular/common/http';
     FilterPipe,
     ProfileComponent,
     AddPlantDialogComponent,
+    PlantPageComponent,
   ],
   imports: [
     BrowserModule,
