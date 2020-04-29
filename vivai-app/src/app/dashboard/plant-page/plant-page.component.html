@@ -1,4 +1,30 @@
-<p>plant-page works!</p>
+<div class="reportingForm" style="width: 30%">
+  <h2>Fait aujourd'hui : </h2>
+  <div class="h2line"></div>
+  <div class="checkboxes">
+    <div d-flex>
+      <img style="width: 1.5em; max-height: 1.5em" src="assets/illustration/water.jpg">
+      <mat-checkbox labelPosition = "before">Arrosage</mat-checkbox>
+    </div>
+    <div d-flex>
+      <img style="width: 1.5em; max-height: 1.5em" src="assets/illustration/water.jpg">
+      <mat-checkbox labelPosition = "before">Taillage</mat-checkbox>
+    </div>
+    <div d-flex>
+      <img style="width: 1.5em; max-height: 1.5em" src="assets/illustration/water.jpg">
+      <mat-checkbox labelPosition = "before">Replantage</mat-checkbox>
+    </div>
+    <div d-flex>
+      <img style="width: 1.5em; max-height: 1.5em" src="assets/illustration/water.jpg">
+      <mat-checkbox labelPosition = "before">Récolte</mat-checkbox>
+    </div>
+  </div>
+  <div class="d-flex justify-content-start mb-2 mt-4">
+    <p>
+      Nb tâches / 4
+    </p>
+    <button mat-raised-button color="accent" (click)="sendMessage(message.value)" style="height: 40px; left: 3em">Mettre à jour</button>
+  </div>
+</div>
 
 
-<mat-checkbox labelPosition = "before">Check me!</mat-checkbox>
