@@ -19,7 +19,7 @@ export class LilaComponent implements OnInit {
   private _mobileQueryListener: () => void;
 
   messages = [];
-  plants = ['Basilic', 'Tulipe', 'Pommier'];
+  plants = ['Autre demande', 'Basilic', 'Tulipe', 'Pommier'];
   private targetElementName: string;
   private SelectedLanguage = 'fr-FR';
   public readonly messageHeardField = 'message';
