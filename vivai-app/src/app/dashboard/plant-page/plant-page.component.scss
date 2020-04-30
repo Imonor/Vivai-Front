@@ -19,10 +19,34 @@ h2 {
   padding: 1em;
 }
 
-.badge {
+.badgeRed {
   height: 2.5em;
   width: 2.5em;
   border-radius: 20px;
   background-color: indianred;
+  color: whitesmoke;
+}
+
+.badgeBlue {
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 20px;
+  background-color: dodgerblue;
+  color: whitesmoke;
+}
+
+.badgeGreen {
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 20px;
+  background-color: limegreen;
+  color: whitesmoke;
+}
+
+.badgeOrange {
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 20px;
+  background-color: orange;
   color: whitesmoke;
 }
