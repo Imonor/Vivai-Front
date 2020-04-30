@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   constructor(public _loading: LoaderService, private _plantService: PlantService , private dialog: MatDialog) { }
 
   ngOnInit() {
-    this._loading.show();
+    this._loading.show("waiting for user data");
     this.getUserInfo();
   }
   displayImageLila() {

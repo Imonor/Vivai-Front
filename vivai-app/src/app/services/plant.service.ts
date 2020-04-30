@@ -39,6 +39,7 @@ export class PlantService {
     // if (search.tempDePrep.toString() !== '') {
     //   params = params.append('tempDePrep', search.tempDePrep.toString());
     // }
+    
     // Get Id of curent user.
     let params = new HttpParams();
     console.log(this.user.getUsername());

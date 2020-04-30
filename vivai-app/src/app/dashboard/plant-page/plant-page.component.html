@@ -1,7 +1,15 @@
-<div class="container">
-  <mat-card>
-    <mat-card-content class="content">
-      <div class="row partieduhaut">
+<div *ngIf="display">
+  <div class="headerImage" *ngIf="mobileQuery.matches">
+    <div class="card flex-fill"><img alt="plante" class="card-img-top img-fluid" src={{curentPlant.image}} />
+      <div class="card-img-overlay">
+      </div>
+    </div>
+  </div>
+  <div style="height: 10em;" *ngIf="mobileQuery.matches"></div>
+  <div class="container" style="border-radius: 20px !important;">
+    <mat-card style="border-radius: 20px !important;">
+      <mat-card-content class="content">
+        <div class="row partieduhaut">
 
       </div>
       <div class="row partiedubas">
@@ -15,6 +23,12 @@
                 <div class="col-2 mb-1">
                   <div class="badgeBlue d-flex justify-content-center align-items-center">
                     <mat-icon matSuffix svgIcon="water" aria-hidden="false"></mat-icon>
+                  </div>
+                  <div class="col-6 d-flex justify-content-start align-items-center">
+                    <h5>Arrosage</h5>
+                  </div>
+                  <div class="col-4 d-flex justify-content-center align-items-center">
+                    <mat-checkbox labelPosition="before" style="margin-top: 0.6em;"></mat-checkbox>
                   </div>
                 </div>
                 <div class="col-6 d-flex justify-content-start align-items-center mb-1">
@@ -64,35 +78,25 @@
               <div class="row justify-content-between">
                 <div class="col-6 d-flex justify-content-start align-items-center">
                   Nb tâches / 4
-                </div>
-                <div class="col-6 d-flex justify-content-end">
-                  <button mat-raised-button color="accent" (click)="sendMessage(message.value)"
-                  style="height: 40px">Mettre
+                </p>
+                <button mat-raised-button color="accent" (click)="sendMessage(message.value)"
+                  style="height: 40px; left: 3em">Mettre
                   à jour</button>
-                </div>
               </div>
             </div>
-            <div class="d-flex justify-content-start mb-2 mt-4">
-              <p>
-                Nb tâches / 4
-              </p>
-              <button mat-raised-button color="accent" (click)="sendMessage(message.value)"
-                style="height: 40px; left: 3em">Mettre
-                à jour</button>
-            </div>
+          </div>
+          <div class="col-4">
+
+          </div>
+          <div class="col-2">
+
+          </div>
+          <div class="col-2">
+
           </div>
         </div>
-        <div class="col-4">
+      </mat-card-content>
+    </mat-card>
 
-        </div>
-        <div class="col-2">
-
-        </div>
-        <div class="col-2">
-
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
-
+  </div>
 </div>

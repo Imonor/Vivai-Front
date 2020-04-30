@@ -70,8 +70,8 @@
                 <mat-icon class="ml-2">
                   arrow_back_ios</mat-icon>
               </button>
-              <div class="mt-5" *ngIf="router.url !='/'"></div>
-              <div style="height: 1.8em;" *ngIf="router.url !=='/dashboard' && router.url !='/'"></div>
+              <div class="mt-5" *ngIf="router.url !='/' && router.url !=='/plant-page'"></div>
+              <div style="height: 1.8em;" *ngIf="router.url !=='/dashboard' && router.url !='/' && router.url !=='/plant-page'"></div>
               <router-outlet></router-outlet>
               <button *ngIf="displayButtonLila()" class="lilaButton" mat-icon-button (click)=openDialog()> <img
                   style="width: 2em; max-height: 2em" src="assets/illustration/pablo-cut-nobg.png" alt="Lila"></button>
