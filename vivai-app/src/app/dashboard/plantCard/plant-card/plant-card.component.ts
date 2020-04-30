@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'vivai-plant-card',
@@ -9,9 +10,12 @@ export class PlantCardComponent implements OnInit {
 
   @Input() plante;
   
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  goToPage() {
+    this.router.navigate(['/plant-page'], {state: {data: this.plante}});
+  }
 }

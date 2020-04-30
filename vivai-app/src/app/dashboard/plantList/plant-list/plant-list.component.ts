@@ -3,6 +3,7 @@ import { MatDialogRef, MatDialog } from '@angular/material';
 import { AddPlantDialogComponent } from '../../add-plant-dialog/add-plant-dialog.component';
 import { PlantService } from 'src/app/services/plant.service';
 import { LoaderService } from 'src/app/loader/loader.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'vivai-plant-list',
@@ -41,7 +42,7 @@ export class PlantListComponent implements OnInit {
   ];
 
 
-  constructor(private dialog: MatDialog, private _plantService: PlantService, public _loading: LoaderService ) { }
+  constructor(private dialog: MatDialog, private _plantService: PlantService, public _loading: LoaderService) { }
 
   ngOnInit() {
     this._loading.show();
@@ -50,7 +51,7 @@ export class PlantListComponent implements OnInit {
 
 
   openAddNewPlant() {
-    this.addPlantDialogRef = this.dialog.open(AddPlantDialogComponent, {disableClose: true});
+    this.addPlantDialogRef = this.dialog.open(AddPlantDialogComponent, { disableClose: true });
     this.addPlantDialogRef.afterClosed().subscribe(result => {
       console.log(result);
     });

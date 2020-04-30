@@ -9,14 +9,24 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class PlantPageComponent implements OnInit {
 
+  curentPlant: null;
+
   constructor(iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer) {
       iconRegistry.addSvgIcon(
         'water',
         sanitizer.bypassSecurityTrustResourceUrl('assets/svg/water.svg'));
+        // Ajouter kes autres icons
+      
      }
 
   ngOnInit() {
+    this.catchPlantFroHistory();
   }
 
+
+  catchPlantFroHistory() {
+    this.curentPlant = history.state.data;
+    console.log(this.curentPlant);
+  }
 }

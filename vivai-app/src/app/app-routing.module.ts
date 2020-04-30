@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'notify', component: NotifyComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'dashboard/vivai-plant-page', component: PlantPageComponent, canActivate: [AuthGuard]}
+  { path: 'plant-page', component: PlantPageComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
