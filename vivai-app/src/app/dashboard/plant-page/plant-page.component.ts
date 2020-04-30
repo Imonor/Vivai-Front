@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'vivai-plant-page',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlantPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer) {
+      iconRegistry.addSvgIcon(
+        'water',
+        sanitizer.bypassSecurityTrustResourceUrl('assets/svg/water.svg'));
+     }
 
   ngOnInit() {
   }

@@ -11,11 +11,18 @@ h2 {
 
 .h2line {
   border-bottom: 1px solid rgb(15,15,15);
-  margin-bottom: 1em;
   margin-left: 1em;
   margin-right: 1em;
 }
 
 .checkboxes {
-  margin-left: 1em;
+  padding: 1em;
+}
+
+.badge {
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 20px;
+  background-color: indianred;
+  color: whitesmoke;
 }
