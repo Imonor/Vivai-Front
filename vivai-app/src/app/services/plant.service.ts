@@ -47,9 +47,9 @@ export class PlantService {
     params = params.append('species', plant.plantTypeControl.toString());
     params = params.append('nickname', plant.nickName.toString());
     params = params.append('location', plant.location.toString());
-    params = params.append('temperature', '"' + plant.temperature.toString() + '"');
+    params = params.append('temperature', plant.temperature.toString());
     params = params.append('sunExpo', plant.sunExpo.toString());
-    return this.httpClient.request('PUT', this.API_URL + 'insertPlant', {responseType: 'json', params})
+    return this.httpClient.request('PUT', this.API_URL + 'insertUserPlant', {responseType: 'json', params})
   }
 
   async getUserInfo() {

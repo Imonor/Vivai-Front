@@ -1,11 +1,12 @@
 export class UserPlant {
-    id : string;
-    PlantId: string;
-    NickName: string;
-    UserId: string;
-    Location: string;
-    Temperature: string;
-    SunExpo: string;
+    id: string;
+    plantId: string;
+    userId: string;
+    nickname: string;
+    location: string;
+    temperature: string;
+    sunExpo: string;
     shared: boolean;
     picUrl: string;
+    species: string;
 }

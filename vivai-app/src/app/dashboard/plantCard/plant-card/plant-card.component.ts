@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserPlant } from 'src/app/models/user-plant';
 
 @Component({
   selector: 'vivai-plant-card',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class PlantCardComponent implements OnInit {
 
-  @Input() plante;
+  @Input() plante: UserPlant;
   
   constructor(private router: Router) { }
 

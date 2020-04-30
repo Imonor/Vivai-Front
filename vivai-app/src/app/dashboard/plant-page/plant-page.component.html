@@ -1,6 +1,6 @@
 <div *ngIf="display">
   <div class="headerImage" *ngIf="mobileQuery.matches">
-    <div class="card flex-fill"><img alt="plante" class="card-img-top img-fluid" src={{curentPlant.image}} />
+    <div class="card flex-fill"><img alt="plante" class="card-img-top img-fluid" src={{curentPlant.picUrl}} />
       <div class="card-img-overlay">
       </div>
     </div>
@@ -10,97 +10,102 @@
     <mat-card style="border-radius: 20px !important;">
       <mat-card-content class="content">
 
-      <div class="row partieduhaut">
+        <div class="row partieduhaut">
 
-      </div>
+        </div>
 
-      <div class="row partiedubas">
+        <div class="row partiedubas">
 
-        <div class="col-4">
-          <div class="reportingForm">
-            <h2>Fait aujourd'hui : </h2>
-            <div class="h2line"></div>
-            <div class="checkboxes">
-              <form [formGroup]="reportingForm">
+          <div class="col-12 col-sm-12 col-md-9 col-lg-4">
+            <div class="reportingForm">
+              <h2>Fait aujourd'hui : </h2>
+              <div class="h2line"></div>
+              <div class="checkboxes">
+                <form [formGroup]="reportingForm">
+                  <div class="row justify-content-between">
+                    <div class="col-2 mb-1">
+                      <div class="badgeBlue d-flex justify-content-center align-items-center">
+                        <mat-icon matSuffix svgIcon="water" aria-hidden="false"></mat-icon>
+                      </div>
+                    </div>
+                    <div class="col-6 d-flex justify-content-start align-items-center mb-1">
+                      <h5>Arrosage</h5>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center mb-1">
+                      <mat-checkbox formControlName="water" labelPosition="before" style="margin-top: 0.6em; color:blue"
+                        (click)="checkTaskNumber()"></mat-checkbox>
+                    </div>
+                  </div>
+                  <div class="row justify-content-between">
+                    <div class="col-2 mb-1">
+                      <div class="badgeRed d-flex justify-content-center align-items-center">
+                        <mat-icon matSuffix svgIcon="prune" aria-hidden="false"></mat-icon>
+                      </div>
+                    </div>
+                    <div class="col-6 d-flex justify-content-start align-items-center mb-1">
+                      <h5>Taillage</h5>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center mb-1">
+                      <mat-checkbox formControlName="prune" labelPosition="before" style="margin-top: 0.6em;"
+                        (click)="checkTaskNumber()"></mat-checkbox>
+                    </div>
+                  </div>
+                  <div class="row justify-content-between">
+                    <div class="col-2 mb-1">
+                      <div class="badgeGreen d-flex justify-content-center align-items-center">
+                        <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
+                      </div>
+                    </div>
+                    <div class="col-6 d-flex justify-content-start align-items-center mb-1">
+                      <h5>Replantage</h5>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center mb-1">
+                      <mat-checkbox formControlName="repoting" labelPosition="before" style="margin-top: 0.6em;"
+                        (click)="checkTaskNumber()"></mat-checkbox>
+                    </div>
+                  </div>
+                  <div class="row justify-content-between">
+                    <div class="col-2 mb-1">
+                      <div class="badgeOrange d-flex justify-content-center align-items-center">
+                        <mat-icon matSuffix svgIcon="harvest" aria-hidden="false"></mat-icon>
+                      </div>
+                    </div>
+                    <div class="col-6 d-flex justify-content-start align-items-center mb-1">
+                      <h5>Récolte</h5>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center mb-1">
+                      <mat-checkbox formControlName="harvest" labelPosition="before" style="margin-top: 0.6em;"
+                        (click)="checkTaskNumber()"></mat-checkbox>
+                    </div>
+                  </div>
+                </form>
+
                 <div class="row justify-content-between">
-                  <div class="col-2 mb-1">
-                    <div class="badgeBlue d-flex justify-content-center align-items-center">
-                      <mat-icon matSuffix svgIcon="water" aria-hidden="false"></mat-icon>
-                    </div>
+                  <div class="col-6 d-flex justify-content-start align-items-center" style="font-size: larger;">
+                    {{this.taskNumber}} / 4 tâches
                   </div>
-                  <div class="col-6 d-flex justify-content-start align-items-center mb-1">
-                    <h5>Arrosage</h5>
+                  <div class="col-6 d-flex justify-content-end">
+                    <button mat-raised-button color="accent" style="height: 40px">Mettre à jour</button>
                   </div>
-                  <div class="col-4 d-flex justify-content-center align-items-center mb-1">
-                    <mat-checkbox formControlName = "water" labelPosition="before" style="margin-top: 0.6em;" (click)="checkTaskNumber()"></mat-checkbox>
-                  </div>
-
-                  <div class="col-2 mb-1">
-                    <div class="badgeRed d-flex justify-content-center align-items-center">
-                      <mat-icon matSuffix svgIcon="prune" aria-hidden="false"></mat-icon>
-                    </div>
-                  </div>
-                  <div class="col-6 d-flex justify-content-start align-items-center mb-1">
-                    <h5>Taillage</h5>
-                  </div>
-                  <div class="col-4 d-flex justify-content-center align-items-center mb-1">
-                    <mat-checkbox formControlName = "prune" labelPosition="before" style="margin-top: 0.6em;" (click)="checkTaskNumber()"></mat-checkbox>
-                  </div>
-
-                  <div class="col-2 mb-1">
-                    <div class="badgeGreen d-flex justify-content-center align-items-center">
-                      <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
-                    </div>
-                  </div>
-                  <div class="col-6 d-flex justify-content-start align-items-center mb-1">
-                    <h5>Replantage</h5>
-                  </div>
-                  <div class="col-4 d-flex justify-content-center align-items-center mb-1">
-                    <mat-checkbox formControlName = "repoting" labelPosition="before" style="margin-top: 0.6em;" (click)="checkTaskNumber()"></mat-checkbox>
-                  </div>
-
-                  <div class="col-2 mb-1">
-                    <div class="badgeOrange d-flex justify-content-center align-items-center">
-                      <mat-icon matSuffix svgIcon="harvest" aria-hidden="false"></mat-icon>
-                    </div>
-                  </div>
-                  <div class="col-6 d-flex justify-content-start align-items-center mb-1">
-                    <h5>Récolte</h5>
-                  </div>
-                  <div class="col-4 d-flex justify-content-center align-items-center mb-1">
-                    <mat-checkbox formControlName = "harvest" labelPosition="before" style="margin-top: 0.6em;" (click)="checkTaskNumber()"></mat-checkbox>
-                  </div>
-                </div>
-              </form>
-            </div>
-
-
-              <div class="row justify-content-between">
-                <div class="col-6 d-flex justify-content-start align-items-center" style="font-size: larger;">
-                  {{this.taskNumber}} / 4  tâches
-                </div>
-                <div class="col-6 d-flex justify-content-end">
-                  <button mat-raised-button color="accent" style="height: 40px">Mettre à jour</button>
                 </div>
               </div>
-
+            </div>
           </div>
-        </div>
 
-        <div class = "col-4">
-          <div class = "recommandations">
-            <h2>Recommandations :</h2>
-            <div class="h2line mb-1"></div>
-            <div class="row justify-content-between ml-2 mr-2">
-              <h4 >Arrosage :</h4>
-              <p>Cette plante doit être arrosée <span style="background-color: cornflowerblue">une fois par semaine</span> et <b>juste un peu</b></p>
+          <div class="col-12 col-sm-12 col-md-3 col-lg-4">
+            <div class="recommandations">
+              <h2>Recommandations :</h2>
+              <div class="h2line mb-1"></div>
+              <div class="row justify-content-between ml-2 mr-2">
+                <h4>Arrosage :</h4>
+                <p>Cette plante doit être arrosée <span style="background-color: cornflowerblue">une fois par
+                    semaine</span> et <b>juste un peu</b></p>
+              </div>
             </div>
           </div>
         </div>
-
-      </div>
-    </mat-card-content>
-  </mat-card>
+      </mat-card-content>
+    </mat-card>
 
   </div>
 </div>
