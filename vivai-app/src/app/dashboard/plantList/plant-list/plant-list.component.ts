@@ -15,13 +15,14 @@ export class PlantListComponent implements OnInit {
 
   addPlantDialogRef: MatDialogRef<AddPlantDialogComponent>;
 
-  listPlante: UserPlant [];
-    // {
-    //   nom: "",
-    //   type: "Basilic",
-    //   image: "https://media.ooreka.fr/public/image/plant/16/varietyImage/10l1k2476if4404sgowwc8kow-source-9229039.jpg",
-    //   piece: "Jardin",
-    // },
+  //listPlant: UserPlant [];
+  listPlante = [
+     {
+       nickname: "",
+       species: "Basilic",
+       picUrl: "https://media.ooreka.fr/public/image/plant/16/varietyImage/10l1k2476if4404sgowwc8kow-source-9229039.jpg",
+       location: "Jardin",
+     }];
     // {
     //   nom: "Tomy",
     //   type: "Olivier",
@@ -46,22 +47,24 @@ export class PlantListComponent implements OnInit {
 
   ngOnInit() {
     // this._loading.show("waiting for listPlant"); Pour l'instant ca bug
-    this.getListUserPlant();
+    //this.getListUserPlant();
+    console.log(this.listPlante);
   }
 
-
+/*
   openAddNewPlant() {
     this.addPlantDialogRef = this.dialog.open(AddPlantDialogComponent, { disableClose: true });
     this.addPlantDialogRef.afterClosed().subscribe(result => {
       console.log(result);
       this.getListUserPlant();
     });
-  }
+  }*/
 
- getListUserPlant() {
+ /*getListUserPlant() {
     this._plantService.getListUserPlants().subscribe(data => {
       this.listPlante = data;
     })
     // if(this.listPlante != undefined ) this._loading.hide();
   }
+  */
 }

@@ -39,7 +39,7 @@ export class PlantService {
     // if (search.tempDePrep.toString() !== '') {
     //   params = params.append('tempDePrep', search.tempDePrep.toString());
     // }
-    
+
     // Get Id of curent user.
     let params = new HttpParams();
     console.log(this.user.getUsername());
@@ -58,10 +58,11 @@ export class PlantService {
     params = params.append('userPlantId', plantUserId.toString());
     return this.httpClient.request('PUT', this.API_URL + 'deleteUserPlant', {responseType: 'json', params})
   }
-
+/*
   getPlantInfos(plantId): Observable<InfosPlant> {
     return this.httpClient.get<UserPlant[]>(this.API_URL + 'getPlantInfos', { params: { plantId: plantId.toString() } });
   }
+*/
 
   async getUserInfo() {
     this.user = await Auth.currentAuthenticatedUser();

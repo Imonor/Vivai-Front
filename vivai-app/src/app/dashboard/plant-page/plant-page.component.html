@@ -118,6 +118,40 @@
             </div>
           </div>
 
+
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+            <div class="recommandations card h-100 m-1">
+              <h2>Recommandations :</h2>
+              <div class="h2line mb-1"></div>
+              <div class="row justify-content-between ml-2 mr-2">
+                <div class="col">
+                  <h5>Arrosage :</h5>
+                  <p style="font-size: small;">Cette plante doit être arrosée <span style="background-color: cornflowerblue">une fois par
+                      semaine</span> et <b>juste un peu</b></p>
+                </div>
+              </div>
+              <div class="row justify-content-between ml-2 mr-2">
+                <div class="col">
+                  <h5>Ensolleillement :</h5>
+                  <h6>Intensité : partiellement ombragé</h6>
+                  <p style="font-size: small;">Cette plante a besoin d'une lumière indirecte ou d'une lumière filtrée mais pas directement de lumière du soleil</p>
+                </div>
+              </div>
+              <div class="row justify-content-between ml-2 mr-2">
+                <div class="col">
+                  <h5>Saison de croissance</h5>
+                  <p style="font-size: small;">Votre plante est actuellement en pleine croissance</p>
+                </div>
+              </div>
+              <div class="row justify-content-between ml-3 mr-3">
+                <div class="col-0.5" *ngFor="let m of months">
+                  <p style="background-color: lightgrey; border-radius: 2px;; width: 10px;">{{m}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="col-12 col-sm-12 col-md-3 col-lg-2">
             <div class="row h-100">
               <div class="col-6 col-sm-6 col-md-12 col-lg-12 m-1">
@@ -133,19 +167,6 @@
             </div>
           </div>
 
-          <div class="col-12 col-sm-12 col-md-12 col-lg-4">
-            <div class="recommandations card h-100 m-1">
-              <h2>Recommandations :</h2>
-              <div class="h2line mb-1"></div>
-              <div class="row justify-content-between ml-2 mr-2">
-                <div class="col">
-                  <h4>Arrosage :</h4>
-                  <p>Cette plante doit être arrosée <span style="background-color: cornflowerblue">une fois par
-                      semaine</span> et <b>juste un peu</b></p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </mat-card-content>
     </mat-card>

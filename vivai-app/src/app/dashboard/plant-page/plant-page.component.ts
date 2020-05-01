@@ -12,6 +12,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./plant-page.component.scss']
 })
 export class PlantPageComponent implements OnInit {
+  months = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   display: Boolean = false;
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
@@ -57,7 +58,7 @@ export class PlantPageComponent implements OnInit {
     if(this.curentPlant == undefined) {
       this.router.navigate(['/dashboard']);
     }else this.display = true;
-    
+
     console.log(this.curentPlant);
   }
 
