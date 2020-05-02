@@ -20,8 +20,8 @@ export class PlantPageComponent implements OnInit {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
 
-  curentPlant: UserPlant =  null;
-  infoCurentPlant: InfosPlant = null;
+  currentPlant: UserPlant =  null;
+  infoCurrentPlant: InfosPlant = null;
   public reportingForm: FormGroup;
   taskNumber: 0;
 
@@ -52,8 +52,8 @@ export class PlantPageComponent implements OnInit {
   }
 
   getInfoPlant() {
-    this._plantService.getPlantInfos(this.curentPlant.plantId).subscribe(data =>
-      this.infoCurentPlant = data);
+    this._plantService.getPlantInfos(this.currentPlant.plantId).subscribe(data =>
+      this.infoCurrentPlant = data);
   }
 
 
@@ -69,12 +69,12 @@ export class PlantPageComponent implements OnInit {
 
 
   catchPlantFromHistory() {
-    this.curentPlant = history.state.data;
-    if(this.curentPlant == undefined) {
+    this.currentPlant = history.state.data;
+    if(this.currentPlant == undefined) {
       this.router.navigate(['/dashboard']);
     }else this.display = true;
 
-    console.log(this.curentPlant);
+    console.log(this.currentPlant);
   }
 
   checkTaskNumber() {

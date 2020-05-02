@@ -1,13 +1,13 @@
 <div *ngIf="display">
   <div class="headerImage" *ngIf="mobileQuery.matches">
     <div class="card flex-fill" style="border-radius: 0 0 15px 15px;"><img alt="plante" class="card-img-top img-fluid"
-        src={{curentPlant.picUrl}} />
+        src={{currentPlant.picUrl}} />
       <div class="card-img-overlay">
       </div>
     </div>
   </div>
   <div style="height: 15em;" *ngIf="mobileQuery.matches"></div>
-  <div class="container" style="border-radius: 20px !important;">
+  <div class="container" style="border-radius: 20px !important; margin: 0 !important; max-width: 100% !important; min-width: 100% !important; width: 100% !important; ">
     <mat-card style="border-radius: 20px !important;">
       <mat-card-content class="content p-2">
 
@@ -17,20 +17,20 @@
               <div class="col-12 col-sm-12 col-md-12 col-lg-4">
                 <div class="row">
                   <div class="col-6 col-sm-6 col-md-6 col-lg-12 p-2">
-                    <p>{{curentPlant.nickname}}</p>
-                    <p>{{curentPlant.species}}</p>
-                    <p>{{curentPlant.location}}</p>
+                    <p>{{currentPlant.nickname}}</p>
+                    <p>{{currentPlant.species}}</p>
+                    <p>{{currentPlant.location}}</p>
                   </div>
                   <div class="col-6 col-sm-6 col-md-6 col-lg-12 p-2">
-                    <p>{{curentPlant.temperature}}</p>
-                    <p>{{curentPlant.sunExpo}}</p>
-                    <p>{{curentPlant.sunExpo}}</p>
+                    <p>{{currentPlant.temperature}}</p>
+                    <p>{{currentPlant.sunExpo}}</p>
+                    <p>{{currentPlant.sunExpo}}</p>
                   </div>
                 </div>
               </div>
               <div class="col-12 col-sm-12 col-md-12 col-lg-8" *ngIf="!mobileQuery.matches">
                 <div class="plantImage flex-fill">
-                  <img alt="plante" class="card-img-big img-fluid" src={{curentPlant.picUrl}} />
+                  <img alt="plante" class="card-img-big img-fluid" src={{currentPlant.picUrl}} />
                 </div>
               </div>
             </div>
