@@ -15,7 +15,6 @@ import { InfosPlant } from 'src/app/models/infos-plant';
   styleUrls: ['./plant-page.component.scss']
 })
 export class PlantPageComponent implements OnInit {
-  months = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   display: Boolean = false;
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
@@ -52,8 +51,10 @@ export class PlantPageComponent implements OnInit {
   }
 
   getInfoPlant() {
-    this._plantService.getPlantInfos(this.currentPlant.plantId).subscribe(data =>
+    if (this.display) {
+      this._plantService.getPlantInfos(this.currentPlant.plantId).subscribe(data =>
       this.infoCurrentPlant = data);
+    }
   }
 
 

@@ -29,6 +29,7 @@ import { ProfileComponent } from './auth/profile/profile.component';
 import { AddPlantDialogComponent } from './dashboard/add-plant-dialog/add-plant-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlantPageComponent } from './dashboard/plant-page/plant-page.component';
+import { RecommendationsComponent } from './dashboard/plant-page/recommendations/recommendations.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { PlantPageComponent } from './dashboard/plant-page/plant-page.component'
     ProfileComponent,
     AddPlantDialogComponent,
     PlantPageComponent,
+    RecommendationsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,43 @@
+
+  <div class="row justify-content-between ml-2 mr-2">
+    <div class="col">
+      <h5>Arrosage :</h5>
+      <p style="font-size: small;">Cette plante doit être arrosée
+        <span *ngIf="infoCurrentPlant?.waterNeed === 'Faible'"  style="background-color: cornflowerblue">
+          une fois par mois
+        </span>
+        <span *ngIf="infoCurrentPlant?.waterNeed === 'Moyen'"  style="background-color: cornflowerblue">
+          une fois toutes les 1/2 semaines
+        </span>
+        <span *ngIf="infoCurrentPlant?.waterNeed === 'Important'"  style="background-color: cornflowerblue">
+          plusieurs fois par semaine
+        </span>
+    </div>
+  </div>
+  <div class="row justify-content-between ml-2 mr-2">
+    <div class="col">
+      <h5>Ensolleillement :</h5>
+      <h6>Intensité : {{infoCurrentPlant?.sunNeed}}</h6>
+      <p style="font-size: small;" *ngIf="infoCurrentPlant?.sunNeed === 'Ombre'">
+        La plante doit être à l'ombre. Vous devriez donc la placer loin des fenêtres ou dans des parties occultées.
+      </p>
+      <p style="font-size: small;" *ngIf="infoCurrentPlant?.sunNeed === 'Mi-ombre'">
+        La plante doit être au soleil une partie de la journée uniquement. En intérieur, ce serait plutôt devant une fenêtre à l'est.
+      </p>
+      <p style="font-size: small;" *ngIf="infoCurrentPlant?.sunNeed === 'Soleil'">
+        La plante doit être directement exposée au soleil toute la journée. En intérieur, privilégiez une fenêtre orientée sud ou ouest.
+      </p>
+    </div>
+  </div>
+  <div class="row justify-content-between ml-2 mr-2">
+    <div class="col">
+      <h5>Saison de croissance</h5>
+      <p style="font-size: small;">Votre plante est actuellement en pleine croissance</p>
+    </div>
+  </div>
+  <div class="row justify-content-between ml-3 mr-3">
+    <div class="col-0.5" *ngFor="let m of months">
+      <p style="background-color: lightgrey; border-radius: 2px;; width: 10px;">{{m}}</p>
+    </div>
+  </div>
+
