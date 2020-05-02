@@ -1,3 +1,19 @@
+<button class="rightButton d-flex justify-content-center align-items-center mr-4 mt-2 "  [matMenuTriggerFor]="menu" aria-label="Menu">
+  <mat-icon class="">
+    more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="share()">
+    <mat-icon>share</mat-icon>
+    <span>Partager</span>
+  </button>
+  <button mat-menu-item (click)="delete()">
+    <mat-icon>delete</mat-icon>
+    <span>Supprimer</span>
+  </button>
+</mat-menu>
+
+
 <div *ngIf="display">
   <div class="headerImage" *ngIf="mobileQuery.matches">
     <div class="card flex-fill" style="border-radius: 0 0 15px 15px;"><img alt="plante" class="card-img-top img-fluid"
@@ -7,7 +23,8 @@
     </div>
   </div>
   <div style="height: 15em;" *ngIf="mobileQuery.matches"></div>
-  <div class="container" style="border-radius: 20px !important; margin: 0 !important; max-width: 100% !important; min-width: 100% !important; width: 100% !important; ">
+  <div class="container"
+    style="border-radius: 20px !important; margin: 0 !important; max-width: 100% !important; min-width: 100% !important; width: 100% !important; ">
     <mat-card style="border-radius: 20px !important;">
       <mat-card-content class="content p-2">
 

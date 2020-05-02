@@ -60,12 +60,12 @@
         <mat-drawer-content>
           <div class="content">
             <main>
-              <button class="leftButton d-flex justify-content-center align-items-center" *ngIf="mobileQuery.matches && router.url == '/dashboard' " aria-label="Menu"
+              <button class="leftButton d-flex justify-content-center align-items-center ml-4 mt-2 " *ngIf="mobileQuery.matches && router.url == '/dashboard' " aria-label="Menu"
                 (click)="lnav.toggle()" matBadge="15" matBadgeColor="warn" matBadgeSize="small">
                 <mat-icon>
                   menu</mat-icon>
                 </button>
-              <button class="leftButton d-flex justify-content-center align-items-center" *ngIf="mobileQuery.matches && router.url != '/dashboard' && router.url != '/'" aria-label="Menu"
+              <button class="leftButton d-flex justify-content-center align-items-center ml-4 mt-2 " *ngIf="mobileQuery.matches && router.url != '/dashboard' && router.url != '/'" aria-label="Menu"
                 (click)="returnNav()">
                 <mat-icon class="ml-2">
                   arrow_back_ios</mat-icon>

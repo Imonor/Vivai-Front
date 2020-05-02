@@ -53,15 +53,20 @@ export class PlantService {
     return this.httpClient.request('PUT', this.API_URL + 'insertUserPlant', {responseType: 'json', params})
   }
 
-  deletePlant(plantUserId): Observable<any> {
+  deleteUserPlant(plantUserId): Observable<any> {
     let params = new HttpParams();
     params = params.append('userId', this.user.getUsername());
     params = params.append('userPlantId', plantUserId.toString());
+    console.log(params);
     return this.httpClient.request('PUT', this.API_URL + 'deleteUserPlant', {responseType: 'json', params})
   }
 
   getPlantInfos(plantId): Observable<InfosPlant> {
     return this.httpClient.get<InfosPlant>(this.API_URL + 'getPlantInfos', { params: { plantId: plantId.toString() } });
+  }
+
+  getRandomInfos(): Observable<any> {
+    return this.httpClient.get<any>(this.API_URL + 'getRandomInfos');
   }
 
   async getUserInfo() {

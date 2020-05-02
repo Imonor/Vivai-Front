@@ -16,13 +16,15 @@ export class DashboardComponent implements OnInit {
   profile:any = {};
   user: CognitoUser;
   displayName: boolean = false;
+  infos:any;
 
   constructor(public _loading: LoaderService, private _plantService: PlantService , private dialog: MatDialog) { }
 
   ngOnInit() {
-    this._loading.show("waiting for user data");
     this.getUserInfo();
+    this.getRandomInfo();
   }
+
   displayImageLila() {
     if (window.innerWidth > 1025) {
       return true;
@@ -43,7 +45,16 @@ export class DashboardComponent implements OnInit {
     this.profile = await Auth.currentUserInfo();
     this.user = await Auth.currentAuthenticatedUser();
     this.displayName = true;
-    this._loading.hide();
+  }
+
+  getRandomInfo() {
+    this._loading.show();
+    this._plantService.getRandomInfos().subscribe(data => {
+      this.infos = data;
+      console.log(data);
+      this._loading.hide();
+    }
+      );
   }
 
 }

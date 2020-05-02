@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { PlantService } from 'src/app/services/plant.service';
 import { UserPlant } from 'src/app/models/user-plant';
 import { InfosPlant } from 'src/app/models/infos-plant';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'vivai-plant-page',
@@ -25,7 +26,10 @@ export class PlantPageComponent implements OnInit {
   taskNumber: 0;
 
   constructor(public _loading: LoaderService,iconRegistry: MatIconRegistry,
-    sanitizer: DomSanitizer, media: MediaMatcher, changeDetectorRef: ChangeDetectorRef,private router: Router, private fb: FormBuilder, private _plantService: PlantService) {
+    sanitizer: DomSanitizer, media: MediaMatcher, changeDetectorRef: ChangeDetectorRef,
+    private router: Router, private fb: FormBuilder, private _plantService: PlantService,
+    private _notification: NotificationService,
+    ) {
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
@@ -94,6 +98,19 @@ export class PlantPageComponent implements OnInit {
       this.taskNumber++;
     }
   });
+}
+
+share() {
+
+}
+
+delete() {
+  this._plantService.deleteUserPlant(this.currentPlant.id).subscribe(data => {
+    console.log(data);
+    this._notification.show(data.Message, "OK");
+    this.router.navigate(['/dashboard']);
+  }
+    )
 }
 
 }
