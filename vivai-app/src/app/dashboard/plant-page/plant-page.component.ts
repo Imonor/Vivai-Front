@@ -5,6 +5,9 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/loader/loader.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { PlantService } from 'src/app/services/plant.service';
+import { UserPlant } from 'src/app/models/user-plant';
+import { InfosPlant } from 'src/app/models/infos-plant';
 
 @Component({
   selector: 'vivai-plant-page',
@@ -17,12 +20,13 @@ export class PlantPageComponent implements OnInit {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
 
-  curentPlant: null;
+  curentPlant: UserPlant =  null;
+  infoCurentPlant: InfosPlant = null;
   public reportingForm: FormGroup;
   taskNumber: 0;
 
   constructor(public _loading: LoaderService,iconRegistry: MatIconRegistry,
-    sanitizer: DomSanitizer, media: MediaMatcher, changeDetectorRef: ChangeDetectorRef,private router: Router, private fb: FormBuilder) {
+    sanitizer: DomSanitizer, media: MediaMatcher, changeDetectorRef: ChangeDetectorRef,private router: Router, private fb: FormBuilder, private _plantService: PlantService) {
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
@@ -42,7 +46,18 @@ export class PlantPageComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.catchPlantFroHistory();
+    this.catchPlantFromHistory();
+    this.initForm();
+    this.getInfoPlant();
+  }
+
+  getInfoPlant() {
+    this._plantService.getPlantInfos(this.curentPlant.plantId).subscribe(data =>
+      this.infoCurentPlant = data);
+  }
+
+
+  initForm() {
     this.reportingForm = this.fb.group({
       water: [false],
       prune: [false],
@@ -53,7 +68,7 @@ export class PlantPageComponent implements OnInit {
   }
 
 
-  catchPlantFroHistory() {
+  catchPlantFromHistory() {
     this.curentPlant = history.state.data;
     if(this.curentPlant == undefined) {
       this.router.navigate(['/dashboard']);

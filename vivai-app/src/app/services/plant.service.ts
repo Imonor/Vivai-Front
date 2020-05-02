@@ -5,6 +5,7 @@ import Auth, { CognitoUser } from '@aws-amplify/auth';
 import { UserPlant } from '../models/user-plant';
 import { SupportedPlant } from '../models/supported-plant';
 import { AuthService } from '../auth/auth.service';
+import { InfosPlant } from '../models/infos-plant';
 
 @Injectable({
   providedIn: 'root'
@@ -58,11 +59,10 @@ export class PlantService {
     params = params.append('userPlantId', plantUserId.toString());
     return this.httpClient.request('PUT', this.API_URL + 'deleteUserPlant', {responseType: 'json', params})
   }
-/*
+
   getPlantInfos(plantId): Observable<InfosPlant> {
-    return this.httpClient.get<UserPlant[]>(this.API_URL + 'getPlantInfos', { params: { plantId: plantId.toString() } });
+    return this.httpClient.get<InfosPlant>(this.API_URL + 'getPlantInfos', { params: { plantId: plantId.toString() } });
   }
-*/
 
   async getUserInfo() {
     this.user = await Auth.currentAuthenticatedUser();
