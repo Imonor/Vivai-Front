@@ -72,4 +72,16 @@ export class PlantService {
   async getUserInfo() {
     this.user = await Auth.currentAuthenticatedUser();
   }
+
+  addReporting(reporting): Observable<any> {
+    let params = new HttpParams();
+    console.log(reporting);
+    params = params.append('water', reporting.water);
+    params = params.append('prune', reporting.prune);
+    params = params.append('repoting', reporting.repoting);
+    params = params.append('harvest', reporting.harvest);
+    params = params.append('note', reporting.note.toString());
+    console.log('params : ' + params);
+    return this.httpClient.request('PUT', this.API_URL + 'addReporting', {responseType: 'json', params});
+  }
 }

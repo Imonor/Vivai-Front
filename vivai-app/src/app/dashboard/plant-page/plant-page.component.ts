@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/loader/loader.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { PlantService } from 'src/app/services/plant.service';
 import { UserPlant } from 'src/app/models/user-plant';
 import { InfosPlant } from 'src/app/models/infos-plant';
@@ -19,6 +19,14 @@ export class PlantPageComponent implements OnInit {
   display: Boolean = false;
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
+
+  plantForm: FormGroup = new FormGroup({
+    water: new FormControl(),
+    prune: new FormControl(),
+    repoting: new FormControl(),
+    harvest: new FormControl(),
+    note: new FormControl()
+  });
 
   currentPlant: UserPlant =  null;
   infoCurrentPlant: InfosPlant = null;
@@ -54,6 +62,22 @@ export class PlantPageComponent implements OnInit {
     this.getInfoPlant();
   }
 
+  get waterInput() {
+    return this.plantForm.get("plantTypeControl");
+  }
+  get pruneInput() {
+    return this.plantForm.get("nickName");
+  }
+  get repotingInput() {
+    return this.plantForm.get("location");
+  }
+  get harvestInput() {
+    return this.plantForm.get("temperature");
+  }
+  get noteInput() {
+    return this.plantForm.get("sunExpo");
+  }
+
   getInfoPlant() {
     if (this.display) {
       this._plantService.getPlantInfos(this.currentPlant.plantId).subscribe(data =>
@@ -67,7 +91,8 @@ export class PlantPageComponent implements OnInit {
       water: [false],
       prune: [false],
       repoting: [false],
-      harvest: [false]
+      harvest: [false],
+      note: [null]
     });
     this.taskNumber = 0;
   }
@@ -111,6 +136,18 @@ delete() {
     this.router.navigate(['/dashboard']);
   }
     )
+}
+
+addReporting() {
+  let reportingObj = this.reportingForm.getRawValue(); // {name: '', description: ''}
+  // let serializedPlant = JSON.stringify(plantObj); // ne marche pas mdr
+  this._plantService.addReporting(reportingObj).subscribe(data => {
+    console.log(data);
+    this._notification.show('Le reporting à été ajoutée avec succes !', 'ok');
+  },
+    error => { console.log(error);
+      this._notification.show(error, 'ok'); }
+  );
 }
 
 }
