@@ -80,7 +80,7 @@ export class PlantService {
     params = params.append('prune', reporting.prune);
     params = params.append('repoting', reporting.repoting);
     params = params.append('harvest', reporting.harvest);
-    params = params.append('note', reporting.note.toString());
+    params = params.append('note', reporting.note);
     console.log('params : ' + params);
     return this.httpClient.request('PUT', this.API_URL + 'addReporting', {responseType: 'json', params});
   }
