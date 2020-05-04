@@ -34,18 +34,19 @@
               <div class="col-12 col-sm-12 col-md-12 col-lg-4">
                 <div class="row">
                   <div class="col-6 col-sm-6 col-md-6 col-lg-12 p-2">
-                    <p>{{currentPlant.nickname}}</p>
-                    <p>{{currentPlant.species}}</p>
-                    <p>{{currentPlant.location}}</p>
+                    <h4>{{currentPlant.nickname}}</h4>
+                    <h6>{{currentPlant.species}}</h6>
+                    <mat-chip-list class="d-flex justify-content-right align-items-center">
+                      <mat-chip>{{currentPlant.location}}</mat-chip>
+                  </mat-chip-list>
                   </div>
                   <div class="col-6 col-sm-6 col-md-6 col-lg-12 p-2">
-                    <p>{{currentPlant.temperature}}</p>
-                    <p>{{currentPlant.sunExpo}}</p>
-                    <p>{{currentPlant.sunExpo}}</p>
+                    <h6>{{currentPlant.temperature}}</h6>
+                    <p>Exposition au soleil {{currentPlant.sunExpo}} / 3</p>
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-sm-12 col-md-12 col-lg-8" *ngIf="!mobileQuery.matches">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-6" *ngIf="!mobileQuery.matches">
                 <div class="plantImage flex-fill">
                   <img alt="plante" class="card-img-big img-fluid" src={{currentPlant.picUrl}} />
                 </div>
@@ -122,10 +123,12 @@
                   </div>
                   </div>
                   <div class="row justify-content-between">
-                    <p class ="mt-1 ml-1 mr-1 mb-1"style="font-size: small;">
-                      Ci-dessous, vous pouvez rajouter des notes au suivi journalier de votre plante pour vous souvenir de son état, si vous avez mis trop d'eau...
-                    </p>
-                    <textarea class="inputNotes mt-1 ml-1 mr-1 mb-1" formControlName="note" matInput placeholder = "Notes"></textarea>
+                    <h6 class ="col-12 m-1"style="font-size: small;">
+                     Notes :
+                    </h6>
+                    <div class="col-12 m-1">
+                      <textarea class="inputNotes p-2" formControlName="note" matInput placeholder = "Ajoutez des notes au suivi journalier de votre plante pour vous souvenir de son état, si vous avez mis trop d'eau..."></textarea>
+                    </div>
                   </div>
                 </form>
                 <div class="row justify-content-between">

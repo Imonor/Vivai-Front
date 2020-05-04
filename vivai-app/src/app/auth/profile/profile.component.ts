@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
     public loading: LoaderService ) { }
 
   ngOnInit() {
-    this.loading.show();
+    // this.loading.show();
     this.getUserInfo();
   }
 
@@ -51,7 +51,7 @@ export class ProfileComponent implements OnInit {
     this.fnameInput.setValue(this.profile.attributes['given_name']);
     this.lnameInput.setValue(this.profile.attributes['family_name']);
     this.phoneInput.setValue(this.profile.attributes['phone_number']);
-    this.loading.hide();
+    // this.loading.hide();
   }
 
   getEmailInputError() {
@@ -70,7 +70,7 @@ export class ProfileComponent implements OnInit {
 
   onAvatarUploadComplete(data: any) {
     this.avatar = data.key;
-    this.loading.hide();
+    // this.loading.hide();
   }
 
   onAvatarRemove() {
