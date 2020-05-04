@@ -1,0 +1,86 @@
+<div *ngIf="display">
+
+  <div class="headerImage" *ngIf="mobileQuery.matches">
+    <div class="card flex-fill" style="border-radius: 0 0 15px 15px;"><img alt="plante" class="card-img-top img-fluid"
+        src={{infoCurrentPlant.picUrl}} />
+      <div class="card-img-overlay">
+      </div>
+    </div>
+  </div>
+  <div style="height: 15em;" *ngIf="mobileQuery.matches"></div>
+  <div class="container"
+    style="border-radius: 20px !important; margin: 0 !important; max-width: 100% !important; min-width: 100% !important; width: 100% !important; ">
+
+    <mat-card style="border-radius: 20px !important;">
+      <mat-card-content class="content p-2">
+        <div class="row partieduhaut pb-4">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 m-1">
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                <div class="row">
+                  <div class="col-6 col-sm-6 col-md-6 col-lg-12 p-2">
+                    <h4>{{infoCurrentPlant.species}}</h4>
+                    <mat-chip-list class="d-flex justify-content-right align-items-center">
+                      <mat-chip>{{infoCurrentPlant.family}}</mat-chip>
+                    </mat-chip-list>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-6" *ngIf="!mobileQuery.matches">
+                <div class="plantImage flex-fill">
+                  <img alt="plante" class="card-img-big img-fluid" src={{infoCurrentPlant.picUrl}} />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-9 col-lg-3">
+            <div class="card m-1 h-100">
+              <h2>Niveau d'entretien : </h2>
+              <div class="h2line"></div>
+              <div class="content">
+                <h4>{{infoCurrentPlant.careLevel}}</h4>
+                <p *ngIf = "infoCurrentPlant?.careLevel === 'Facile'">
+                  Cette plante ne nécessite pas de soin particulier, ou des soins très simple.
+                </p>
+                <p *ngIf = "infoCurrentPlant?.careLevel === 'Modéré'">
+                  Cette plante nécessite des soins réguliers, ou un peu de pratique en jardinage.
+                </p>
+                <p *ngIf = "infoCurrentPlant?.careLevel === 'Difficile'">
+                  Cette plante nécessite des soins importants, et un savoir-faire en jardinage
+                </p>
+
+                <h6>Quelques informations complémentaires</h6>
+                <p> A voir quelles infos on met en plus </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-9 col-lg-3">
+            <div class="card m-1 h-100">
+              <h2 >Croissance</h2>
+              <div class="h2line"></div>
+              <div class="content">
+                <h5>Type de croissance :</h5>
+                <p>{{infoCurrentPlant.growth}}</p>
+                <h5>Hauteur à maturité :</h5>
+                <p>{{infoCurrentPlant.heightMature}}</p>
+                <h5>Largeur à maturité :</h5>
+                <p>{{infoCurrentPlant.widthMature}}</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row partiedubas">
+
+        </div>
+
+
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

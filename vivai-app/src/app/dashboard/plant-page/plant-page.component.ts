@@ -150,4 +150,8 @@ addReporting() {
   );
 }
 
+goToLilaPlant() {
+  this.router.navigate(['/lila-plant'], {state: {data: this.infoCurrentPlant}});
+}
+
 }

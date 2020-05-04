@@ -1,11 +1,11 @@
 export class InfosPlant {
-    careLevel: string;
+    careLevel: string; //
     coldResistance: string;
-    family: string;
+    family: string; //
     growth: string;
     heightMature: string;
-    picUrl: string;
-    species: string;
+    picUrl: string; //
+    species: string; //
     sunNeed: string;
     waterNeed: string;
     widthMature: string;
