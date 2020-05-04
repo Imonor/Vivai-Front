@@ -19,9 +19,9 @@
               <div class="col-12 col-sm-12 col-md-12 col-lg-4">
                 <div class="row">
                   <div class="col-6 col-sm-6 col-md-6 col-lg-12 p-2">
-                    <h4>{{infoCurrentPlant.species}}</h4>
+                    <h4>{{infoCurrentPlant?.species}}</h4>
                     <mat-chip-list class="d-flex justify-content-right align-items-center">
-                      <mat-chip>{{infoCurrentPlant.family}}</mat-chip>
+                      <mat-chip>{{infoCurrentPlant?.family}}</mat-chip>
                     </mat-chip-list>
                   </div>
                 </div>
@@ -39,7 +39,7 @@
               <h2>Niveau d'entretien : </h2>
               <div class="h2line"></div>
               <div class="content">
-                <h4>{{infoCurrentPlant.careLevel}}</h4>
+                <h4>{{infoCurrentPlant?.careLevel}}</h4>
                 <p *ngIf = "infoCurrentPlant?.careLevel === 'Facile'">
                   Cette plante ne nécessite pas de soin particulier, ou des soins très simple.
                 </p>
@@ -62,11 +62,11 @@
               <div class="h2line"></div>
               <div class="content">
                 <h5>Type de croissance :</h5>
-                <p>{{infoCurrentPlant.growth}}</p>
+                <p>{{infoCurrentPlant?.growth}}</p>
                 <h5>Hauteur à maturité :</h5>
-                <p>{{infoCurrentPlant.heightMature}}</p>
+                <p>{{infoCurrentPlant?.heightMature}}</p>
                 <h5>Largeur à maturité :</h5>
-                <p>{{infoCurrentPlant.widthMature}}</p>
+                <p>{{infoCurrentPlant?.widthMature}}</p>
               </div>
             </div>
           </div>
@@ -74,6 +74,30 @@
         </div>
 
         <div class="row partiedubas">
+
+          <div class="col-12 col-sm-12 col-md-9 col-lg-3">
+            <div class="card m-1 h-100">
+              <h2 >Besoins de la plante</h2>
+              <div class="h2line"></div>
+              <div class="content">
+                <h5>Besoin en eau :</h5>
+                  <p>{{infoCurrentPlant?.waterNeed}}</p>
+                <h5>Ensoleillement :</h5>
+                  <p>{{infoCurrentPlant?.sunNeed}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-9 col-lg-3">
+            <div class="card m-1 h-100">
+              <h2 >Résistance au froid</h2>
+              <div class="h2line"></div>
+              <div class="content">
+                <p>{{infoCurrentPlant?.coldResistance}}</p>
+              </div>
+            </div>
+          </div>
+
 
         </div>
 
