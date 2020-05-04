@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/loader/loader.service';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, AbstractControl } from '@angular/forms';
 import { PlantService } from 'src/app/services/plant.service';
 import { UserPlant } from 'src/app/models/user-plant';
 import { InfosPlant } from 'src/app/models/infos-plant';
@@ -31,6 +31,11 @@ export class PlantPageComponent implements OnInit {
   currentPlant: UserPlant =  null;
   infoCurrentPlant: InfosPlant = null;
   public reportingForm: FormGroup;
+  public readonly waterField = 'water';
+  public readonly pruneField = 'prune';
+  public readonly harvestField = 'harvest';
+  public readonly repotingField = 'repoting';
+  public readonly noteField = 'note';
   taskNumber: 0;
 
   constructor(public _loading: LoaderService,iconRegistry: MatIconRegistry,
@@ -62,20 +67,24 @@ export class PlantPageComponent implements OnInit {
     this.getInfoPlant();
   }
 
-  get waterInput() {
-    return this.plantForm.get("plantTypeControl");
+  public get Water(): AbstractControl {
+    return this.reportingForm.get(this.waterField);
   }
-  get pruneInput() {
-    return this.plantForm.get("nickName");
+
+  public get Prune(): AbstractControl {
+    return this.reportingForm.get(this.pruneField);
   }
-  get repotingInput() {
-    return this.plantForm.get("location");
+
+  public get Harvest(): AbstractControl {
+    return this.reportingForm.get(this.harvestField);
   }
-  get harvestInput() {
-    return this.plantForm.get("temperature");
+
+  public get Repoting(): AbstractControl {
+    return this.reportingForm.get(this.repotingField);
   }
-  get noteInput() {
-    return this.plantForm.get("sunExpo");
+
+  public get Note(): AbstractControl {
+    return this.reportingForm.get(this.noteField);
   }
 
   getInfoPlant() {
@@ -141,13 +150,23 @@ delete() {
 addReporting() {
   let reportingObj = this.reportingForm.getRawValue(); // {name: '', description: ''}
   // let serializedPlant = JSON.stringify(plantObj); // ne marche pas mdr
-  this._plantService.addReporting(reportingObj).subscribe(data => {
+  this._plantService.addReporting(this.currentPlant.id, reportingObj).subscribe(data => {
     console.log(data);
     this._notification.show('Le reporting à été ajoutée avec succes !', 'ok');
   },
     error => { console.log(error);
       this._notification.show(error, 'ok'); }
   );
+  this.clearReporting();
+  this.checkTaskNumber();
+}
+
+clearReporting() {
+  this.Water.setValue(false);
+  this.Prune.setValue(false);
+  this.Harvest.setValue(false);
+  this.Repoting.setValue(false);
+  this.Note.setValue(null);
 }
 
 goToLilaPlant() {

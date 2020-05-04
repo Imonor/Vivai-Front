@@ -13,6 +13,7 @@ import { ProfileComponent } from './auth/profile/profile.component';
 import { LandingpageComponent } from './landingpage/landingpage/landingpage.component';
 import { PlantPageComponent } from './dashboard/plant-page/plant-page.component';
 import { LilaPlantComponent } from './dashboard/plant-page/lila-plant/lila-plant.component';
+import { SharedPlantsPageComponent } from './dashboard/plant-page/shared-plants-page/shared-plants-page.component';
 
 
 const routes: Routes = [
@@ -38,7 +39,8 @@ const routes: Routes = [
   { path: 'notify', component: NotifyComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'plant-page', component: PlantPageComponent, canActivate: [AuthGuard]},
-  { path: 'lila-plant', component: LilaPlantComponent, canActivate: [AuthGuard]}
+  { path: 'lila-plant', component: LilaPlantComponent, canActivate: [AuthGuard]},
+  { path: 'shared-plants-page', component: SharedPlantsPageComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
