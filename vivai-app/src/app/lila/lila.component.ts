@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, AbstractControl, ReactiveFormsModule } from '@a
 import { MediaMatcher } from '@angular/cdk/layout';
 import { PlantService } from 'src/app/services/plant.service';
 import { userInfo } from 'os';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'vivai-lila',
@@ -33,7 +34,8 @@ export class LilaComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<LilaComponent>, public router: Router,
               private fb: FormBuilder, public speech: SpeechSupportService,
-              changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _plantService: PlantService) {
+              changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _plantService: PlantService,
+              private _notification: NotificationService, ) {
 
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -72,13 +74,19 @@ export class LilaComponent implements OnInit {
     if (message) {
       this.messages.unshift(new LilaMessage(message, true));
       this.Message.setValue(null);
+      this._plantService.sendMessageToLila(message).subscribe(data => {
+        console.log(data);
+        this.receiveMessage(data);
+      },
+      error => { console.log(error);
+        this._notification.show(error, 'ok'); }
+    );
     }
   }
 
   receiveMessage(message: string) {
     if (message) {
       this.messages.unshift(new LilaMessage(message, false));
-      this.Message.setValue(null);
     }
   }
 
