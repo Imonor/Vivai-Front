@@ -30,6 +30,7 @@ export class PlantPageComponent implements OnInit {
 
   currentPlant: UserPlant =  null;
   infoCurrentPlant: InfosPlant = null;
+  //lastReportings: null;
   public reportingForm: FormGroup;
   public readonly waterField = 'water';
   public readonly pruneField = 'prune';
@@ -65,6 +66,7 @@ export class PlantPageComponent implements OnInit {
     this.catchPlantFromHistory();
     this.initForm();
     this.getInfoPlant();
+    //this.getReportings();
   }
 
   public get Water(): AbstractControl {
@@ -160,7 +162,15 @@ addReporting() {
   this.clearReporting();
   this.checkTaskNumber();
 }
-
+/*
+getReportings() {
+  if (this.display) {
+    this._plantService.getReportings(this.currentPlant.plantId).subscribe(data =>
+    this.lastReportings = data);
+    console.log("derniers reportings : " + this.lastReportings);
+  }
+}
+*/
 clearReporting() {
   this.Water.setValue(false);
   this.Prune.setValue(false);

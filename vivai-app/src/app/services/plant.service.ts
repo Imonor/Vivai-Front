@@ -85,7 +85,14 @@ export class PlantService {
     console.log('params : ' + params);
     return this.httpClient.request('PUT', this.API_URL + 'addReporting', {responseType: 'json', params});
   }
-
+/*
+  getReportings(plantId): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('userPlantId', plantId.toString());
+    console.log(params);
+    return this.httpClient.get<any>(this.API_URL + 'getReportings', { params });
+  }
+*/
   sendMessageToLila(message): Observable<any> {
     console.log(message);
     let params = new HttpParams();
