@@ -42,7 +42,9 @@ export class SpeechSupportService {
    private init(): void {
     this._supportRecognition = true;
     this._speech = new webkitSpeechRecognition();
-
+    if (!this._speech) {
+      this._supportRecognition = false;
+    }
     console.log('speech : ' + this._speech);
     console.log('Speech supported : ' + this._supportRecognition);
   }
