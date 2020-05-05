@@ -63,11 +63,14 @@
                 *ngIf="(listReport?.length < 1)">
                 <img style="width: auto; max-height: 12em;" src="assets/illustration/ajouteruneactivitée.png"
                   alt="addActivity">
-                <h6 style="position:absolute; bottom: 0;opacity: 0.7;">Vous n'avez pas encore ajouter d'activitées. Ajoutez en une dans "Fait aujourd'hui".</h6>
+                <h6 style="position:absolute; bottom: 0;opacity: 0.7;">Vous n'avez pas encore ajouter d'activitées.
+                  Ajoutez en une dans "Fait aujourd'hui".</h6>
               </div>
-              <div class="col-2 mt-auto p-0" *ngFor="let report of listReport" [matTooltip]="getTooltipText((getDate(report.date) | date:'EEEE d MMMM y':'+0200':'fr'),report)">
+              <div class="col-2 mt-auto p-0" *ngFor="let report of listReport"
+                [matTooltip]="getTooltipText((getDate(report.date) | date:'EEEE d MMMM y':'+0200':'fr'),report)">
                 <div class="col-shape pl-4 pr-4 d-flex flex-column align-items-center"
-                  [class.mr-1]="mobileQuery.matches == true" [class.mr-2]="mobileQuery.matches == false" [class.ml-2]="mobileQuery.matches == false">
+                  [class.mr-1]="mobileQuery.matches == true" [class.mr-2]="mobileQuery.matches == false"
+                  [class.ml-2]="mobileQuery.matches == false">
                   <div class="badge d-flex justify-content-center align-items-center m-3 water" *ngIf="report.water">
                     <mat-icon matSuffix svgIcon="water" aria-hidden="false"></mat-icon>
                   </div>
@@ -165,7 +168,8 @@
                   </div>
                 </form>
                 <div class="row justify-content-between">
-                  <div class="col-6 d-flex justify-content-start align-items-center pl-4 pt-2 pb-0" style="font-size: larger;">
+                  <div class="col-6 d-flex justify-content-start align-items-center pl-4 pt-2 pb-0"
+                    style="font-size: larger;">
                     {{this.taskNumber}} / 4 tâches
                   </div>
                   <div class="col-6 d-flex justify-content-end pl-4 pr-5 pt-2 pb-0">
@@ -188,18 +192,18 @@
           </div>
 
           <div class="col-12 col-sm-12 col-md-3 col-lg-2" [class.mb-2]="mobileQuery.matches == true">
-            <div class="row h-100">
-              <div class="col-6 col-sm-6 col-md-12 col-lg-12">
-                <div class="card h-100 bigBtn  m-1">
-                  Lila plant
-                  <button mat-raised-button color="accent" style="height: 40px" (click)="goToLilaPlant()">Avoir des
-                    infos sur sa plante</button>
-                </div>
+            <div class="row h-100 m-1">
+              <div class="col-6 col-sm-6 col-md-12 col-lg-12" [class.mb-3]="mobileQuery.matches == false">
+                <button class="card h-100 w-100 bigBtn p-4 text-left">
+                  <h4>Voir la fiche conseil sur le <span class="highlight">{{currentPlant.species}}</span>.</h4>
+                  <!--button mat-raised-button color="accent" style="height: 40px" (click)="goToLilaPlant()">Avoir des
+                    infos sur sa plante</button-->
+                </button>
               </div>
-              <div class="col-6 col-sm-6 col-md-12 col-lg-12 ">
-                <div class="card h-100 bigBtn m-1">
-                  voir la plante des autres
-                </div>
+              <div class="col-6 col-sm-6 col-md-12 col-lg-12">
+                <button class="card h-100 w-100 bigBtn p-4 text-left">
+                  <h4>Voir les plantes <span class="highlight">partagées par les autres utilisateurs.</span></h4>
+                </button>
               </div>
             </div>
           </div>

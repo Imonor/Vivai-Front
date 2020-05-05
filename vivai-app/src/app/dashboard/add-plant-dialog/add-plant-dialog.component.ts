@@ -69,6 +69,7 @@ export class AddPlantDialogComponent implements OnInit {
 
   ngOnInit() {
     this._plantService.getSupportedPlants().subscribe(data => {
+      console.log(data);
       this.plantsType = data;
       this.filtredPlantType = this.plantTypeControl.valueChanges
         .pipe(
