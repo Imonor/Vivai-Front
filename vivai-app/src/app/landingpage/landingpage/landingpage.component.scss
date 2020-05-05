@@ -77,11 +77,11 @@ body {
     height: 7rem;
   }
   
-  .features-icons .features-icons-item .features-icons-icon i {
+  .features-icons .features-icons-item .features-icons-icon mat-icon {
     font-size: 4.5rem;
   }
   
-  .features-icons .features-icons-item:hover .features-icons-icon i {
+  .features-icons .features-icons-item:hover .features-icons-icon mat-icon {
     font-size: 5rem;
   }
   
@@ -126,4 +126,10 @@ body {
 
 .footer a {
     color: #00c851 !important;
+}
+
+mat-icon {
+  color: #00c851 !important;
+  width: auto;
+  height: auto;
 }
