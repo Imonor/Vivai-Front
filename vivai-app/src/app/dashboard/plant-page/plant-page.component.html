@@ -161,8 +161,8 @@
                     {{this.taskNumber}} / 4 tâches
                   </div>
                   <div class="col-6 d-flex justify-content-end">
-                    <button mat-raised-button color="accent" style="height: 40px" (click)="addReporting()">Mettre à
-                      jour</button>
+                    <button mat-raised-button color="accent" style="height: 40px" (click)="addReporting()" *ngIf="!alreadyReported">Ajouter</button>
+                    <button mat-raised-button color="accent" style="height: 40px" (click)="addReporting()" *ngIf="alreadyReported">Modifier</button>
                   </div>
                 </div>
               </div>
