@@ -155,8 +155,7 @@ export class PlantPageComponent implements OnInit {
       console.log(data);
       this._notification.show(data.Message, "OK");
       this.router.navigate(['/dashboard']);
-    }
-    )
+    });
   }
 
   addReporting() {
@@ -181,6 +180,7 @@ getReportings() {
     this.lastReportings = data);
     console.log("derniers reportings : " + this.lastReportings);
   }
+}
 
 
 clearReporting() {
@@ -205,14 +205,14 @@ isReported() {
   } else {
     day = dateOfDay.getDate();
   }
-  /*
-  let dateLastReporting = this.lastReportings[0].get('date');
+
+  let dateLastReporting = this.listReport[this.listReport.length - 1].date;
   console.log('date dernier reporting : ' + dateLastReporting);
   let newDateOfDay = (dateOfDay.getFullYear() + '-' + month + '-' + day);
   if (newDateOfDay === dateLastReporting) {
     this.alreadyReported = true;
   }
-  */
+
 }
 
 goToLilaPlant() {
