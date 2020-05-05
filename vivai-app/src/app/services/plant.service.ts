@@ -6,6 +6,7 @@ import { UserPlant } from '../models/user-plant';
 import { SupportedPlant } from '../models/supported-plant';
 import { AuthService } from '../auth/auth.service';
 import { InfosPlant } from '../models/infos-plant';
+import { PlantReport } from '../models/plant-report';
 
 @Injectable({
   providedIn: 'root'
@@ -85,14 +86,14 @@ export class PlantService {
     console.log('params : ' + params);
     return this.httpClient.request('PUT', this.API_URL + 'addReporting', {responseType: 'json', params});
   }
-/*
-  getReportings(plantId): Observable<any> {
+
+  getReportings(plantId): Observable<PlantReport[]> {
     let params = new HttpParams();
     params = params.append('userPlantId', plantId.toString());
     console.log(params);
-    return this.httpClient.get<any>(this.API_URL + 'getReportings', { params });
+    return this.httpClient.get<PlantReport[]>(this.API_URL + 'getReportings', {responseType: 'json', params });
   }
-*/
+
   sendMessageToLila(message): Observable<any> {
     console.log(message);
     let params = new HttpParams();

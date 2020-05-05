@@ -29,7 +29,7 @@
     <mat-card style="border-radius: 20px !important;">
       <mat-card-content class="content" [class.p-2]="mobileQuery.matches == false">
         <div class="row partieduhaut pb-4">
-          <div class="col-12 col-sm-12 col-md-12 col-lg-5">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-5" [class.mb-2]="mobileQuery.matches == true">
             <div class="row m-1">
               <div class="col-12 col-sm-12 col-md-12 col-lg-4">
                 <div class="row">
@@ -55,8 +55,8 @@
             <mat-divider *ngIf="mobileQuery.matches"></mat-divider>
             <div style="height: 2em;" *ngIf="mobileQuery.matches"></div>
           </div>
-          <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-            <h4>Les 6 dernières Activités :</h4>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-6" [class.mb-2]="mobileQuery.matches == true">
+            <h5>Les 6 dernières Activités :</h5>
             <div class="row justify-content-between mt-auto h-100 pl-4 pr-4 pb-4">
 
               <div class="col-2 mt-auto p-0" *ngFor="let report of listReport" [matTooltip]="report.comment">
@@ -83,9 +83,9 @@
 
         <div class="row partiedubas">
 
-          <div class="col-12 col-sm-12 col-md-9 col-lg-4">
+          <div class="col-12 col-sm-12 col-md-9 col-lg-4" [class.mb-2]="mobileQuery.matches == true">
             <div class="reportingForm card m-1 h-100">
-              <h2>Fait aujourd'hui : </h2>
+              <h4 class="pt-3 pl-3">Fait aujourd'hui : </h4>
               <div class="h2line"></div>
               <div class="checkboxes">
                 <form [formGroup]="reportingForm">
@@ -166,19 +166,18 @@
                 </div>
               </div>
             </div>
+            <div style="height: 2em;" *ngIf="mobileQuery.matches"></div>
           </div>
 
-
-
-          <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4" [class.mb-2]="mobileQuery.matches == true">
             <div class="recommandations card h-100 m-1">
-              <h2>Recommandations :</h2>
+              <h4 class="pt-3 pl-3">Recommandations :</h4>
               <div class="h2line mb-1"></div>
               <vivai-recommendations [infoCurrentPlant]="infoCurrentPlant"></vivai-recommendations>
             </div>
           </div>
 
-          <div class="col-12 col-sm-12 col-md-3 col-lg-2">
+          <div class="col-12 col-sm-12 col-md-3 col-lg-2" [class.mb-2]="mobileQuery.matches == true">
             <div class="row h-100">
               <div class="col-6 col-sm-6 col-md-12 col-lg-12">
                 <div class="card h-100 bigBtn  m-1">

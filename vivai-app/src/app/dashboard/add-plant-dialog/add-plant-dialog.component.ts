@@ -103,7 +103,7 @@ export class AddPlantDialogComponent implements OnInit {
       this._notification.show("La plante à été ajoutée avec succes !", "ok");
     },
       error => { console.log(error);
-        this._notification.show(error, "ok"); }
+        this._notification.show("Une erreur est survenue, Essayez plus tard.", "ok"); }
     );
   }
 

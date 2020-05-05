@@ -69,13 +69,13 @@ export class PlantPageComponent implements OnInit {
     this.initForm();
     this.getInfoPlant();
     this.listReport = new Array<PlantReport>();
-    this.listReport.push(new PlantReport("2020-05-04",true, false,false, true, "Petit commentaire plutôt sympa"));
-    this.listReport.push(new PlantReport("2020-06-04",true, true,false, true, "Petit commentaire plutôt sympa"));
-    this.listReport.push(new PlantReport("2020-07-04",true, false,true, true, "Petit commentaire plutôt sympa"));
-    this.listReport.push(new PlantReport("2020-08-04",true, false,false, false, "Petit commentaire plutôt sympa"));
-    this.listReport.push(new PlantReport("2020-09-04",false, false,false, true, "Petit commentaire plutôt sympa"));
-    this.listReport.push(new PlantReport("2020-10-04",true, false,false, false, "Petit commentaire plutôt sympa"));
-    //this.getReportings();
+    this.listReport.push(new PlantReport("2020-05-04", true, false, false, true, "Petit commentaire plutôt sympa"));
+    this.listReport.push(new PlantReport("2020-06-04", true, true, false, true, "Petit commentaire plutôt sympa"));
+    this.listReport.push(new PlantReport("2020-07-04", true, false, true, true, "Petit commentaire plutôt sympa"));
+    this.listReport.push(new PlantReport("2020-08-04", true, false, false, false, "Petit commentaire plutôt sympa"));
+    this.listReport.push(new PlantReport("2020-09-04", false, false, false, true, "Petit commentaire plutôt sympa"));
+    this.listReport.push(new PlantReport("2020-10-04", true, false, false, false, "Petit commentaire plutôt sympa"));
+    this.getReportings();
     this.isReported();
   }
 
@@ -174,49 +174,49 @@ export class PlantPageComponent implements OnInit {
     this.checkTaskNumber();
   }
 
-getReportings() {
-  if (this.display) {
-    this._plantService.getReportings(this.currentPlant.plantId).subscribe(data =>
-    this.lastReportings = data);
-    console.log("derniers reportings : " + this.lastReportings);
-  }
-}
-
-
-clearReporting() {
-  this.Water.setValue(false);
-  this.Prune.setValue(false);
-  this.Harvest.setValue(false);
-  this.Repoting.setValue(false);
-  this.Note.setValue(null);
-}
-
-isReported() {
-  let dateOfDay = new Date();
-  let month;
-  let day;
-  if (dateOfDay.getMonth() < 9) {
-    month = ('0' + (dateOfDay.getMonth() + 1));
-  } else {
-    month = dateOfDay.getMonth() + 1;
-  }
-  if (dateOfDay.getDate() < 10) {
-    day = ('0' + dateOfDay.getDate());
-  } else {
-    day = dateOfDay.getDate();
+  getReportings() {
+    if (this.display) {
+      this._plantService.getReportings(this.currentPlant.id).subscribe(data => {
+        this.listReport = data
+      }
+      );
+    }
   }
 
-  let dateLastReporting = this.listReport[this.listReport.length - 1].date;
-  console.log('date dernier reporting : ' + dateLastReporting);
-  let newDateOfDay = (dateOfDay.getFullYear() + '-' + month + '-' + day);
-  if (newDateOfDay === dateLastReporting) {
-    this.alreadyReported = true;
+  clearReporting() {
+    this.Water.setValue(false);
+    this.Prune.setValue(false);
+    this.Harvest.setValue(false);
+    this.Repoting.setValue(false);
+    this.Note.setValue(null);
   }
 
-}
+  isReported() {
+    let dateOfDay = new Date();
+    let month;
+    let day;
+    if (dateOfDay.getMonth() < 9) {
+      month = ('0' + (dateOfDay.getMonth() + 1));
+    } else {
+      month = dateOfDay.getMonth() + 1;
+    }
+    if (dateOfDay.getDate() < 10) {
+      day = ('0' + dateOfDay.getDate());
+    } else {
+      day = dateOfDay.getDate();
+    }
 
-goToLilaPlant() {
-  this.router.navigate(['/lila-plant'], {state: {data: this.infoCurrentPlant}});
-}
+    let dateLastReporting = this.listReport[this.listReport.length - 1].date;
+    console.log('date dernier reporting : ' + dateLastReporting);
+    let newDateOfDay = (dateOfDay.getFullYear() + '-' + month + '-' + day);
+    if (newDateOfDay === dateLastReporting) {
+      this.alreadyReported = true;
+    }
+
+  }
+
+  goToLilaPlant() {
+    this.router.navigate(['/lila-plant'], { state: { data: this.infoCurrentPlant } });
+  }
 
 }
