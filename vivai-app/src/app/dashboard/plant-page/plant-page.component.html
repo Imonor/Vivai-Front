@@ -27,8 +27,7 @@
   <div class="container"
     style="border-radius: 20px !important; margin: 0 !important; max-width: 100% !important; min-width: 100% !important; width: 100% !important; ">
     <mat-card style="border-radius: 20px !important;">
-      <mat-card-content class="content p-2">
-
+      <mat-card-content class="content" [class.p-2]="mobileQuery.matches == false">
         <div class="row partieduhaut pb-4">
           <div class="col-12 col-sm-12 col-md-12 col-lg-5">
             <div class="row m-1">
