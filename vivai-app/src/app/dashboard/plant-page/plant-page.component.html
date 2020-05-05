@@ -194,9 +194,9 @@
           <div class="col-12 col-sm-12 col-md-3 col-lg-2" [class.mb-2]="mobileQuery.matches == true">
             <div class="row h-100 m-1">
               <div class="col-6 col-sm-6 col-md-12 col-lg-12" [class.mb-3]="mobileQuery.matches == false">
-                <button class="card h-100 w-100 bigBtn p-4 text-left">
+                <button class="card h-100 w-100 bigBtn p-4 text-left"  (click)="goToLilaPlant()">
                   <h4>Voir la fiche conseil sur le <span class="highlight">{{currentPlant.species}}</span>.</h4>
-                  <!--button mat-raised-button color="accent" style="height: 40px" (click)="goToLilaPlant()">Avoir des
+                  <!--button mat-raised-button color="accent" style="height: 40px"">Avoir des
                     infos sur sa plante</button-->
                 </button>
               </div>
