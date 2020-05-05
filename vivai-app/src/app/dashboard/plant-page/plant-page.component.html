@@ -60,14 +60,14 @@
             <div class="row justify-content-between mt-auto h-100 pl-4 pr-4 pb-4">
 
               <div class="col-12 d-flex justify-content-center" style="overflow:hidden"
-                *ngIf="(listReport.length < 1)">
+                *ngIf="(listReport?.length < 1)">
                 <img style="width: auto; max-height: 12em;" src="assets/illustration/ajouteruneactivitée.png"
                   alt="addActivity">
                 <h6 style="position:absolute; bottom: 0;opacity: 0.7;">Vous n'avez pas encore ajouter d'activitées. Ajoutez en une dans "Fait aujourd'hui".</h6>
               </div>
-              <div class="col-2 mt-auto p-0" *ngFor="let report of listReport" [matTooltip]="report.comment">
+              <div class="col-2 mt-auto p-0" *ngFor="let report of listReport" [matTooltip]="getTooltipText((getDate(report.date) | date:'EEEE d MMMM y':'+0200':'fr'),report)">
                 <div class="col-shape pl-4 pr-4 d-flex flex-column align-items-center"
-                  [class.mr-1]="mobileQuery.matches == true" [class.mr-5]="mobileQuery.matches == false">
+                  [class.mr-1]="mobileQuery.matches == true" [class.mr-2]="mobileQuery.matches == false" [class.ml-2]="mobileQuery.matches == false">
                   <div class="badge d-flex justify-content-center align-items-center m-3 water" *ngIf="report.water">
                     <mat-icon matSuffix svgIcon="water" aria-hidden="false"></mat-icon>
                   </div>
@@ -83,7 +83,7 @@
                     <mat-icon matSuffix svgIcon="harvest" aria-hidden="false"></mat-icon>
                   </div>
                 </div>
-                <b class="p-2">{{report.date}}</b>
+                <h6 class="text-center p-1">{{ getDate(report.date) | date:'EEEEEE':'+0200':'fr' | uppercase}}</h6>
               </div>
 
             </div>
@@ -165,10 +165,10 @@
                   </div>
                 </form>
                 <div class="row justify-content-between">
-                  <div class="col-6 d-flex justify-content-start align-items-center" style="font-size: larger;">
+                  <div class="col-6 d-flex justify-content-start align-items-center pl-4 pt-2 pb-0" style="font-size: larger;">
                     {{this.taskNumber}} / 4 tâches
                   </div>
-                  <div class="col-6 d-flex justify-content-end">
+                  <div class="col-6 d-flex justify-content-end pl-4 pr-5 pt-2 pb-0">
                     <button mat-raised-button color="accent" style="height: 40px" (click)="addReporting()"
                       *ngIf="!alreadyReported">Ajouter</button>
                     <button mat-raised-button color="warn" style="height: 40px" (click)="addReporting()"
@@ -177,7 +177,6 @@
                 </div>
               </div>
             </div>
-            <div style="height: 2em;" *ngIf="mobileQuery.matches"></div>
           </div>
 
           <div class="col-12 col-sm-12 col-md-12 col-lg-4" [class.mb-2]="mobileQuery.matches == true">

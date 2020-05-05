@@ -219,5 +219,13 @@ export class PlantPageComponent implements OnInit {
     this.router.navigate(['/lila-plant'], { state: { data: this.infoCurrentPlant } });
   }
 
+  getDate(dateString) {
+    let date = new Date(dateString).toISOString();
+    return date;
+  }
+
+  getTooltipText(date,report) {
+    return (date + "                Message :" +  report.comment)
+  }
 
 }
