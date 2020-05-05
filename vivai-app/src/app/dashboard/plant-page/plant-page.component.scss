@@ -24,36 +24,27 @@ h2 {
   padding: 1em;
 }
 
-.badgeRed {
+.badge {
   height: 2.5em;
   width: 2.5em;
   border-radius: 20px;
-  background-color: indianred;
   color: whitesmoke;
 }
 
-.badgeBlue {
-  height: 2.5em;
-  width: 2.5em;
-  border-radius: 20px;
-  background-color: dodgerblue;
-  color: whitesmoke;
+.prune {
+  background-color: rgba(225, 100, 100, 0.9);
 }
 
-.badgeGreen {
-  height: 2.5em;
-  width: 2.5em;
-  border-radius: 20px;
-  background-color: limegreen;
-  color: whitesmoke;
+.water {
+  background-color: rgba(100, 168, 235, 0.9);
 }
 
-.badgeOrange {
-  height: 2.5em;
-  width: 2.5em;
-  border-radius: 20px;
-  background-color: orange;
-  color: whitesmoke;
+.potting {
+  background-color: rgba(66, 193, 66, 0.9);
+}
+
+.harvest {
+  background-color: rgba(230, 160, 31, 0.9);
 }
 
 
@@ -78,7 +69,6 @@ h2 {
 .card-img-big {
   width: 100%;
   min-height: 30vh;
-  max-height: 30vh;
   object-fit: cover;
   border-radius: 20px 20px 15px 15px;
   transition: filter 1s;
@@ -137,4 +127,3 @@ h2 {
   border-radius: 10px 10px 10px 10px;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
-

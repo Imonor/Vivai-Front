@@ -57,79 +57,25 @@
             <div style="height: 2em;" *ngIf="mobileQuery.matches"></div>
           </div>
           <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-            <h4>Les 6 derniers jours :</h4>
+            <h4>Les 6 dernières Activités :</h4>
             <div class="row justify-content-between mt-auto h-100 pl-4 pr-4 pb-4">
 
-              <div class="col-2 mt-auto p-0">
+              <div class="col-2 mt-auto p-0" *ngFor="let report of listReport" [matTooltip]="report.comment">
                 <div class="col-shape pl-4 pr-4 d-flex flex-column align-items-center" [class.mr-1]="mobileQuery.matches == true" [class.mr-5]="mobileQuery.matches == false">
-                  <div class="badgeGreen d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
+                  <div class="badge d-flex justify-content-center align-items-center m-3 water" *ngIf="report.water">
+                    <mat-icon matSuffix svgIcon="water" aria-hidden="false"></mat-icon>
                   </div>
-                  <div class="badgeGreen d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
+                  <div class="badge d-flex justify-content-center align-items-center m-3 prune" *ngIf="report.prune">
+                    <mat-icon matSuffix svgIcon="prune" aria-hidden="false"></mat-icon>
                   </div>
-                  <div class="badgeGreen d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
+                  <div class="badge d-flex justify-content-center align-items-center m-3 potting" *ngIf="report.potting">
+                    <mat-icon matSuffix svgIcon="potting" aria-hidden="false"></mat-icon>
                   </div>
-                  <div class="badgeGreen d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-2 mt-auto p-0">
-                <div class="col-shape pl-4 pr-4 d-flex flex-column align-items-center" [class.mr-1]="mobileQuery.matches == true" [class.mr-4]="mobileQuery.matches == false">
-                  <div class="badgeGreen d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
+                  <div class="badge d-flex justify-content-center align-items-center m-3 harvest" *ngIf="report.harvest">
+                    <mat-icon matSuffix svgIcon="harvest" aria-hidden="false"></mat-icon>
                   </div>
                 </div>
-              </div>
-
-              <div class="col-2 mt-auto p-0">
-                <div class="col-shape pl-4 pr-4 d-flex flex-column align-items-center" [class.mr-1]="mobileQuery.matches == true" [class.mr-4]="mobileQuery.matches == false">
-                  <div class="badgeRed d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
-                  </div>
-                  <div class="badgeGreen d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
-                  </div>
-                  <div class="badgeBlue d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-2 mt-auto p-0">
-                <div class="col-shape pl-4 pr-4 d-flex flex-column align-items-center" [class.mr-1]="mobileQuery.matches == true" [class.mr-4]="mobileQuery.matches == false">
-                  <div class="badgeGreen d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-2 mt-auto p-0">
-                <div class="col-shape pl-4 pr-4 d-flex flex-column align-items-center" [class.mr-1]="mobileQuery.matches == true" [class.mr-4]="mobileQuery.matches == false">
-                  <div class="badgeGreen d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
-                  </div>
-                  <div class="badgeGreen d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
-                  </div>
-                  <div class="badgeGreen d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
-                  </div>
-                  <div class="badgeGreen d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-2 mt-auto p-0">
-                <div class="col-shape pl-4 pr-4 d-flex flex-column align-items-center" [class.mr-1]="mobileQuery.matches == true" [class.mr-4]="mobileQuery.matches == false">
-                  <div class="badgeGreen d-flex justify-content-center align-items-center m-3">
-                    <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
-                  </div>
-                </div>
+                <b class="p-2">{{report.date}}</b>
               </div>
 
             </div>
@@ -146,7 +92,7 @@
                 <form [formGroup]="reportingForm">
                   <div class="row justify-content-between">
                     <div class="col-2 mb-1">
-                      <div class="badgeBlue d-flex justify-content-center align-items-center">
+                      <div class="badge d-flex justify-content-center align-items-center water">
                         <mat-icon matSuffix svgIcon="water" aria-hidden="false"></mat-icon>
                       </div>
                     </div>
@@ -160,7 +106,7 @@
                   </div>
                   <div class="row justify-content-between">
                     <div class="col-2 mb-1">
-                      <div class="badgeRed d-flex justify-content-center align-items-center">
+                      <div class="badge d-flex justify-content-center align-items-center prune">
                         <mat-icon matSuffix svgIcon="prune" aria-hidden="false"></mat-icon>
                       </div>
                     </div>
@@ -174,8 +120,8 @@
                   </div>
                   <div class="row justify-content-between">
                     <div class="col-2 mb-1">
-                      <div class="badgeGreen d-flex justify-content-center align-items-center">
-                        <mat-icon matSuffix svgIcon="repoting" aria-hidden="false"></mat-icon>
+                      <div class="badge d-flex justify-content-center align-items-center potting">
+                        <mat-icon matSuffix svgIcon="potting" aria-hidden="false"></mat-icon>
                       </div>
                     </div>
                     <div class="col-6 d-flex justify-content-start align-items-center mb-1">
@@ -188,7 +134,7 @@
                   </div>
                   <div class="row justify-content-between">
                     <div class="col-2 mb-1">
-                      <div class="badgeOrange d-flex justify-content-center align-items-center">
+                      <div class="badge d-flex justify-content-center align-items-center harvest">
                         <mat-icon matSuffix svgIcon="harvest" aria-hidden="false"></mat-icon>
                       </div>
                     </div>

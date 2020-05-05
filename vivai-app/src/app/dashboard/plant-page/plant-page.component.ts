@@ -9,6 +9,7 @@ import { PlantService } from 'src/app/services/plant.service';
 import { UserPlant } from 'src/app/models/user-plant';
 import { InfosPlant } from 'src/app/models/infos-plant';
 import { NotificationService } from 'src/app/services/notification.service';
+import { PlantReport } from 'src/app/models/plant-report';
 
 @Component({
   selector: 'vivai-plant-page',
@@ -28,9 +29,9 @@ export class PlantPageComponent implements OnInit {
     note: new FormControl()
   });
 
-  currentPlant: UserPlant =  null;
+  currentPlant: UserPlant = null;
   infoCurrentPlant: InfosPlant = null;
-  //lastReportings: null;
+  listReport: PlantReport[];
   public reportingForm: FormGroup;
   public readonly waterField = 'water';
   public readonly pruneField = 'prune';
@@ -39,33 +40,40 @@ export class PlantPageComponent implements OnInit {
   public readonly noteField = 'note';
   taskNumber: 0;
 
-  constructor(public _loading: LoaderService,iconRegistry: MatIconRegistry,
+  constructor(public _loading: LoaderService, iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer, media: MediaMatcher, changeDetectorRef: ChangeDetectorRef,
     private router: Router, private fb: FormBuilder, private _plantService: PlantService,
     private _notification: NotificationService,
-    ) {
-      this.mobileQuery = media.matchMedia('(max-width: 600px)');
-      this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-      this.mobileQuery.addListener(this._mobileQueryListener);
+  ) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
 
-      iconRegistry.addSvgIcon(
-        'water',
-        sanitizer.bypassSecurityTrustResourceUrl('assets/svg/water.svg'));
-      iconRegistry.addSvgIcon(
-        'prune',
-        sanitizer.bypassSecurityTrustResourceUrl('assets/svg/prune.svg'));
-      iconRegistry.addSvgIcon(
-        'harvest',
-        sanitizer.bypassSecurityTrustResourceUrl('assets/svg/harvest.svg'));
-      iconRegistry.addSvgIcon(
-        'repoting',
-        sanitizer.bypassSecurityTrustResourceUrl('assets/svg/repoting.svg'));
-    }
+    iconRegistry.addSvgIcon(
+      'water',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/svg/water.svg'));
+    iconRegistry.addSvgIcon(
+      'prune',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/svg/prune.svg'));
+    iconRegistry.addSvgIcon(
+      'harvest',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/svg/harvest.svg'));
+    iconRegistry.addSvgIcon(
+      'potting',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/svg/potting.svg'));
+  }
 
   ngOnInit() {
     this.catchPlantFromHistory();
     this.initForm();
     this.getInfoPlant();
+    this.listReport = new Array<PlantReport>();
+    this.listReport.push(new PlantReport("2020-05-04",true, false,false, true, "Petit commentaire plutôt sympa"));
+    this.listReport.push(new PlantReport("2020-06-04",true, true,false, true, "Petit commentaire plutôt sympa"));
+    this.listReport.push(new PlantReport("2020-07-04",true, false,true, true, "Petit commentaire plutôt sympa"));
+    this.listReport.push(new PlantReport("2020-08-04",true, false,false, false, "Petit commentaire plutôt sympa"));
+    this.listReport.push(new PlantReport("2020-09-04",false, false,false, true, "Petit commentaire plutôt sympa"));
+    this.listReport.push(new PlantReport("2020-10-04",true, false,false, false, "Petit commentaire plutôt sympa"));
     //this.getReportings();
   }
 
@@ -92,7 +100,7 @@ export class PlantPageComponent implements OnInit {
   getInfoPlant() {
     if (this.display) {
       this._plantService.getPlantInfos(this.currentPlant.plantId).subscribe(data =>
-      this.infoCurrentPlant = data);
+        this.infoCurrentPlant = data);
     }
   }
 
@@ -111,9 +119,9 @@ export class PlantPageComponent implements OnInit {
 
   catchPlantFromHistory() {
     this.currentPlant = history.state.data;
-    if(this.currentPlant == undefined) {
+    if (this.currentPlant == undefined) {
       this.router.navigate(['/dashboard']);
-    }else this.display = true;
+    } else this.display = true;
 
     console.log(this.currentPlant);
   }
@@ -121,66 +129,68 @@ export class PlantPageComponent implements OnInit {
   checkTaskNumber() {
     this.taskNumber = 0;
     setTimeout(() => {
-    if (this.reportingForm.get('water').value) {
-      this.taskNumber++;
-    }
-    if (this.reportingForm.get('prune').value) {
-      this.taskNumber++;
-    }
-    if (this.reportingForm.get('repoting').value) {
-      this.taskNumber++;
-    }
-    if (this.reportingForm.get('harvest').value) {
-      this.taskNumber++;
-    }
-  });
-}
-
-share() {
-
-}
-
-delete() {
-  this._plantService.deleteUserPlant(this.currentPlant.id).subscribe(data => {
-    console.log(data);
-    this._notification.show(data.Message, "OK");
-    this.router.navigate(['/dashboard']);
+      if (this.reportingForm.get('water').value) {
+        this.taskNumber++;
+      }
+      if (this.reportingForm.get('prune').value) {
+        this.taskNumber++;
+      }
+      if (this.reportingForm.get('repoting').value) {
+        this.taskNumber++;
+      }
+      if (this.reportingForm.get('harvest').value) {
+        this.taskNumber++;
+      }
+    });
   }
+
+  share() {
+
+  }
+
+  delete() {
+    this._plantService.deleteUserPlant(this.currentPlant.id).subscribe(data => {
+      console.log(data);
+      this._notification.show(data.Message, "OK");
+      this.router.navigate(['/dashboard']);
+    }
     )
-}
-
-addReporting() {
-  let reportingObj = this.reportingForm.getRawValue(); // {name: '', description: ''}
-  // let serializedPlant = JSON.stringify(plantObj); // ne marche pas mdr
-  this._plantService.addReporting(this.currentPlant.id, reportingObj).subscribe(data => {
-    console.log(data);
-    this._notification.show('Le reporting à été ajoutée avec succes !', 'ok');
-  },
-    error => { console.log(error);
-      this._notification.show(error, 'ok'); }
-  );
-  this.clearReporting();
-  this.checkTaskNumber();
-}
-/*
-getReportings() {
-  if (this.display) {
-    this._plantService.getReportings(this.currentPlant.plantId).subscribe(data =>
-    this.lastReportings = data);
-    console.log("derniers reportings : " + this.lastReportings);
   }
-}
-*/
-clearReporting() {
-  this.Water.setValue(false);
-  this.Prune.setValue(false);
-  this.Harvest.setValue(false);
-  this.Repoting.setValue(false);
-  this.Note.setValue(null);
-}
 
-goToLilaPlant() {
-  this.router.navigate(['/lila-plant'], {state: {data: this.infoCurrentPlant}});
-}
+  addReporting() {
+    let reportingObj = this.reportingForm.getRawValue(); // {name: '', description: ''}
+    // let serializedPlant = JSON.stringify(plantObj); // ne marche pas mdr
+    this._plantService.addReporting(this.currentPlant.id, reportingObj).subscribe(data => {
+      console.log(data);
+      this._notification.show('Le reporting à été ajoutée avec succes !', 'ok');
+    },
+      error => {
+        console.log(error);
+        this._notification.show(error, 'ok');
+      }
+    );
+    this.clearReporting();
+    this.checkTaskNumber();
+  }
+  /*
+  getReportings() {
+    if (this.display) {
+      this._plantService.getReportings(this.currentPlant.plantId).subscribe(data =>
+      this.lastReportings = data);
+      console.log("derniers reportings : " + this.lastReportings);
+    }
+  }
+  */
+  clearReporting() {
+    this.Water.setValue(false);
+    this.Prune.setValue(false);
+    this.Harvest.setValue(false);
+    this.Repoting.setValue(false);
+    this.Note.setValue(null);
+  }
+
+  goToLilaPlant() {
+    this.router.navigate(['/lila-plant'], { state: { data: this.infoCurrentPlant } });
+  }
 
 }
