@@ -1,5 +1,8 @@
 import { Injectable, EventEmitter, NgZone } from '@angular/core';
-
+import Auth, { CognitoUser } from '@aws-amplify/auth';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { AuthService } from '../auth/auth.service';
+import { Observable } from 'rxjs';
 
 export interface AppWindow extends Window {
   webkitSpeechRecognition: any;
@@ -15,6 +18,9 @@ const { msSpeechRecognition }: AppWindow = window as unknown as AppWindow;
   providedIn: 'root'
 })
 export class SpeechSupportService {
+
+  API_URL = 'https://2jfhg21asd.execute-api.eu-west-1.amazonaws.com/dev/app/';
+  user: CognitoUser;
 
   // tslint:disable-next-line:variable-name
   private _isListening: boolean;
@@ -35,9 +41,14 @@ export class SpeechSupportService {
 
   public Result: EventEmitter<RecognitionResult> = new EventEmitter<RecognitionResult>();
 
-  constructor() {
+  constructor(private httpClient: HttpClient, private _authService: AuthService, ) {
+    this.getUserInfo();
     this.init();
-   }
+  }
+
+  async getUserInfo() {
+    this.user = await Auth.currentAuthenticatedUser();
+  }
 
    private init(): void {
     this._supportRecognition = true;
@@ -126,6 +137,15 @@ public stopListening(): void {
   this._isListening = false;
   this._speech.stop();
   console.log('Listening stopped');
+}
+
+getLilaResponse(userMessage): Observable<any> {
+  let params = new HttpParams();
+  console.log(userMessage);
+  params = params.append('lilaRequest', userMessage);
+  params = params.append('userId', this.user.getUsername());
+  console.log(params);
+  return this.httpClient.get<any>(this.API_URL + 'getLilaResponse', {responseType: 'json', params});
 }
 
 }
