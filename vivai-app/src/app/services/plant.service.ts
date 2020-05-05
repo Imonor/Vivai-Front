@@ -99,6 +99,20 @@ export class PlantService {
     let params = new HttpParams();
     params = params.append('message', message);
     console.log('params : ' + params);
-    return this.httpClient.request('GET', this.API_URL + 'getIntenton', {responseType: 'json', params});
+    return this.httpClient.request('GET', this.API_URL + 'getIntention', {responseType: 'json', params});
+  }
+
+  updatePlant(plant): Observable<any> {
+    console.log(plant);
+    let params = new HttpParams();
+    params = params.append('userPlantId', plant.id);
+    params = params.append('userId', plant.userId);
+    params = params.append('nickname', plant.nickname);
+    params = params.append('location', plant.location);
+    params = params.append('temperature', plant.temperature);
+    params = params.append('sunExpo', plant.sunExpo);
+    params = params.append('shared', plant.shared);
+    console.log(params);
+    return this.httpClient.request('PUT', this.API_URL + 'updatePlant', {responseType: 'json', params});
   }
 }
