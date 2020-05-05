@@ -257,8 +257,12 @@ export class PlantPageComponent implements OnInit {
     this.updatePlantDialogRef = this.dialog.open(UpdatePlantDialogComponent, { disableClose: true,
                                                                                 data: {currentPlant: this.currentPlant, }} );
     this.updatePlantDialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.catchPlantFromHistory();
+      console.log("dialogResulat",result);
+      this._plantService.getUserPlantInfos(this.currentPlant.id).subscribe(data => {
+        this.currentPlant = data;
+      },
+      error => this.currentPlant.nickname = "ERROR"
+      );
     });
   }
 

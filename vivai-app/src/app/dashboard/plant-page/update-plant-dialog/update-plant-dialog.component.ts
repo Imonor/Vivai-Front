@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { PlantService } from 'src/app/services/plant.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { UserPlant } from 'src/app/models/user-plant';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'vivai-update-plant-dialog',
@@ -104,7 +105,7 @@ export class UpdatePlantDialogComponent implements OnInit {
     this.currentPlant.location = plantObj.location;
     this.currentPlant.temperature = plantObj.temperature;
     this.currentPlant.sunExpo = plantObj.sunExpo;
-    console.log(this.currentPlant);
+    console.log("curentPlant", this.currentPlant);
     this._plantService.updatePlant(this.currentPlant).subscribe(data => {
       console.log(data);
       this.dialogRef.close();

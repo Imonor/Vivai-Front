@@ -20,8 +20,8 @@ export class PlantService {
     this.getUserInfo();
   }
 
-  getPlant(id): Observable<UserPlant> {
-    return this.httpClient.get<UserPlant>(this.API_URL + 'getPlantId', { params: { plantId: id.toString() } });
+  getUserPlantInfos(id): Observable<UserPlant> {
+    return this.httpClient.get<UserPlant>(this.API_URL + 'getUserPlantInfos', { params: { userId: this.user.getUsername() ,userPlantId: id.toString()  } });
   }
 
   getSupportedPlants(): Observable<SupportedPlant[]> {
@@ -99,11 +99,16 @@ export class PlantService {
     let params = new HttpParams();
     params = params.append('userPlantId', plant.currentPlant.id.toString());
     params = params.append('userId', plant.currentPlant.userId.toString());
-    params = params.append('nickname', plant.nickname);
-    params = params.append('location', plant.location);
-    params = params.append('temperature', plant.temperature);
-    params = params.append('sunExpo', plant.sunExpo);
-    params = params.append('shared', plant.currentPlant.shared);
+    if(plant.nickname != "") params = params.append('nickname', plant.nickname);
+    else params = params.append('nickname', plant.currentPlant.nickname);
+    if(plant.location != "") params = params.append('location', plant.location);
+    else params = params.append('location', plant.currentPlant.location);
+    if(plant.temperature != "") params = params.append('temperature', plant.temperature.toString());
+    else params = params.append('temperature', plant.currentPlant.temperature.toString());
+    if(plant.sunExpo != "") params = params.append('sunExpo', plant.sunExpo.toString());
+    else params = params.append('sunExpo', plant.currentPlant.sunExpo.toString());
+    if(plant.shared != "") params = params.append('shared', plant.currentPlant.shared);
+    else params = params.append('shared', plant.currentPlant.shared);
     console.log(params);
     return this.httpClient.request('PUT', this.API_URL + 'updatePlant', {responseType: 'json', params});
   }

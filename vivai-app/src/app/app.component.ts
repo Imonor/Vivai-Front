@@ -71,6 +71,7 @@ export class AppComponent implements OnInit {
 
   displayButtonLila() {
     let route = this.router.url; 
+    if(route.includes("plant-page")) return true;
     if (window.innerWidth < 1025 && (route !== "/") && !route.includes("auth")) {
       return true;
     } else return false;
