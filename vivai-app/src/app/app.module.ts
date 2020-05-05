@@ -37,6 +37,7 @@ import { PlantPageComponent } from './dashboard/plant-page/plant-page.component'
 import { RecommendationsComponent } from './dashboard/plant-page/recommendations/recommendations.component';
 import { LilaPlantComponent } from './dashboard/plant-page/lila-plant/lila-plant.component';
 import { SharedPlantsPageComponent } from './dashboard/plant-page/shared-plants-page/shared-plants-page.component';
+import { UpdatePlantDialogComponent } from './dashboard/plant-page/update-plant-dialog/update-plant-dialog.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { SharedPlantsPageComponent } from './dashboard/plant-page/shared-plants-
     RecommendationsComponent,
     LilaPlantComponent,
     SharedPlantsPageComponent,
+    UpdatePlantDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,7 +81,8 @@ import { SharedPlantsPageComponent } from './dashboard/plant-page/shared-plants-
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
-  entryComponents: [IosInstallComponent, LoaderComponent, CountryCodeSelectComponent, LilaComponent, AddPlantDialogComponent],
+  entryComponents: [IosInstallComponent, LoaderComponent, CountryCodeSelectComponent, LilaComponent, AddPlantDialogComponent,
+                    UpdatePlantDialogComponent],
 })
 export class AppModule {
 }

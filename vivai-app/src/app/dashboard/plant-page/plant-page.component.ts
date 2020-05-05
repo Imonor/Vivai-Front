@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { MatIconRegistry } from '@angular/material';
+import { MatIconRegistry, MatDialog, MatDialogRef } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { InfosPlant } from 'src/app/models/infos-plant';
 import { NotificationService } from 'src/app/services/notification.service';
 import { PlantReport } from 'src/app/models/plant-report';
 import { trigger } from '@angular/animations';
+import { UpdatePlantDialogComponent } from './update-plant-dialog/update-plant-dialog.component';
 
 @Component({
   selector: 'vivai-plant-page',
@@ -40,12 +41,14 @@ export class PlantPageComponent implements OnInit {
   public readonly harvestField = 'harvest';
   public readonly repotingField = 'repoting';
   public readonly noteField = 'note';
+
+  updatePlantDialogRef: MatDialogRef<UpdatePlantDialogComponent>;
   taskNumber: 0;
 
   constructor(public _loading: LoaderService, iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer, media: MediaMatcher, changeDetectorRef: ChangeDetectorRef,
     private router: Router, private fb: FormBuilder, private _plantService: PlantService,
-    private _notification: NotificationService,
+    private _notification: NotificationService, private dialog: MatDialog
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -228,6 +231,15 @@ export class PlantPageComponent implements OnInit {
     let message = date;
     if(report.comment !== "NULL") message += "- Note : " + report.comment;
     return message;
+  }
+
+  openUpdatePlant() {
+    this.updatePlantDialogRef = this.dialog.open(UpdatePlantDialogComponent, { disableClose: true,
+                                                                                data: {currentPlant: this.currentPlant, }} );
+    this.updatePlantDialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.catchPlantFromHistory();
+    });
   }
 
 }
