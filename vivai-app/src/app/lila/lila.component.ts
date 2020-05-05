@@ -51,6 +51,7 @@ export class LilaComponent implements OnInit {
     this.speech.Result.subscribe((result: RecognitionResult) => {
       console.log('Result event on the controller.');
       console.log(result);
+/*
       console.log('target : ' + this.targetElementName);
       window.document.getElementById(this.targetElementName).focus();
       if (!result) {
@@ -59,11 +60,9 @@ export class LilaComponent implements OnInit {
       }
       if (this.targetElementName === this.messageHeardField) {
         this.Message.setValue(result.transcript);
-      }
+      }*/
+      this.sendMessage(result.transcript);
     });
-
-    let plantList = this._plantService.getListUserPlants();
-
   }
 
   close() {
@@ -93,7 +92,6 @@ export class LilaComponent implements OnInit {
     } else {
       this.speech.requestListening(this.SelectedLanguage);
     }
-    
   }
 
   getLilaResponse(userMessage) {

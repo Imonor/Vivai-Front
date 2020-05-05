@@ -13,45 +13,6 @@
   <div *ngIf="router.url === '/notify'">Vous venez du notify</div>
   <div *ngIf="router.url === '/'">Vous venez du home</div-->
 
-<!--
-  <div class="msgOverflow p-2" *ngIf = "!mobileQuery.matches">
-    <div class="row p-2" *ngFor="let message of messages">
-      <div class="row mt-2 ml-3" *ngIf="!message.fromUser">
-        <div class = "iconLila">
-          <img style="width: 2em; max-height: 2em" src="../../assets/illustration/pablo-cut-nobg.png" alt="Lila">
-        </div>
-        <div class = "lilaMessageDesktop">
-          {{message.message}}
-        </div>
-      </div>
-      <div class="d-flex flex-row-reverse bd-highlight" *ngIf="message.fromUser">
-          <div class = "userMessageDesktop">
-            {{message.message}}
-          </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="msgOverflow p-2" *ngIf = "mobileQuery.matches">
-    <div class="row flex-nowrap p-2" *ngFor="let message of messages">
-      <div *ngIf="!message.fromUser">
-        <div class = "iconLila">
-          <img style="width: 2em; max-height: 2em" src="../../assets/illustration/pablo-cut-nobg.png" alt="Lila">
-        </div>
-        <div class = "lilaMessageMobile">
-          {{message.message}}
-        </div>
-      </div>
-      <div *ngIf="message.fromUser">
-        <div class="d-flex flex-row-reverse">
-          <div class = "userMessageMobile">
-            {{message.message}}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
--->
 
 <div class = "msgOverflow p-2" *ngIf="!mobileQuery.matches">
   <div *ngFor="let message of messages">
