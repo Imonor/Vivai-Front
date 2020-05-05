@@ -15,33 +15,21 @@ export class PlantListComponent implements OnInit {
 
   addPlantDialogRef: MatDialogRef<AddPlantDialogComponent>;
 
-  listPlant: UserPlant[] = null;
-  // listPlante = [
-  //    {
-  //      nickname: "",
-  //      species: "Basilic",
-  //      picUrl: "https://media.ooreka.fr/public/image/plant/16/varietyImage/10l1k2476if4404sgowwc8kow-source-9229039.jpg",
-  //      location: "Jardin",
-  //    }];
-  // {
-  //   nom: "Tomy",
-  //   type: "Olivier",
-  //   image: "https://media.ooreka.fr/public/image/plant/4/furtherImage/34265a2z3esks4wkcgsk8s04w-source-8883047.jpg",
-  //   piece: "Jardin",
-  // },
-  // {
-  //   nom: "Jane",
-  //   type: "Campanule",
-  //   image: "https://media.ooreka.fr/public/image/plant/8/furtherImage/3mq1gdyj9iecwgc4kksw4owks-source-9131594.jpg",
-  //   piece: "Jardin",
-  // },
-  // {
-  //   nom: "Julia",
-  //   type: "Campanule",
-  //   image: "https://media.ooreka.fr/public/image/plant/8/furtherImage/3mq1gdyj9iecwgc4kksw4owks-source-9131594.jpg",
-  //   piece: "Jardin",
-  // }
-
+  // listPlant: UserPlant[] = null;
+  listPlant = [
+    {
+      id: "azgjhe",
+      plantId: "dhuazhje",
+      userId: "bajhdbjhaz",
+      nickname: "Marco",
+      location: "Cuisine",
+      temperature: "20°C - 22.5°C",
+      sunExpo: "Moyen",
+      shared: false,
+      picUrl: "https://media.ooreka.fr/public/image/plant/16/varietyImage/10l1k2476if4404sgowwc8kow-source-9229039.jpg",
+      species: "Basilic",
+    }
+  ];
 
   constructor(private dialog: MatDialog, private _plantService: PlantService, public _loading: LoaderService) { }
 
@@ -62,7 +50,7 @@ export class PlantListComponent implements OnInit {
   getListUserPlant() {
     this._plantService.getListUserPlants().subscribe(data => {
       console.log(data);
-      this.listPlant = data;
+      // this.listPlant = data;
     })
     // if(this.listPlante != undefined ) this._loading.hide();
   }
