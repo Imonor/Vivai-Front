@@ -10,6 +10,7 @@ import { UserPlant } from 'src/app/models/user-plant';
 import { InfosPlant } from 'src/app/models/infos-plant';
 import { NotificationService } from 'src/app/services/notification.service';
 import { PlantReport } from 'src/app/models/plant-report';
+import { trigger } from '@angular/animations';
 
 @Component({
   selector: 'vivai-plant-page',
@@ -68,13 +69,6 @@ export class PlantPageComponent implements OnInit {
     this.catchPlantFromHistory();
     this.initForm();
     this.getInfoPlant();
-    this.listReport = new Array<PlantReport>();
-    this.listReport.push(new PlantReport("2020-05-04", true, false, false, true, "Petit commentaire plutôt sympa"));
-    this.listReport.push(new PlantReport("2020-06-04", true, true, false, true, "Petit commentaire plutôt sympa"));
-    this.listReport.push(new PlantReport("2020-07-04", true, false, true, true, "Petit commentaire plutôt sympa"));
-    this.listReport.push(new PlantReport("2020-08-04", true, false, false, false, "Petit commentaire plutôt sympa"));
-    this.listReport.push(new PlantReport("2020-09-04", false, false, false, true, "Petit commentaire plutôt sympa"));
-    this.listReport.push(new PlantReport("2020-10-04", true, false, false, false, "Petit commentaire plutôt sympa"));
     this.getReportings();
     this.isReported();
   }
@@ -172,6 +166,10 @@ export class PlantPageComponent implements OnInit {
     );
     this.clearReporting();
     this.checkTaskNumber();
+    setTimeout(() => {
+      this.getReportings();
+      this.isReported(); });
+
   }
 
   getReportings() {
@@ -218,5 +216,6 @@ export class PlantPageComponent implements OnInit {
   goToLilaPlant() {
     this.router.navigate(['/lila-plant'], { state: { data: this.infoCurrentPlant } });
   }
+  console.log("reported ? : " + this.alreadyReported);
 
 }
