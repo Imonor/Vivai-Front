@@ -143,8 +143,28 @@ export class PlantPageComponent implements OnInit {
   }
 
   share() {
-
+    this.currentPlant.shared = true;
+    console.log(this.currentPlant);
+    this._plantService.sharePlant(this.currentPlant).subscribe(data => {
+      console.log(data);
+      this._notification.show("La plante à été partagée avec succès !", "ok");
+    },
+      error => { console.log(error);
+                 this._notification.show("Une erreur est survenue, Essayez plus tard.", "ok"); }
+    );
   }
+
+  unshare() {
+      this.currentPlant.shared = false;
+      console.log(this.currentPlant);
+      this._plantService.sharePlant(this.currentPlant).subscribe(data => {
+        console.log(data);
+        this._notification.show("Votre plante n'est plus partagée !", "ok");
+      },
+        error => { console.log(error);
+                   this._notification.show("Une erreur est survenue, Essayez plus tard.", "ok"); }
+      );
+    }
 
   delete() {
     this._plantService.deleteUserPlant(this.currentPlant.id).subscribe(data => {
@@ -160,7 +180,7 @@ export class PlantPageComponent implements OnInit {
     this._plantService.addReporting(this.currentPlant.id, reportingObj).subscribe(data => {
       console.log(data);
       if(this.isReported) {
-        this._notification.show('Mise a jours effectuées avec succes !', 'ok');
+        this._notification.show('Mise a jour effectuées avec succes !', 'ok');
       }else this._notification.show('Le reporting à été ajoutée avec succes !', 'ok');
       this.clearReporting();
       this.checkTaskNumber();

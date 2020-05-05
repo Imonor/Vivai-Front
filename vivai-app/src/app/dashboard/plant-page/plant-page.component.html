@@ -4,9 +4,13 @@
     more_vert</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item (click)="share()">
+  <button mat-menu-item (click)="share()" *ngIf = "!currentPlant.shared">
     <mat-icon>share</mat-icon>
     <span>Partager</span>
+  </button>
+  <button mat-menu-item (click)="unshare()" *ngIf = "currentPlant.shared">
+    <mat-icon>share</mat-icon>
+    <span>Ne plus partager</span>
   </button>
   <button mat-menu-item (click)="delete()">
     <mat-icon>delete</mat-icon>

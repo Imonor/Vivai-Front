@@ -105,8 +105,6 @@ export class PlantService {
   updatePlant(plant): Observable<any> {
     console.log(plant);
     let params = new HttpParams();
-    console.log(plant.id);
-    console.log(plant.userId);
     params = params.append('userPlantId', plant.currentPlant.id.toString());
     params = params.append('userId', plant.currentPlant.userId.toString());
     params = params.append('nickname', plant.nickname);
@@ -114,6 +112,20 @@ export class PlantService {
     params = params.append('temperature', plant.temperature);
     params = params.append('sunExpo', plant.sunExpo);
     params = params.append('shared', plant.currentPlant.shared);
+    console.log(params);
+    return this.httpClient.request('PUT', this.API_URL + 'updatePlant', {responseType: 'json', params});
+  }
+
+  sharePlant(plant): Observable<any> {
+    console.log(plant);
+    let params = new HttpParams();
+    params = params.append('userPlantId', plant.id.toString());
+    params = params.append('userId', plant.userId.toString());
+    params = params.append('nickname', plant.nickname);
+    params = params.append('location', plant.location);
+    params = params.append('temperature', plant.temperature);
+    params = params.append('sunExpo', plant.sunExpo);
+    params = params.append('shared', plant.shared);
     console.log(params);
     return this.httpClient.request('PUT', this.API_URL + 'updatePlant', {responseType: 'json', params});
   }
