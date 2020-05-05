@@ -74,13 +74,7 @@ export class LilaComponent implements OnInit {
     if (message) {
       this.messages.unshift(new LilaMessage(message, true));
       this.Message.setValue(null);
-      this._plantService.sendMessageToLila(message).subscribe(data => {
-        console.log(data);
-        this.receiveMessage(data);
-      },
-      error => { console.log(error);
-        this._notification.show(error, 'ok'); }
-    );
+      this.getLilaResponse(message);
     }
   }
 
@@ -99,6 +93,15 @@ export class LilaComponent implements OnInit {
     } else {
       this.speech.requestListening(this.SelectedLanguage);
     }
+    
   }
+
+  getLilaResponse(userMessage) {
+    this.speech.getLilaResponse(userMessage).subscribe(data => {
+      console.log(data);
+      this.receiveMessage(data.Response);
+    });
+
+    }
 }
 

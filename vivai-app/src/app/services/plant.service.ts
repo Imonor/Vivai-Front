@@ -94,14 +94,6 @@ export class PlantService {
     return this.httpClient.get<PlantReport[]>(this.API_URL + 'getReportings', {responseType: 'json', params });
   }
 
-  sendMessageToLila(message): Observable<any> {
-    console.log(message);
-    let params = new HttpParams();
-    params = params.append('message', message);
-    console.log('params : ' + params);
-    return this.httpClient.request('GET', this.API_URL + 'getIntention', {responseType: 'json', params});
-  }
-
   updatePlant(plant): Observable<any> {
     console.log(plant);
     let params = new HttpParams();
