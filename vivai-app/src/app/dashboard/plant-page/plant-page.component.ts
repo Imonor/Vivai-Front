@@ -70,7 +70,6 @@ export class PlantPageComponent implements OnInit {
     this.initForm();
     this.getInfoPlant();
     this.getReportings();
-    this.isReported();
   }
 
   public get Water(): AbstractControl {
@@ -158,24 +157,25 @@ export class PlantPageComponent implements OnInit {
     this._plantService.addReporting(this.currentPlant.id, reportingObj).subscribe(data => {
       console.log(data);
       this._notification.show('Le reporting à été ajoutée avec succes !', 'ok');
+      this.clearReporting();
+      this.checkTaskNumber();
+      this.getReportings();
+      this.isReported();
     },
       error => {
         console.log(error);
         this._notification.show(error, 'ok');
       }
     );
-    this.clearReporting();
-    this.checkTaskNumber();
-    setTimeout(() => {
-      this.getReportings();
-      this.isReported(); });
+
 
   }
 
   getReportings() {
     if (this.display) {
       this._plantService.getReportings(this.currentPlant.id).subscribe(data => {
-        this.listReport = data
+        this.listReport = data;
+        this.isReported();
       }
       );
     }
@@ -210,12 +210,12 @@ export class PlantPageComponent implements OnInit {
     if (newDateOfDay === dateLastReporting) {
       this.alreadyReported = true;
     }
-
+    console.log("reported ? : " + this.alreadyReported);
   }
 
   goToLilaPlant() {
     this.router.navigate(['/lila-plant'], { state: { data: this.infoCurrentPlant } });
   }
-  console.log("reported ? : " + this.alreadyReported);
+
 
 }
