@@ -23,7 +23,7 @@
       </div>
     </div>
   </div>
-  <div style="height: 15em;" *ngIf="mobileQuery.matches"></div>
+  <div style="height: 12em;" *ngIf="mobileQuery.matches"></div>
   <div class="container"
     style="border-radius: 20px !important; margin: 0 !important; max-width: 100% !important; min-width: 100% !important; width: 100% !important; ">
     <mat-card style="border-radius: 20px !important;">
@@ -67,8 +67,8 @@
                   <div class="badge d-flex justify-content-center align-items-center m-3 prune" *ngIf="report.prune">
                     <mat-icon matSuffix svgIcon="prune" aria-hidden="false"></mat-icon>
                   </div>
-                  <div class="badge d-flex justify-content-center align-items-center m-3 potting" *ngIf="report.potting">
-                    <mat-icon matSuffix svgIcon="potting" aria-hidden="false"></mat-icon>
+                  <div class="badge d-flex justify-content-center align-items-center m-3 repotting" *ngIf="report.repotting">
+                    <mat-icon matSuffix svgIcon="repotting" aria-hidden="false"></mat-icon>
                   </div>
                   <div class="badge d-flex justify-content-center align-items-center m-3 harvest" *ngIf="report.harvest">
                     <mat-icon matSuffix svgIcon="harvest" aria-hidden="false"></mat-icon>
@@ -119,8 +119,8 @@
                   </div>
                   <div class="row justify-content-between">
                     <div class="col-2 mb-1">
-                      <div class="badge d-flex justify-content-center align-items-center potting">
-                        <mat-icon matSuffix svgIcon="potting" aria-hidden="false"></mat-icon>
+                      <div class="badge d-flex justify-content-center align-items-center repotting">
+                        <mat-icon matSuffix svgIcon="repotting" aria-hidden="false"></mat-icon>
                       </div>
                     </div>
                     <div class="col-6 d-flex justify-content-start align-items-center mb-1">
@@ -161,7 +161,7 @@
                   </div>
                   <div class="col-6 d-flex justify-content-end">
                     <button mat-raised-button color="accent" style="height: 40px" (click)="addReporting()" *ngIf="!alreadyReported">Ajouter</button>
-                    <button mat-raised-button color="accent" style="height: 40px" (click)="addReporting()" *ngIf="alreadyReported">Modifier</button>
+                    <button mat-raised-button color="warn" style="height: 40px" (click)="addReporting()" *ngIf="alreadyReported">Modifier</button>
                   </div>
                 </div>
               </div>

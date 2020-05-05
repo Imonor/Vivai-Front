@@ -61,8 +61,8 @@ export class PlantPageComponent implements OnInit {
       'harvest',
       sanitizer.bypassSecurityTrustResourceUrl('assets/svg/harvest.svg'));
     iconRegistry.addSvgIcon(
-      'potting',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/svg/potting.svg'));
+      'repotting',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/svg/repotting.svg'));
   }
 
   ngOnInit() {
@@ -156,7 +156,9 @@ export class PlantPageComponent implements OnInit {
     // let serializedPlant = JSON.stringify(plantObj); // ne marche pas mdr
     this._plantService.addReporting(this.currentPlant.id, reportingObj).subscribe(data => {
       console.log(data);
-      this._notification.show('Le reporting à été ajoutée avec succes !', 'ok');
+      if(this.isReported) {
+        this._notification.show('Mise a jours effectuées avec succes !', 'ok');
+      }else this._notification.show('Le reporting à été ajoutée avec succes !', 'ok');
       this.clearReporting();
       this.checkTaskNumber();
       this.getReportings();
