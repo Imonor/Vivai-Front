@@ -15,21 +15,21 @@ export class PlantListComponent implements OnInit {
 
   addPlantDialogRef: MatDialogRef<AddPlantDialogComponent>;
 
-  // listPlant: UserPlant[] = null;
-  listPlant = [
-    {
-      id: "azgjhe",
-      plantId: "dhuazhje",
-      userId: "bajhdbjhaz",
-      nickname: "Marco",
-      location: "Cuisine",
-      temperature: "20°C - 22.5°C",
-      sunExpo: "Moyen",
-      shared: false,
-      picUrl: "https://media.ooreka.fr/public/image/plant/16/varietyImage/10l1k2476if4404sgowwc8kow-source-9229039.jpg",
-      species: "Basilic",
-    }
-  ];
+  listPlant: UserPlant[] = null;
+  // listPlant = [
+  //   {
+  //     id: "azgjhe",
+  //     plantId: "dhuazhje",
+  //     userId: "bajhdbjhaz",
+  //     nickname: "Marco",
+  //     location: "Cuisine",
+  //     temperature: "20°C - 22.5°C",
+  //     sunExpo: "Moyen",
+  //     shared: false,
+  //     picUrl: "https://media.ooreka.fr/public/image/plant/16/varietyImage/10l1k2476if4404sgowwc8kow-source-9229039.jpg",
+  //     species: "Basilic",
+  //   }
+  // ];
 
   constructor(private dialog: MatDialog, private _plantService: PlantService, public _loading: LoaderService) { }
 
@@ -50,7 +50,7 @@ export class PlantListComponent implements OnInit {
   getListUserPlant() {
     this._plantService.getListUserPlants().subscribe(data => {
       console.log(data);
-      // this.listPlant = data;
+      this.listPlant = data;
     })
     // if(this.listPlante != undefined ) this._loading.hide();
   }
