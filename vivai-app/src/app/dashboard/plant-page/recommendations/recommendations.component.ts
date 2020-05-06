@@ -33,7 +33,7 @@ export class RecommendationsComponent implements OnInit {
   setMonths() {
     this.months.forEach(vm => {
       this.infoCurrentPlant.plantationMonths.forEach(pm => {
-        if(vm.mois === pm ) {
+        if(vm.mois.toUpperCase() === pm ) {
           vm.color = true;
         }
       })
