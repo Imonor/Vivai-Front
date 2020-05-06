@@ -5,11 +5,18 @@
         <mat-icon svgIcon="water-color" aria-hidden="false"></mat-icon>
         <h5 class="pl-2">Arrosage</h5>
       </div>
-      <p class="pl-1">Cette plante doit etre arrosée <span class="water"> Xfois</span><span> </span> et <b>avec
-          amour</b>.</p>
+      <p class="pl-1" *ngIf="infoCurrentPlant.waterNeed == 'Faible'">Pour une plante d'intérieur, arroser<span class="water"> tous les mois</span>.<br /> Pour une
+        plante d'extérieur, elle supporte bien la sécheresse.</p>
+      <p class="pl-1" *ngIf="infoCurrentPlant.waterNeed == 'Moyen'">Pour une plante d'intérieur, arroser<span class="water"> toutes les semaines ou toutes les deux
+          semaines</span>.<br /> Pour une plante d'extérieur, elle aura besoin d'apports d'eau avant que le sol sèche.
+      </p>
+      <p class="pl-1" *ngIf="infoCurrentPlant.waterNeed == 'Important'">Pour une plante d'intérieur, arroser<span class="water"> plusieurs fois par semaine</span>.<br/> Pour une plante d'extérieur, il
+        lui faut des apports d'eau abondants et réguliers.</p>
     </div>
     <div class="col-4">
-      <img style="width: auto; max-height: 8em;" src="assets/illustration/mediumwatering.png" alt="water">
+      <img style="width: auto; max-height: 8em;" src="assets/illustration/lowwatering.png" alt="water" *ngIf="infoCurrentPlant.waterNeed == 'Faible'">
+      <img style="width: auto; max-height: 8em;" src="assets/illustration/mediumwatering.png" alt="water" *ngIf="infoCurrentPlant.waterNeed == 'Moyen'">
+      <img style="width: auto; max-height: 8em;" src="assets/illustration/highwatering.png" alt="water" *ngIf="infoCurrentPlant.waterNeed == 'Important'">
     </div>
   </div>
   <div class="row">
@@ -18,11 +25,15 @@
         <mat-icon svgIcon="sun" aria-hidden="false"></mat-icon>
         <h5 class="pl-2">Ensoleillement</h5>
       </div>
-      <p class="font-weight-bolder pl-1">Intensité: Moyen</p>
-      <p class="pl-1">Cette plante à besoin de rayons de soleil indirects mais tout au long de la journée.</p>
+      <p class="font-weight-bolder pl-1">Intensité: {{infoCurrentPlant.sunNeed}}</p>
+      <p class="pl-1" *ngIf="infoCurrentPlant.sunNeed == 'Soleil'">La plante doit avoir du soleil direct toute la journée. En intérieur, c’est directement (moins d’1 m) devant une fenêtre orientée sud ou ouest.</p>
+      <p class="pl-1" *ngIf="infoCurrentPlant.sunNeed == 'Mi-ombre'">La plante doit avoir du soleil une partie de la journée seulement. En intérieur, c’est devant une fenêtre à l’est ou plus éloignée d’une fenêtre orientée sud ou ouest.</p>
+      <p class="pl-1" *ngIf="infoCurrentPlant.sunNeed == 'Ombre'">La plante doit être à l'ombre d'autres plantes. En intérieur, c’est le cas des pièces en hiver, des fenêtres au nord ou en partie occultées et quand la plante est loin de la fenêtre (+ de 2 m).</p>
     </div>
     <div class="col-4">
-      <img style="width: auto; max-height: 9em;" src="assets/illustration/mediumsun.png" alt="sun">
+      <img style="width: auto; max-height: 8em;" src="assets/illustration/highsun.png" alt="water" *ngIf="infoCurrentPlant.sunNeed == 'Soleil'">
+      <img style="width: auto; max-height: 8em;" src="assets/illustration/mediumsun.png" alt="water" *ngIf="infoCurrentPlant.sunNeed == 'Mi-ombre'">
+      <img style="width: auto; max-height: 8em;" src="assets/illustration/lowsun.png" alt="water" *ngIf="infoCurrentPlant.sunNeed == 'Ombre'">
     </div>
   </div>
   <div class="row pl-1 pr-1">
@@ -31,11 +42,11 @@
         <mat-icon svgIcon="plant" aria-hidden="false"></mat-icon>
         <h5 class="pl-2">Quand planter ? </h5>
       </div>
-      <p class="pl-1">Voici les mois parfait pour planter votre plante.</p>
+      <p class="pl-1">En vert les mois parfait pour planter votre plante :</p>
       <div class="row">
-        <div class="col-1 d-flex justify-content-center align-items-center align-text-center"
-          *ngFor="let m of months">
-          <div class="d-flex justify-content-center align-items-center align-text-center" [class.month]="!m.color" [class.green]="m.color">
+        <div class="col-1 d-flex justify-content-center align-items-center align-text-center" *ngFor="let m of months">
+          <div class="d-flex justify-content-center align-items-center align-text-center" [class.month]="!m.color"
+            [class.green]="m.color">
             {{m.m}}
           </div>
         </div>

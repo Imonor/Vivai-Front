@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class RecommendationsComponent implements OnInit {
 
   @Input() infoCurrentPlant: InfosPlant;
-  months = [ {m:'J', color: false}, {m:'F', color: false}, {m:'M', color: false}, {m:'A', color: true}, {m:'M', color: true}, {m:'J', color: true}, {m:'J', color: true}, {m:'A', color: true}, {m:'S', color: false}, {m:'O', color: false}, {m:'N', color: false}, {m:'D', color: false}];
+  months = [ {m:'J',mois:"Janvier", color: false}, {m:'F',mois:"Février", color: false}, {m:'M',mois:"Mars", color: false}, {m:'A',mois:"Avril", color: false}, {m:'M',mois:"Mai", color: false}, {m:'J',mois:"Juin", color: false}, {m:'J',mois:"Juillet", color: false}, {m:'A',mois:"Aout", color: false}, {m:'S',mois:"Septembre", color: false}, {m:'O',mois:"Octobre", color: false}, {m:'N',mois:"Novembre", color: false}, {m:'D',mois:"Décembre", color: false}];
 
   constructor(iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,) {
@@ -27,6 +27,19 @@ export class RecommendationsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setMonths();
+  }
+
+  setMonths() {
+    this.months.forEach(vm => {
+      this.infoCurrentPlant.plantationMonths.forEach(pm => {
+        console.log("moiloc", vm);
+        console.log("moiinput", pm);
+        if(vm.mois === pm ) {
+          vm.color = true;
+        }
+      })
+    })
   }
 
 }
