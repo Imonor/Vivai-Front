@@ -84,7 +84,7 @@ import { HistoryDialogComponent } from './dashboard/plant-page/lila-plant/histor
   providers: [DatePipe],
   bootstrap: [AppComponent],
   entryComponents: [IosInstallComponent, LoaderComponent, CountryCodeSelectComponent, LilaComponent, AddPlantDialogComponent,
-                    UpdatePlantDialogComponent],
+                    UpdatePlantDialogComponent, HistoryDialogComponent],
 })
 export class AppModule {
 }

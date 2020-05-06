@@ -3,7 +3,8 @@ import { InfosPlant } from 'src/app/models/infos-plant';
 import { Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { UserPlant } from 'src/app/models/user-plant';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { HistoryDialogComponent } from './history-dialog/history-dialog.component';
 
 @Component({
   selector: 'vivai-lila-plant',
@@ -17,7 +18,7 @@ export class LilaPlantComponent implements OnInit {
   private _mobileQueryListener: () => void;
   display: Boolean = false;
   currentPlant: UserPlant = null;
-  updatePlantDialogRef: MatDialogRef<UpdatePlantDialogComponent>;
+  historyDialogRef: MatDialogRef<HistoryDialogComponent>;
 
   constructor(private router: Router, media: MediaMatcher, changeDetectorRef: ChangeDetectorRef, private dialog: MatDialog) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -47,14 +48,10 @@ export class LilaPlantComponent implements OnInit {
   }
 
   openHistoryDialog() {
-    this.historyDialogRef = this.dialog.open(UpdatePlantDialogComponent, {
+    this.historyDialogRef = this.dialog.open(HistoryDialogComponent, {
       disableClose: true,
-      data: { currentPlant: this.currentPlant, }
+      data: { plant: this.infoCurrentPlant, }
     });
-    this.updatePlantDialogRef.afterClosed().subscribe(result => {
-      console.log("dialogResulat", result);
-      this._plantService.getUserPlantInfos(this.currentPlant.id).subscribe(data => this.currentPlant = data)
-      });
   }
 
 }

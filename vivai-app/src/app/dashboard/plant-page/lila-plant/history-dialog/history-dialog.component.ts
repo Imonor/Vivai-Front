@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { UserPlant } from 'src/app/models/user-plant';
 
 @Component({
   selector: 'vivai-history-dialog',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public currentPlant: UserPlant) { }
 
   ngOnInit() {
   }
