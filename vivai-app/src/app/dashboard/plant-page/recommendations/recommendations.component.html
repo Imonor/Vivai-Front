@@ -1,5 +1,53 @@
+<div class="pl-3 pr-3">
+  <div class="row">
+    <div class="col-8">
+      <div class="d-flex align-text-center">
+        <mat-icon svgIcon="water-color" aria-hidden="false"></mat-icon>
+        <h5 class="pl-2">Arrosage</h5>
+      </div>
+      <p class="pl-1">Cette plante doit etre arrosée <span class="water"> Xfois</span><span> </span> et <b>avec
+          amour</b>.</p>
+    </div>
+    <div class="col-4">
+      <img style="width: auto; max-height: 8em;" src="assets/illustration/mediumwatering.png" alt="water">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <div class="d-flex align-text-center">
+        <mat-icon svgIcon="sun" aria-hidden="false"></mat-icon>
+        <h5 class="pl-2">Ensoleillement</h5>
+      </div>
+      <p class="font-weight-bolder pl-1">Intensité: Moyen</p>
+      <p class="pl-1">Cette plante à besoin de rayons de soleil indirects mais tout au long de la journée.</p>
+    </div>
+    <div class="col-4">
+      <img style="width: auto; max-height: 9em;" src="assets/illustration/mediumsun.png" alt="sun">
+    </div>
+  </div>
+  <div class="row pl-1 pr-1">
+    <div class="col">
+      <div class="d-flex align-text-center">
+        <mat-icon svgIcon="plant" aria-hidden="false"></mat-icon>
+        <h5 class="pl-2">Saison de Floraison</h5>
+      </div>
+      <p class="pl-1">Votre plante est actuelement en floraison.</p>
+      <div class="row">
+        <div class="col-1 d-flex justify-content-center align-items-center align-text-center"
+          *ngFor="let m of months">
+          <div class="d-flex justify-content-center align-items-center align-text-center" [class.month]="!m.color" [class.green]="m.color">
+            {{m.m}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <div class="row justify-content-between ml-2 mr-2">
+
+
+
+<!--div class="row justify-content-between ml-2 mr-2">
     <div class="col">
       <h5>Arrosage :</h5>
       <p style="font-size: small;">Cette plante doit être arrosée
@@ -17,7 +65,7 @@
   <div class="row justify-content-between ml-2 mr-2">
     <div class="col">
       <h5>Ensolleillement :</h5>
-      <h6>Intensité : {{infoCurrentPlant?.sunNeed}}</h6>
+      <h5>Intensité : {{infoCurrentPlant?.sunNeed}}</h5>
       <p style="font-size: small;" *ngIf="infoCurrentPlant?.sunNeed === 'Ombre'">
         La plante doit être à l'ombre. Vous devriez donc la placer loin des fenêtres ou dans des parties occultées.
       </p>
@@ -39,5 +87,4 @@
     <div class="col-0.5" *ngFor="let m of months">
       <p style="background-color: lightgrey; border-radius: 2px;; width: 10px;">{{m}}</p>
     </div>
-  </div>
-
+  </div-->
