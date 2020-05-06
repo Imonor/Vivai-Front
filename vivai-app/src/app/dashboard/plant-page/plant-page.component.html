@@ -4,15 +4,15 @@
     more_vert</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item (click)="share()" *ngIf = "!currentPlant?.shared">
+  <button mat-menu-item (click)="share()" *ngIf = "!currentPlant?.shared && isAuthor()">
     <mat-icon>share</mat-icon>
     <span>Partager</span>
   </button>
-  <button mat-menu-item (click)="unshare()" *ngIf = "currentPlant?.shared">
+  <button mat-menu-item (click)="unshare()" *ngIf = "currentPlant?.shared && isAuthor()">
     <mat-icon>share</mat-icon>
     <span>Ne plus partager</span>
   </button>
-  <button mat-menu-item (click)="delete()">
+  <button mat-menu-item (click)="delete()" *ngIf="isAuthor()">
     <mat-icon>delete</mat-icon>
     <span>Supprimer</span>
   </button>
@@ -109,7 +109,7 @@
 
         <div class="row partiedubas">
 
-          <div class="col-12 col-sm-12 col-md-9 col-lg-4" [class.mb-2]="mobileQuery.matches == true">
+          <div class="col-12 col-sm-12 col-md-9 col-lg-4" [class.mb-2]="mobileQuery.matches == true" *ngIf="isAuthor()">
             <div class="reportingForm card m-1 h-100">
               <h4 class="pt-3 pl-3">Fait aujourd'hui : </h4>
               <div class="h2line"></div>

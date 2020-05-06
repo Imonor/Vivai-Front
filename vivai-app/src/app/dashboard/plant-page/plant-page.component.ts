@@ -10,7 +10,7 @@ import { UserPlant } from 'src/app/models/user-plant';
 import { InfosPlant } from 'src/app/models/infos-plant';
 import { NotificationService } from 'src/app/services/notification.service';
 import { PlantReport } from 'src/app/models/plant-report';
-import { trigger } from '@angular/animations';
+import Auth, { CognitoUser } from '@aws-amplify/auth';
 import { UpdatePlantDialogComponent } from './update-plant-dialog/update-plant-dialog.component';
 
 @Component({
@@ -33,7 +33,32 @@ export class PlantPageComponent implements OnInit {
   });
 
   currentPlant: UserPlant = null;
-  infoCurrentPlant: InfosPlant = null;
+  infoCurrentPlant: InfosPlant = {
+    careLevel: "Modéré",
+    coldResitance: "Moyenne",
+    decription: "L’hibiscus est une fleur symbole des îles tropicales, très éphémère, mais se renouvelant continuellement. La palette de couleur est large pour cette plante frileuse à cultiver en pot sous nos climats.",
+    ecologicalTips: [
+      "Les papillons et insectes butineurs visitent souvent les fleurs d’hibiscus avec leurs étamines formant un tube.",
+      "Les pousses et les feuilles de l’Hibiscus sabdariffa sont utilisées en cuisine, ainsi que ses fleurs séchées qui sont infusées pour réaliser des boissons, confitures et sirops très riches en acide ascorbique."
+    ],
+    family: "Malvacées",
+    growth: "Normale",
+    history: [
+      "L’Hibiscus rosa-sinensis laisse un flou dans l’histoire botanique. On lui attribue des origines chinoises mais il n’existe plus aujourd’hui de formes sauvages de cette espèce. Elle semble être cultivée depuis l’Antiquité pour son caractère ornemental et aurait voyagé au gré des échanges commerciaux. Aujourd’hui, de nombreux cultivars issus de multiples croisements offrent une importante palette de couleurs mais aussi de dimensions de fleurs.",
+      "Les autres espèces botaniques, réparties exclusivement dans des régions chaudes, ont un usage médicinal ou culinaire depuis fort longtemps pour de nombreuses civilisations. Encore aujourd’hui, les fleurs de l’espèce sabdariffa servent à de multiples usages ancestraux en Égypte."
+    ],
+    id: "3048ff6f-b7ed-4da1-8b00-14e0d22d5f17",
+    latinName: "Hibiscus",
+    pest: "On ne taille pas les autres types car les vivaces\nsont rabattues l’hiver et les annuelles meurent.",
+    picUrl: "https://media.ooreka.fr/public/image/plant/545/mainImage-full-11157199.jpg",
+    plantationMonths: [
+      "Mars",
+      "Avril"
+    ],
+    species: "Hibiscus",
+    sunNeed: "Soleil",
+    waterNeed: "Moyen"
+  }
   listReport: PlantReport[];
   sharedPlants: UserPlant[];
   public reportingForm: FormGroup;
@@ -45,6 +70,9 @@ export class PlantPageComponent implements OnInit {
 
   updatePlantDialogRef: MatDialogRef<UpdatePlantDialogComponent>;
   taskNumber: 0;
+  profile: any = {};
+  user: CognitoUser;
+  userOk: boolean;
 
   constructor(public _loading: LoaderService, iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer, media: MediaMatcher, changeDetectorRef: ChangeDetectorRef,
@@ -71,6 +99,7 @@ export class PlantPageComponent implements OnInit {
 
   ngOnInit() {
     this.catchPlantFromHistory();
+    this.getUserInfo();
     this.initForm();
     this.getInfoPlant();
     this.getReportings();
@@ -150,22 +179,26 @@ export class PlantPageComponent implements OnInit {
       console.log(data);
       this._notification.show("La plante à été partagée avec succès !", "ok");
     },
-      error => { console.log(error);
-                 this._notification.show("Une erreur est survenue, Essayez plus tard.", "ok"); }
+      error => {
+        console.log(error);
+        this._notification.show("Une erreur est survenue, Essayez plus tard.", "ok");
+      }
     );
   }
 
   unshare() {
-      this.currentPlant.shared = false;
-      console.log(this.currentPlant);
-      this._plantService.sharePlant(this.currentPlant).subscribe(data => {
-        console.log(data);
-        this._notification.show("Votre plante n'est plus partagée !", "ok");
-      },
-        error => { console.log(error);
-                   this._notification.show("Une erreur est survenue, Essayez plus tard.", "ok"); }
-      );
-    }
+    this.currentPlant.shared = false;
+    console.log(this.currentPlant);
+    this._plantService.sharePlant(this.currentPlant).subscribe(data => {
+      console.log(data);
+      this._notification.show("Votre plante n'est plus partagée !", "ok");
+    },
+      error => {
+        console.log(error);
+        this._notification.show("Une erreur est survenue, Essayez plus tard.", "ok");
+      }
+    );
+  }
 
   delete() {
     this._plantService.deleteUserPlant(this.currentPlant.id).subscribe(data => {
@@ -180,9 +213,9 @@ export class PlantPageComponent implements OnInit {
     // let serializedPlant = JSON.stringify(plantObj); // ne marche pas mdr
     this._plantService.addReporting(this.currentPlant.id, reportingObj).subscribe(data => {
       console.log(data);
-      if(this.isReported) {
+      if (this.isReported) {
         this._notification.show('Mise a jour effectuées avec succes !', 'ok');
-      }else this._notification.show('Le reporting à été ajoutée avec succes !', 'ok');
+      } else this._notification.show('Le reporting à été ajoutée avec succes !', 'ok');
       this.clearReporting();
       this.checkTaskNumber();
       this.getReportings();
@@ -230,7 +263,7 @@ export class PlantPageComponent implements OnInit {
     } else {
       day = dateOfDay.getDate();
     }
-    if(this.listReport.length > 0) {
+    if (this.listReport.length > 0) {
       dateLastReporting = this.listReport[this.listReport.length - 1].date;
     }
 
@@ -251,21 +284,23 @@ export class PlantPageComponent implements OnInit {
     return date;
   }
 
-  getTooltipText(date,report) {
+  getTooltipText(date, report) {
     let message = date;
-    if(report.comment !== "NULL") message += "- Note : " + report.comment;
+    if (report.comment !== "NULL") message += "- Note : " + report.comment;
     return message;
   }
 
   openUpdatePlant() {
-    this.updatePlantDialogRef = this.dialog.open(UpdatePlantDialogComponent, { disableClose: true,
-                                                                                data: {currentPlant: this.currentPlant, }} );
+    this.updatePlantDialogRef = this.dialog.open(UpdatePlantDialogComponent, {
+      disableClose: true,
+      data: { currentPlant: this.currentPlant, }
+    });
     this.updatePlantDialogRef.afterClosed().subscribe(result => {
-      console.log("dialogResulat",result);
+      console.log("dialogResulat", result);
       this._plantService.getUserPlantInfos(this.currentPlant.id).subscribe(data => {
         this.currentPlant = data;
       },
-      error => this.currentPlant.nickname = "ERROR"
+        error => this.currentPlant.nickname = "ERROR"
       );
     });
   }
@@ -273,9 +308,22 @@ export class PlantPageComponent implements OnInit {
   goToSharedPlants() {
     this._plantService.getSharedPlants(this.currentPlant.plantId).subscribe(data => {
       this.sharedPlants = data;
-      this.router.navigate(['/shared-plants-page'], {state: {data: this.sharedPlants, data2: this.currentPlant}});
+      this.router.navigate(['/shared-plants-page'], { state: { data: this.sharedPlants, data2: this.currentPlant } });
     }
     );
+  }
+
+  isAuthor() {
+    if (this.userOk && this.currentPlant.userId == this.user.getUsername()) return true;
+    else return false
+  }
+
+  async getUserInfo() {
+    this._loading.show();
+    this.profile = await Auth.currentUserInfo();
+    this.user = await Auth.currentAuthenticatedUser();
+    this.userOk = true;
+    this._loading.hide();
   }
 
 }

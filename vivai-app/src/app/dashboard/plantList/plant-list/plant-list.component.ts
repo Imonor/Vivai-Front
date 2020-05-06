@@ -34,7 +34,7 @@ export class PlantListComponent implements OnInit {
   constructor(private dialog: MatDialog, private _plantService: PlantService, public _loading: LoaderService) { }
 
   ngOnInit() {
-    // this._loading.show("waiting for listPlant"); Pour l'instant ca bug
+    this._loading.show();
     this.getListUserPlant();
   }
 
@@ -43,7 +43,6 @@ export class PlantListComponent implements OnInit {
     this.addPlantDialogRef = this.dialog.open(AddPlantDialogComponent, { disableClose: true });
     this.addPlantDialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      this.getListUserPlant();
     });
   }
 
@@ -51,8 +50,9 @@ export class PlantListComponent implements OnInit {
     this._plantService.getListUserPlants().subscribe(data => {
       console.log(data);
       this.listPlant = data;
+      this._loading.hide();
     })
-    // if(this.listPlante != undefined ) this._loading.hide();
+    if(this.listPlant != undefined ) this._loading.hide();
   }
 
 }

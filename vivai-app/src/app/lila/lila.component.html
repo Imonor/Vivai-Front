@@ -7,6 +7,7 @@
 
 <mat-dialog-content>
   <p>Bienvenue dans Lila, l'assitance vocale</p>
+  <p class="text-italic" *ngIf="messages.length < 1">Essayez :"dit moi une annecdote sur le basilic"</p>
 
 
   <!--div *ngIf="router.url === '/dashboard'">Vous venez du dashboard</div>

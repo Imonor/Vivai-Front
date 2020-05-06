@@ -1,12 +1,17 @@
 export class InfosPlant {
     careLevel: string;
-    coldResistance: string;
+    coldResitance: string;
+    decription: string;
+    ecologicalTips: [string, string];
     family: string;
     growth: string;
-    heightMature: string;
-    picUrl: string;
+    history: [string,string];
+    id: string;
+    latinName: string;
+    pest: string;
+    picUrl:string;
+    plantationMonths: [string,string];
     species: string;
     sunNeed: string;
     waterNeed: string;
-    widthMature: string;
 }

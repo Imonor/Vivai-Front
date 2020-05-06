@@ -98,7 +98,6 @@ export class LilaComponent implements OnInit {
       console.log(data);
       this.receiveMessage(data.Response);
     });
-
     }
 }
 
