@@ -48,9 +48,9 @@
                     <p class="font-weight-bolder">{{currentPlant.temperature}}</p>
                     <p>
                        Ensoleilement <br *ngIf="!mobileQuery.matches"/>
-                      <span *ngIf="currentPlant.sunExpo == 1"> Faible ☀</span>
-                      <span *ngIf="currentPlant.sunExpo == 2"> Moyen ☀☀</span>
-                      <span *ngIf="currentPlant.sunExpo == 3"> Elevé ☀☀☀</span>
+                      <span *ngIf="currentPlant.sunExpo == '1'"> Faible ☀</span>
+                      <span *ngIf="currentPlant.sunExpo == '2'"> Moyen ☀☀</span>
+                      <span *ngIf="currentPlant.sunExpo == '3'"> Elevé ☀☀☀</span>
                     </p>
                     <p>
                       <span *ngIf="currentPlant.shared == true">Partagée</span>
