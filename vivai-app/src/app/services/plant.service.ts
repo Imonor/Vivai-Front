@@ -126,4 +126,12 @@ export class PlantService {
     console.log(params);
     return this.httpClient.request('PUT', this.API_URL + 'updatePlant', {responseType: 'json', params});
   }
+
+  getSharedPlants(plantId): Observable<UserPlant[]> {
+    console.log(plantId);
+    let params = new HttpParams();
+    params = params.append('plantId', plantId.toString());
+    params = params.append('userId', this.user.getUsername());
+    return this.httpClient.get<UserPlant[]>(this.API_URL + 'getSharedPlants', {responseType : 'json', params});
+  }
 }

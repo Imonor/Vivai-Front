@@ -35,6 +35,7 @@ export class PlantPageComponent implements OnInit {
   currentPlant: UserPlant = null;
   infoCurrentPlant: InfosPlant = null;
   listReport: PlantReport[];
+  sharedPlants: UserPlant[];
   public reportingForm: FormGroup;
   public readonly waterField = 'water';
   public readonly pruneField = 'prune';
@@ -215,6 +216,7 @@ export class PlantPageComponent implements OnInit {
   }
 
   isReported() {
+    let dateLastReporting;
     let dateOfDay = new Date();
     let month;
     let day;
@@ -228,8 +230,10 @@ export class PlantPageComponent implements OnInit {
     } else {
       day = dateOfDay.getDate();
     }
+    if(this.listReport.length > 0) {
+      dateLastReporting = this.listReport[this.listReport.length - 1].date;
+    }
 
-    let dateLastReporting = this.listReport[this.listReport.length - 1].date;
     console.log('date dernier reporting : ' + dateLastReporting);
     let newDateOfDay = (dateOfDay.getFullYear() + '-' + month + '-' + day);
     if (newDateOfDay === dateLastReporting) {
@@ -264,6 +268,14 @@ export class PlantPageComponent implements OnInit {
       error => this.currentPlant.nickname = "ERROR"
       );
     });
+  }
+
+  goToSharedPlants() {
+    this._plantService.getSharedPlants(this.currentPlant.plantId).subscribe(data => {
+      this.sharedPlants = data;
+      this.router.navigate(['/shared-plants-page'], {state: {data: this.sharedPlants, data2: this.currentPlant}});
+    }
+    );
   }
 
 }
