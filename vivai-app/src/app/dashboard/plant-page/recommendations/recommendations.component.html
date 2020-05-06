@@ -44,7 +44,7 @@
       </div>
       <p class="pl-1">En vert les mois parfaits pour planter votre plante :</p>
       <div class="row">
-        <div class="col-1 d-flex justify-content-center align-items-center align-text-center" *ngFor="let m of months">
+        <div class="col-1 d-flex justify-content-center align-items-center align-text-center" [matTooltip]="m.mois" *ngFor="let m of months">
           <div class="d-flex justify-content-center align-items-center align-text-center" [class.month]="!m.color"
             [class.green]="m.color">
             {{m.m}}
