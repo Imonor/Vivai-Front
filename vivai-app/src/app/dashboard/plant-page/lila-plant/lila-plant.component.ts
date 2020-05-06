@@ -38,7 +38,7 @@ export class LilaPlantComponent implements OnInit {
       this.router.navigate(['/dashboard']);
     } else this.display = true;
 
-    console.log(this.infoCurrentPlant);
+    //console.log(this.infoCurrentPlant);
   }
 
   goBack() {

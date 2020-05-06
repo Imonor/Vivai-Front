@@ -69,7 +69,7 @@ export class AddPlantDialogComponent implements OnInit {
 
   ngOnInit() {
     this._plantService.getSupportedPlants().subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.plantsType = data;
       this.filtredPlantType = this.plantTypeControl.valueChanges
         .pipe(
@@ -98,7 +98,7 @@ export class AddPlantDialogComponent implements OnInit {
   addPlant() {
     let plantObj = this.plantForm.getRawValue();
     this._plantService.insertPlant(plantObj).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.dialogRef.close();
       this._notification.show("La plante à été ajoutée avec succes !", "ok");
     },

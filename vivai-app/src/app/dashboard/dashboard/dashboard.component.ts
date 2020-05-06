@@ -48,11 +48,8 @@ export class DashboardComponent implements OnInit {
   }
 
   getRandomInfo() {
-    // this._loading.show();
     this._plantService.getRandomInfos().subscribe(data => {
       this.infos = data;
-      // console.log(data);
-      // this._loading.hide();
     }
       );
   }

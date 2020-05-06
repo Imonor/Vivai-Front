@@ -49,9 +49,9 @@ export class LilaComponent implements OnInit {
     });
 
     this.speech.Result.subscribe((result: RecognitionResult) => {
-      console.log('Result event on the controller.');
-      console.log(result);
-      console.log('target : ' + this.targetElementName);
+      //console.log('Result event on the controller.');
+      //console.log(result);
+      //console.log('target : ' + this.targetElementName);
       window.document.getElementById(this.targetElementName).focus();
       if (!result) {
         this.targetElementName = null;
@@ -83,7 +83,7 @@ export class LilaComponent implements OnInit {
 
   public toggleListening(fieldSelected: string): void {
     this.targetElementName = fieldSelected;
-    console.log('field selected : ' + fieldSelected);
+    //console.log('field selected : ' + fieldSelected);
 
     if (this.speech.IsListening) {
       this.speech.stopListening();
@@ -94,7 +94,7 @@ export class LilaComponent implements OnInit {
 
   getLilaResponse(userMessage) {
     this.speech.getLilaResponse(userMessage).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.receiveMessage(data.Response);
     });
     }

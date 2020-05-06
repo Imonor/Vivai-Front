@@ -64,7 +64,7 @@ export class UpdatePlantDialogComponent implements OnInit {
      }
 
   ngOnInit() {
-    console.log(this.currentPlant);
+    //console.log(this.currentPlant);
   }
 
   get nickNameInput() {
@@ -82,14 +82,11 @@ export class UpdatePlantDialogComponent implements OnInit {
 
   updatePlant() {
     let plantObj = this.plantForm.getRawValue();
-    console.log(this.currentPlant);
     this.currentPlant.nickname = plantObj.nickName;
     this.currentPlant.location = plantObj.location;
     this.currentPlant.temperature = plantObj.temperature;
-    this.currentPlant.sunExpo = plantObj.sunExpo;
-    console.log("curentPlant", this.currentPlant);
     this._plantService.updatePlant(this.currentPlant).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.dialogRef.close();
       this._notification.show("La plante à été modifiée avec succes !", "ok");
     },

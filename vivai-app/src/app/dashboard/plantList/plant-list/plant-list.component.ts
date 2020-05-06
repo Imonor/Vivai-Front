@@ -48,7 +48,7 @@ export class PlantListComponent implements OnInit {
   getListUserPlant() {
     this._loading.show();
     this._plantService.getListUserPlants().subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.listPlant = data;
       this._loading.hide();
     })

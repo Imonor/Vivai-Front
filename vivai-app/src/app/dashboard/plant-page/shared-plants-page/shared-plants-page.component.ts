@@ -41,7 +41,7 @@ export class SharedPlantsPageComponent implements OnInit {
 
     } else this.display = true;
 
-    console.log(this.listSharedPlants);
+    //console.log(this.listSharedPlants);
   }
 
   async getUserInfo() {

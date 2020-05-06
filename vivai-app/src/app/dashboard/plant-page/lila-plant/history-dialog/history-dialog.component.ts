@@ -12,8 +12,8 @@ export class HistoryDialogComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public plant: InfosPlant) { }
 
   ngOnInit() {
-    console.log(this.plant);
-    console.log(this.plant.ecologicalTips);
+    //console.log(this.plant);
+    //console.log(this.plant.ecologicalTips);
   }
 
 }

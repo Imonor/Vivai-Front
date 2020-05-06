@@ -104,7 +104,7 @@ export class PlantPageComponent implements OnInit {
     if (this.display) {
       this._plantService.getPlantInfos(this.currentPlant.plantId).subscribe(data => {
         this.infoCurrentPlant = data;
-        console.log(this.infoCurrentPlant);
+        //console.log(this.infoCurrentPlant);
       }
         );
     }
@@ -129,7 +129,7 @@ export class PlantPageComponent implements OnInit {
       this.router.navigate(['/dashboard']);
     } else this.display = true;
 
-    console.log(this.currentPlant);
+    //console.log(this.currentPlant);
   }
 
   checkTaskNumber() {
@@ -152,9 +152,9 @@ export class PlantPageComponent implements OnInit {
 
   share() {
     this.currentPlant.shared = true;
-    console.log(this.currentPlant);
+    //console.log(this.currentPlant);
     this._plantService.sharePlant(this.currentPlant).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this._notification.show("La plante à été partagée avec succès !", "ok");
     },
       error => {
@@ -166,9 +166,9 @@ export class PlantPageComponent implements OnInit {
 
   unshare() {
     this.currentPlant.shared = false;
-    console.log(this.currentPlant);
+    //console.log(this.currentPlant);
     this._plantService.sharePlant(this.currentPlant).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this._notification.show("Votre plante n'est plus partagée !", "ok");
     },
       error => {
@@ -180,7 +180,7 @@ export class PlantPageComponent implements OnInit {
 
   delete() {
     this._plantService.deleteUserPlant(this.currentPlant.id).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this._notification.show(data.Message, "OK");
       this.router.navigate(['/dashboard']);
     });
@@ -189,7 +189,7 @@ export class PlantPageComponent implements OnInit {
   addReporting() {
     let reportingObj = this.reportingForm.getRawValue();
     this._plantService.addReporting(this.currentPlant.id, reportingObj).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       if (this.isReported) {
         this._notification.show('Mise à jour effectuée avec succès !', 'ok');
       } else this._notification.show('Le reporting à été ajouté avec succes !', 'ok');
@@ -244,12 +244,12 @@ export class PlantPageComponent implements OnInit {
       dateLastReporting = this.listReport[this.listReport.length - 1].date;
     }
 
-    console.log('date dernier reporting : ' + dateLastReporting);
+    //console.log('date dernier reporting : ' + dateLastReporting);
     let newDateOfDay = (dateOfDay.getFullYear() + '-' + month + '-' + day);
     if (newDateOfDay === dateLastReporting) {
       this.alreadyReported = true;
     }
-    console.log("reported ? : " + this.alreadyReported);
+    //console.log("reported ? : " + this.alreadyReported);
   }
 
   goToLilaPlant() {
@@ -273,7 +273,7 @@ export class PlantPageComponent implements OnInit {
       data: { currentPlant: this.currentPlant, }
     });
     this.updatePlantDialogRef.afterClosed().subscribe(result => {
-      console.log("dialogResulat", result);
+      //console.log("dialogResulat", result);
       this._plantService.getUserPlantInfos(this.currentPlant.id).subscribe(data => this.currentPlant = data)
       });
   }
