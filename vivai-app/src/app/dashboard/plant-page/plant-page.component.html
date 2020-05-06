@@ -37,17 +37,22 @@
             <div class="row m-1">
               <div class="col-12 col-sm-12 col-md-12 col-lg-4">
                 <div class="row">
-                  <div class="col-6 col-sm-6 col-md-6 col-lg-12 p-2">
+                  <div class="col-6 col-sm-6 col-md-6 col-lg-12 pl-2" [class.pb-2]="mobileQuery.matches == false">
                     <h4>{{currentPlant.nickname}}</h4>
                     <h6>{{currentPlant.species}}</h6>
                     <mat-chip-list class="d-flex justify-content-right align-items-center">
                       <mat-chip>{{currentPlant.location}}</mat-chip>
                     </mat-chip-list>
                   </div>
-                  <div class="col-6 col-sm-6 col-md-6 col-lg-12 p-2">
-                    <h6>{{currentPlant.temperature}}</h6>
-                    <p>Exposition au soleil {{currentPlant.sunExpo}} / 3</p>
-                    <button (click)="openUpdatePlant()">Modifier les données de la plante</button>
+                  <div class="col-6 col-sm-6 col-md-6 col-lg-12 pl-2">
+                    <p class="font-weight-bolder">{{currentPlant.temperature}}</p>
+                    <p>
+                       Ensoleilement <br *ngIf="!mobileQuery.matches"/>
+                      <span *ngIf="currentPlant.sunExpo == 1"> Faible ☀</span>
+                      <span *ngIf="currentPlant.sunExpo == 2"> Moyen ☀☀</span>
+                      <span *ngIf="currentPlant.sunExpo == 3"> Elevé ☀☀☀</span>
+                    </p>
+                    <u class="font-italic	font-weight-light" style="cursor: pointer;" (click)="openUpdatePlant()" >Modifier les informations ‣</u>
                   </div>
                 </div>
               </div>
@@ -71,7 +76,7 @@
                 <h6 style="position:absolute; bottom: 0;opacity: 0.7;">Vous n'avez pas encore ajouter d'activitées.
                   Ajoutez en une dans "Fait aujourd'hui".</h6>
               </div>
-              <div class="col-2 mt-auto p-0" *ngFor="let report of listReport"
+              <div class="col-2 mt-auto p-0" style="cursor: pointer;" *ngFor="let report of listReport"
                 [matTooltip]="getTooltipText((getDate(report.date) | date:'EEEE d MMMM y':'+0200':'fr'),report)">
                 <div class="col-shape pl-4 pr-4 d-flex flex-column align-items-center"
                   [class.mr-1]="mobileQuery.matches == true" [class.mr-2]="mobileQuery.matches == false"
