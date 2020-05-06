@@ -38,6 +38,7 @@ import { RecommendationsComponent } from './dashboard/plant-page/recommendations
 import { LilaPlantComponent } from './dashboard/plant-page/lila-plant/lila-plant.component';
 import { SharedPlantsPageComponent } from './dashboard/plant-page/shared-plants-page/shared-plants-page.component';
 import { UpdatePlantDialogComponent } from './dashboard/plant-page/update-plant-dialog/update-plant-dialog.component';
+import { HistoryDialogComponent } from './dashboard/plant-page/lila-plant/history-dialog/history-dialog.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { UpdatePlantDialogComponent } from './dashboard/plant-page/update-plant-
     LilaPlantComponent,
     SharedPlantsPageComponent,
     UpdatePlantDialogComponent,
+    HistoryDialogComponent,
   ],
   imports: [
     BrowserModule,
