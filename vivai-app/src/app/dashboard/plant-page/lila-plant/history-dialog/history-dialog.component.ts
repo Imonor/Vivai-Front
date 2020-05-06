@@ -13,6 +13,8 @@ export class HistoryDialogComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.plant);
+    console.log(this.plant.plant.pest);
+    console.log(this.plant.ecologicalTips);
   }
 
 }
