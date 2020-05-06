@@ -52,6 +52,10 @@
                       <span *ngIf="currentPlant.sunExpo == 2"> Moyen ☀☀</span>
                       <span *ngIf="currentPlant.sunExpo == 3"> Elevé ☀☀☀</span>
                     </p>
+                    <p>
+                      <span *ngIf="currentPlant.shared == true">Partagée</span>
+                      <span *ngIf="currentPlant.shared == false">Non partagée</span>
+                    </p>
                     <u class="font-italic	font-weight-light" style="cursor: pointer;" (click)="openUpdatePlant()" >Modifier les informations ‣</u>
                   </div>
                 </div>
