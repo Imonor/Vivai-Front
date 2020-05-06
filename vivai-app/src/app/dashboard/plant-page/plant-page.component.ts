@@ -297,12 +297,8 @@ export class PlantPageComponent implements OnInit {
     });
     this.updatePlantDialogRef.afterClosed().subscribe(result => {
       console.log("dialogResulat", result);
-      this._plantService.getUserPlantInfos(this.currentPlant.id).subscribe(data => {
-        this.currentPlant = data;
-      },
-        error => this.currentPlant.nickname = "ERROR"
-      );
-    });
+      this._plantService.getUserPlantInfos(this.currentPlant.id).subscribe(data => this.currentPlant = data)
+      });
   }
 
   goToSharedPlants() {
