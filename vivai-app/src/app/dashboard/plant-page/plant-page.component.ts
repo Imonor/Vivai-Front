@@ -263,7 +263,7 @@ export class PlantPageComponent implements OnInit {
 
   getTooltipText(date, report) {
     let message = date;
-    if (report.comment !== "NULL") message += "- Note : " + report.comment;
+    if (report.comment !== "null") message += "- Note : " + report.comment;
     return message;
   }
 
