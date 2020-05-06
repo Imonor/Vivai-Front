@@ -26,13 +26,13 @@ export class AddPlantDialogComponent implements OnInit {
   filtredPlantType: Observable<SupportedPlant[]>;
   plantsType: SupportedPlant[];
 
-  // For place selection 
+  // For place selection
   places = ["Salon", "Jardin", "Cuisine", "Chambre"];
 
-  // For place selection 
+  // For place selection
   temperatures = ["27.5°C - 30°C", "25°C - 27.5°C", "22.5°C - 25°C", "20°C - 22.5°C", "17,5°C - 20°C", "15°C - 17.5°C", "12,5°C - 15°C", "10°C - 12.5°C", "7.5°C - 10°C", "5°C - 7.5°C", "2.5°C - 5°C", "0°C - 2.5°C"]
 
-  // For sunExpo selection 
+  // For sunExpo selection
   sunExpos = [
     {
       value: "1",
@@ -96,8 +96,7 @@ export class AddPlantDialogComponent implements OnInit {
   }
 
   addPlant() {
-    let plantObj = this.plantForm.getRawValue(); // {name: '', description: ''}
-    // let serializedPlant = JSON.stringify(plantObj); // ne marche pas mdr
+    let plantObj = this.plantForm.getRawValue();
     this._plantService.insertPlant(plantObj).subscribe(data => {
       console.log(data);
       this.dialogRef.close();

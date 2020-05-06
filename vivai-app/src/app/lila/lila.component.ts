@@ -60,7 +60,6 @@ export class LilaComponent implements OnInit {
       if (this.targetElementName === this.messageHeardField) {
         this.Message.setValue(result.transcript);
       }
-      //this.sendMessage(result.transcript);
     });
   }
 

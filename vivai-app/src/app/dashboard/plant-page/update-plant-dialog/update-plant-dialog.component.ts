@@ -23,12 +23,7 @@ export class UpdatePlantDialogComponent implements OnInit {
     temperature: new FormControl('', Validators.required),
     sunExpo: new FormControl('', Validators.required)
   });
-/*
-  public readonly nicknameField = 'nickName';
-  public readonly locationField = 'location';
-  public readonly temperatureField = 'temperature';
-  public readonly sunExpoField = 'sunExpo';
-*/
+
   // For place selection
   places = ["Salon", "Jardin", "Cuisine", "Chambre"];
 
@@ -71,19 +66,6 @@ export class UpdatePlantDialogComponent implements OnInit {
   ngOnInit() {
     console.log(this.currentPlant);
   }
-/*
-  public get Nickname(): AbstractControl {
-    return this.plantForm.get(this.nicknameField);
-  }
-  public get Location(): AbstractControl {
-    return this.messageDiv.get(this.messageHeardField);
-  }
-  public get Temperature(): AbstractControl {
-    return this.messageDiv.get(this.messageHeardField);
-  }
-  public get SunExpo(): AbstractControl {
-    return this.messageDiv.get(this.messageHeardField);
-  }*/
 
   get nickNameInput() {
     return this.plantForm.get("nickName");

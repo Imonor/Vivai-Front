@@ -34,32 +34,6 @@ export class PlantPageComponent implements OnInit {
 
   currentPlant: UserPlant = null;
   infoCurrentPlant: InfosPlant = null;
-  // = {
-  //   careLevel: "Modéré",
-  //   coldResitance: "Moyenne",
-  //   decription: "L’hibiscus est une fleur symbole des îles tropicales, très éphémère, mais se renouvelant continuellement. La palette de couleur est large pour cette plante frileuse à cultiver en pot sous nos climats.",
-  //   ecologicalTips: [
-  //     "Les papillons et insectes butineurs visitent souvent les fleurs d’hibiscus avec leurs étamines formant un tube.",
-  //     "Les pousses et les feuilles de l’Hibiscus sabdariffa sont utilisées en cuisine, ainsi que ses fleurs séchées qui sont infusées pour réaliser des boissons, confitures et sirops très riches en acide ascorbique."
-  //   ],
-  //   family: "Malvacées",
-  //   growth: "Normale",
-  //   history: [
-  //     "L’Hibiscus rosa-sinensis laisse un flou dans l’histoire botanique. On lui attribue des origines chinoises mais il n’existe plus aujourd’hui de formes sauvages de cette espèce. Elle semble être cultivée depuis l’Antiquité pour son caractère ornemental et aurait voyagé au gré des échanges commerciaux. Aujourd’hui, de nombreux cultivars issus de multiples croisements offrent une importante palette de couleurs mais aussi de dimensions de fleurs.",
-  //     "Les autres espèces botaniques, réparties exclusivement dans des régions chaudes, ont un usage médicinal ou culinaire depuis fort longtemps pour de nombreuses civilisations. Encore aujourd’hui, les fleurs de l’espèce sabdariffa servent à de multiples usages ancestraux en Égypte."
-  //   ],
-  //   id: "3048ff6f-b7ed-4da1-8b00-14e0d22d5f17",
-  //   latinName: "Hibiscus",
-  //   pest: "On ne taille pas les autres types car les vivaces\nsont rabattues l’hiver et les annuelles meurent.",
-  //   picUrl: "https://media.ooreka.fr/public/image/plant/545/mainImage-full-11157199.jpg",
-  //   plantationMonths: [
-  //     "Mars",
-  //     "Avril"
-  //   ],
-  //   species: "Hibiscus",
-  //   sunNeed: "Soleil",
-  //   waterNeed: "Moyen"
-  // }
   listReport: PlantReport[];
   sharedPlants: UserPlant[];
   public reportingForm: FormGroup;
@@ -213,13 +187,12 @@ export class PlantPageComponent implements OnInit {
   }
 
   addReporting() {
-    let reportingObj = this.reportingForm.getRawValue(); // {name: '', description: ''}
-    // let serializedPlant = JSON.stringify(plantObj); // ne marche pas mdr
+    let reportingObj = this.reportingForm.getRawValue();
     this._plantService.addReporting(this.currentPlant.id, reportingObj).subscribe(data => {
       console.log(data);
       if (this.isReported) {
-        this._notification.show('Mise a jour effectuées avec succes !', 'ok');
-      } else this._notification.show('Le reporting à été ajoutée avec succes !', 'ok');
+        this._notification.show('Mise à jour effectuée avec succès !', 'ok');
+      } else this._notification.show('Le reporting à été ajouté avec succes !', 'ok');
       this.clearReporting();
       this.checkTaskNumber();
       this.getReportings();
