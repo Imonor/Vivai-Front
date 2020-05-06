@@ -2,14 +2,14 @@ export class InfosPlant {
     careLevel: string;
     coldResistance: string;
     description: string;
-    ecologicalTips: Array<string> = new Array();
+    ecologicalTips: string;
     family: string;
     growth: string;
-    history: Array<string> = new Array();
+    history: string;
     id: string;
     latinName: string;
     pest: string;
-    picUrl:string;
+    picUrl: string;
     plantationMonths: Array<string> = new Array();
     species: string;
     sunNeed: string;
