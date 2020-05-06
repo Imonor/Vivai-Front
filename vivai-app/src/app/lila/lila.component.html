@@ -52,7 +52,7 @@
       </form>
         <div class="col">
           <button mat-icon-button color="accent" (click)="sendMessage(message.value)" style="height: 40px; width: 65px; left: -0.75em"><mat-icon>send</mat-icon></button>
-          <button mat-icon-button color="accent" (click)="receiveMessage(message.value)" style="height: 40px; width: 65px; left: -0.75em"><mat-icon>call_received</mat-icon></button>
+          <!--button mat-icon-button color="accent" (click)="receiveMessage(message.value)" style="height: 40px; width: 65px; left: -0.75em"><mat-icon>call_received</mat-icon></button-->
           <button class="mat-icon-button" (click)=toggleListening(messageHeardField) *ngIf="speech.SupportRecognition" style="height: 40px"><mat-icon>mic</mat-icon></button>
         </div>
     </div>
