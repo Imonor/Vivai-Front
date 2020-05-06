@@ -1,7 +1,7 @@
 export class InfosPlant {
     careLevel: string;
     coldResistance: string;
-    decription: string;
+    description: string;
     ecologicalTips: Array<string> = new Array();
     family: string;
     growth: string;

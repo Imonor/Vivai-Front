@@ -85,6 +85,7 @@ export class UpdatePlantDialogComponent implements OnInit {
     this.currentPlant.nickname = plantObj.nickName;
     this.currentPlant.location = plantObj.location;
     this.currentPlant.temperature = plantObj.temperature;
+    this.currentPlant.sunExpo = plantObj.sunExpo;
     this._plantService.updatePlant(this.currentPlant).subscribe(data => {
       //console.log(data);
       this.dialogRef.close();
