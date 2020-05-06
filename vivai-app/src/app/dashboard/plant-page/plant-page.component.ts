@@ -239,7 +239,7 @@ export class PlantPageComponent implements OnInit {
   }
 
   goToLilaPlant() {
-    this.router.navigate(['/lila-plant'], { state: { data: this.infoCurrentPlant } });
+    this.router.navigate(['/lila-plant'], { state: { data: this.infoCurrentPlant, data2: this.currentPlant } });
   }
 
   getDate(dateString) {

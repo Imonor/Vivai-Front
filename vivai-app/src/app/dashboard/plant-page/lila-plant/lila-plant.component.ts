@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { InfosPlant } from 'src/app/models/infos-plant';
 import { Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { UserPlant } from 'src/app/models/user-plant';
 
 @Component({
   selector: 'vivai-lila-plant',
@@ -14,6 +15,7 @@ export class LilaPlantComponent implements OnInit {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   display: Boolean = false;
+  currentPlant: UserPlant = null;
 
   constructor(private router: Router, media: MediaMatcher, changeDetectorRef: ChangeDetectorRef) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -27,11 +29,18 @@ export class LilaPlantComponent implements OnInit {
 
   catchInfosFromHistory() {
     this.infoCurrentPlant = history.state.data;
+    this.currentPlant = history.state.data2;
     if (this.infoCurrentPlant === undefined) {
       this.router.navigate(['/dashboard']);
     } else this.display = true;
 
     console.log(this.infoCurrentPlant);
+  }
+
+  goBack() {
+    if (this.currentPlant === undefined) {
+      this.router.navigate(['/dashboard']);
+    } else this.router.navigate(['/plant-page'], { state: { data: this.currentPlant } });
   }
 
 }

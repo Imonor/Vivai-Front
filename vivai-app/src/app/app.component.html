@@ -65,13 +65,13 @@
                 <mat-icon>
                   menu</mat-icon>
                 </button>
-              <button class="leftButton d-flex justify-content-center align-items-center ml-4 mt-2 " *ngIf="mobileQuery.matches && router.url != '/dashboard' && router.url != '/'" aria-label="Menu"
+              <button class="leftButton d-flex justify-content-center align-items-center ml-4 mt-2 " *ngIf="mobileQuery.matches && router.url != '/dashboard' && router.url != '/' && router.url != '/lila-plant'" aria-label="Menu"
                 (click)="returnNav()">
                 <mat-icon class="ml-2">
                   arrow_back_ios</mat-icon>
               </button>
               <div class="mt-5" *ngIf="router.url !='/' && router.url !=='/plant-page'"></div>
-              <div style="height: 1.8em;" *ngIf="router.url !=='/dashboard' && router.url !='/' && router.url !=='/plant-page'"></div>
+              <div style="height: 1.8em;" *ngIf="router.url !=='/dashboard' && router.url !='/' && router.url !=='/plant-page' && router.url !=='/lila-plant'"></div>
               <router-outlet></router-outlet>
               <button *ngIf="displayButtonLila()" class="lilaButton" mat-icon-button (click)=openDialog()> <img
                   style="width: 2em; max-height: 2em" src="assets/illustration/pablo-cut-nobg.png" alt="Lila"></button>

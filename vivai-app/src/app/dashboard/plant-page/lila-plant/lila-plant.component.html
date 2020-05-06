@@ -1,3 +1,9 @@
+<button class="leftButton d-flex justify-content-center align-items-center ml-4 mt-2 "
+  aria-label="Menu" (click)="goBack()">
+  <mat-icon class="ml-2">
+    arrow_back_ios</mat-icon>
+</button>
+
 <div *ngIf="display">
 
   <div class="headerImage" *ngIf="mobileQuery.matches">
@@ -40,13 +46,13 @@
               <div class="h2line"></div>
               <div class="content">
                 <h4>{{infoCurrentPlant?.careLevel}}</h4>
-                <p *ngIf = "infoCurrentPlant?.careLevel === 'Facile'">
+                <p *ngIf="infoCurrentPlant?.careLevel === 'Facile'">
                   Cette plante ne nécessite pas de soin particulier, ou des soins très simple.
                 </p>
-                <p *ngIf = "infoCurrentPlant?.careLevel === 'Modéré'">
+                <p *ngIf="infoCurrentPlant?.careLevel === 'Modéré'">
                   Cette plante nécessite des soins réguliers, ou un peu de pratique en jardinage.
                 </p>
-                <p *ngIf = "infoCurrentPlant?.careLevel === 'Difficile'">
+                <p *ngIf="infoCurrentPlant?.careLevel === 'Difficile'">
                   Cette plante nécessite des soins importants, et un savoir-faire en jardinage
                 </p>
 
@@ -58,7 +64,7 @@
 
           <div class="col-12 col-sm-12 col-md-9 col-lg-3">
             <div class="card m-1 h-100">
-              <h2 >Croissance</h2>
+              <h2>Croissance</h2>
               <div class="h2line"></div>
               <div class="content">
                 <h5>Type de croissance :</h5>
@@ -77,20 +83,20 @@
 
           <div class="col-12 col-sm-12 col-md-9 col-lg-3">
             <div class="card m-1 h-100">
-              <h2 >Besoins de la plante</h2>
+              <h2>Besoins de la plante</h2>
               <div class="h2line"></div>
               <div class="content">
                 <h5>Besoin en eau :</h5>
-                  <p>{{infoCurrentPlant?.waterNeed}}</p>
+                <p>{{infoCurrentPlant?.waterNeed}}</p>
                 <h5>Ensoleillement :</h5>
-                  <p>{{infoCurrentPlant?.sunNeed}}</p>
+                <p>{{infoCurrentPlant?.sunNeed}}</p>
               </div>
             </div>
           </div>
 
           <div class="col-12 col-sm-12 col-md-9 col-lg-3">
             <div class="card m-1 h-100">
-              <h2 >Résistance au froid</h2>
+              <h2>Résistance au froid</h2>
               <div class="h2line"></div>
               <div class="content">
                 <p>{{infoCurrentPlant?.coldResistance}}</p>
