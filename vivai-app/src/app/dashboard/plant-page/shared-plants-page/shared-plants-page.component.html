@@ -1,26 +1,26 @@
-<p>shared-plants-page works!</p>
-
-
-<div container>
+<div class="container">
 
     <div *ngIf="listSharedPlants?.length > 0">
-        <div class="row flex-nowrap pb-3">
-          <div class="row" *ngFor = "let plant of listSharedPlants">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-              <div class="card m-1 h-100">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4" *ngFor = "let plant of listSharedPlants">
+              <div class="card">
+                <div class="image">
                   <div class="card flex-fill" style="border-radius: 0 0 15px 15px;"><img alt="plante" class="card-img-top img-fluid"
                     src={{plant?.picUrl}} />
                   </div>
-                <h5>{{plant?.nickname}}</h5>
-                <p>Gardée dans son/sa : {{plant?.location}}</p>
-                <p>Température : {{plant?.temperature}}</p>
-                <p>Exposé
-                  <span *ngIf="plant?.sunExpo === '1'">Faiblement</span>
-                  <span *ngIf="plant?.sunExpo === '2'">Modérément</span>
-                  <span *ngIf="plant?.sunExpo === '3'">Fortement</span>
-                  au soleil
-                </p>
-            </div>
+                </div>
+                <div class="content">
+                  <h5>{{plant?.nickname}}</h5>
+                  <p>Gardée dans son/sa : {{plant?.location}}</p>
+                  <p>Température : {{plant?.temperature}}</p>
+                  <p>Exposé
+                    <span *ngIf="plant?.sunExpo === '1'">Faiblement</span>
+                    <span *ngIf="plant?.sunExpo === '2'">Modérément</span>
+                    <span *ngIf="plant?.sunExpo === '3'">Fortement</span>
+                    au soleil
+                  </p>
+                </div>
+
             </div>
           </div>
         </div>
