@@ -7,9 +7,10 @@
 
   <div class ="row">
     <h5>Histoire : </h5>
-    <p></p>
+    <p *ngFor()="let hist of plant.history">{{plant.history}}</p>
   </div>
 
   <div class ="row">
     <h5>Tips écologiques : </h5>
+    <p *ngFor()="let ecologicalTips of plant.ecologicalTips">{{ecologicalTips}}</p>
   </div>
