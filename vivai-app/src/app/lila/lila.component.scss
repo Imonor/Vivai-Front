@@ -10,6 +10,7 @@
 
 .userMessageDesktop {
   max-width: 18em;
+  color: whitesmoke;
   background-color: #44a4db !important;
   position: relative;
   padding-left: 10px;
@@ -23,6 +24,7 @@
 .userMessageMobile {
   display: -webkit-flex;
   font-size: small;
+  color: whitesmoke;
   max-width: 12em;
   padding-left: 10px;
   padding-right: 10px;
@@ -36,6 +38,7 @@
   background-color: #aff092 !important;
     display: -webkit-flex;
     padding-left: 10px;
+    color: whitesmoke;
     padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -47,6 +50,7 @@
   background-color: rgb(175, 240, 146) !important;
   position: relative;
   left: 1em;
+  color: whitesmoke;
   display: -webkit-flex;
   font-size: small;
   padding-left: 10px;
