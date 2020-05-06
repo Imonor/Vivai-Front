@@ -1,5 +1,5 @@
   <div style="width: 100%;" class="d-flex justify-content-between align-content-center">
-      <h1 mat-dialog-title>Anecdotes sur {{</h1><button mat-icon-button class="closeBtn" type="button"
+      <h1 mat-dialog-title>Anecdotes sur {{plant?.species}}</h1><button mat-icon-button class="closeBtn" type="button"
           color="warn" mat-dialog-close>
           <mat-icon>close</mat-icon>
       </button>
@@ -7,10 +7,10 @@
 
   <div class ="row">
     <h5>Histoire : </h5>
-    <p *ngFor()="let hist of plant.history">{{plant.history}}</p>
+    <div *ngFor="let hist of plant?.history"><p>{{hist}}</p></div>
   </div>
 
   <div class ="row">
     <h5>Tips écologiques : </h5>
-    <p *ngFor()="let ecologicalTips of plant.ecologicalTips">{{ecologicalTips}}</p>
+    <div *ngFor="let ecologicalTips of plant?.ecologicalTips"><p>{{ecologicalTips}}</p></div>
   </div>

@@ -15,6 +15,4 @@ export class HistoryDialogComponent implements OnInit {
     console.log(this.plant);
   }
 
-  
-
 }
