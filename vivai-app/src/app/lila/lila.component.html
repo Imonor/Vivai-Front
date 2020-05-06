@@ -7,7 +7,7 @@
 
 <mat-dialog-content>
   <p>Bienvenue dans Lila, l'assitance vocale</p>
-  <p class="text-italic" *ngIf="messages.length < 1">Essayez : "donne moi une anecdote mon Olivier"</p>
+  <p class="text-italic" *ngIf="messages.length < 1">Essayez : "Donne moi une anecdote sur mon Olivier"</p>
 
 <div class = "msgOverflow p-2" *ngIf="!mobileQuery.matches">
   <div *ngFor="let message of messages">
