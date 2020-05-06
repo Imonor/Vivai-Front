@@ -48,4 +48,8 @@ export class SharedPlantsPageComponent implements OnInit {
     this.profile = await Auth.currentUserInfo();
   }
 
+  goToPlantPage(plant) {
+    this.router.navigate(['/plant-page'], {state: {data: plant}});
+  }
+
 }
