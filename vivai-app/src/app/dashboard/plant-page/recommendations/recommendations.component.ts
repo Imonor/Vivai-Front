@@ -27,14 +27,12 @@ export class RecommendationsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.infoCurrentPlant);
     this.setMonths();
   }
 
   setMonths() {
     this.months.forEach(vm => {
       this.infoCurrentPlant.plantationMonths.forEach(pm => {
-        console.log(pm);
         if(vm.mois === pm ) {
           vm.color = true;
         }
