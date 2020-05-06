@@ -34,7 +34,6 @@ export class PlantListComponent implements OnInit {
   constructor(private dialog: MatDialog, private _plantService: PlantService, public _loading: LoaderService) { }
 
   ngOnInit() {
-    this._loading.show();
     this.getListUserPlant();
   }
 
@@ -42,11 +41,12 @@ export class PlantListComponent implements OnInit {
   openAddNewPlant() {
     this.addPlantDialogRef = this.dialog.open(AddPlantDialogComponent, { disableClose: true });
     this.addPlantDialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      this.getListUserPlant();
     });
   }
 
   getListUserPlant() {
+    this._loading.show();
     this._plantService.getListUserPlants().subscribe(data => {
       console.log(data);
       this.listPlant = data;

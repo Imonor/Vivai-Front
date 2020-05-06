@@ -5,12 +5,12 @@
         <mat-icon svgIcon="water-color" aria-hidden="false"></mat-icon>
         <h5 class="pl-2">Arrosage</h5>
       </div>
-      <p class="pl-1" *ngIf="infoCurrentPlant.waterNeed == 'Faible'">Pour une plante d'intérieur, arroser<span class="water"> tous les mois</span>.<br /> Pour une
+      <p class="pl-1" *ngIf="infoCurrentPlant.waterNeed == 'Faible'">Pour une plante d'intérieur, arroser<span class="water"> tous les mois</span>.<br> Pour une
         plante d'extérieur, elle supporte bien la sécheresse.</p>
       <p class="pl-1" *ngIf="infoCurrentPlant.waterNeed == 'Moyen'">Pour une plante d'intérieur, arroser<span class="water"> toutes les semaines ou toutes les deux
-          semaines</span>.<br /> Pour une plante d'extérieur, elle aura besoin d'apports d'eau avant que le sol sèche.
+          semaines</span>.<br> Pour une plante d'extérieur, elle aura besoin d'apports d'eau avant que le sol sèche.
       </p>
-      <p class="pl-1" *ngIf="infoCurrentPlant.waterNeed == 'Important'">Pour une plante d'intérieur, arroser<span class="water"> plusieurs fois par semaine</span>.<br/> Pour une plante d'extérieur, il
+      <p class="pl-1" *ngIf="infoCurrentPlant.waterNeed == 'Important'">Pour une plante d'intérieur, arroser<span class="water"> plusieurs fois par semaine</span>.<br> Pour une plante d'extérieur, il
         lui faut des apports d'eau abondants et réguliers.</p>
     </div>
     <div class="col-4">
@@ -42,7 +42,7 @@
         <mat-icon svgIcon="plant" aria-hidden="false"></mat-icon>
         <h5 class="pl-2">Quand planter ? </h5>
       </div>
-      <p class="pl-1">En vert les mois parfait pour planter votre plante :</p>
+      <p class="pl-1">En vert les mois parfaits pour planter votre plante :</p>
       <div class="row">
         <div class="col-1 d-flex justify-content-center align-items-center align-text-center" *ngFor="let m of months">
           <div class="d-flex justify-content-center align-items-center align-text-center" [class.month]="!m.color"

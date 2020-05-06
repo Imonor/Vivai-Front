@@ -50,7 +50,7 @@ export class LilaPlantComponent implements OnInit {
   openHistoryDialog() {
     this.historyDialogRef = this.dialog.open(HistoryDialogComponent, {
       disableClose: true,
-      data: { plant: this.infoCurrentPlant, }
+      data: this.infoCurrentPlant,
     });
   }
 

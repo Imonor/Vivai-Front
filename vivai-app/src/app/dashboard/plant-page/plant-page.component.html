@@ -201,7 +201,7 @@
             <div class="recommandations card h-100 m-1">
               <h4 class="pt-3 pl-3">Recommandations :</h4>
               <div class="h2line mb-1"></div>
-              <vivai-recommendations [infoCurrentPlant]="infoCurrentPlant"></vivai-recommendations>
+              <vivai-recommendations [infoCurrentPlant]="infoCurrentPlant" *ngIf="infoCurrentPlant != null"></vivai-recommendations>
             </div>
           </div>
 
