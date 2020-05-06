@@ -1,39 +1,49 @@
+<button class="leftButton d-flex justify-content-center align-items-center ml-4 mt-2 "
+  aria-label="Menu" (click)="goBack()">
+  <mat-icon class="ml-2">
+    arrow_back_ios</mat-icon>
+</button>
+
+
 <div class="container">
-
-    <div *ngIf="listSharedPlants?.length > 0">
-        <div class="row">
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4" *ngFor = "let plant of listSharedPlants">
-              <a class="card" (click) = "goToPlantPage(plant)" style="cursor: pointer;">
-                <div class="image">
-                  <div class="card flex-fill" style="border-radius: 0 0 15px 15px;"><img alt="plante" class="card-img-top img-fluid"
-                    src={{plant?.picUrl}} />
-                  </div>
-                </div>
-                <div class="content">
-                  <h5>{{plant?.nickname}}</h5>
-                  <p>Gardée dans son/sa : {{plant?.location}}</p>
-                  <p>Température : {{plant?.temperature}}</p>
-                  <p>Exposé
-                    <span *ngIf="plant?.sunExpo === '1'">Faiblement</span>
-                    <span *ngIf="plant?.sunExpo === '2'">Modérément</span>
-                    <span *ngIf="plant?.sunExpo === '3'">Fortement</span>
-                    au soleil
-                  </p>
-                </div>
-
-              </a>
+  <h3>Liste des {{currentPlant.species}}s des autres utilisateurs:</h3>
+  <div *ngIf="listSharedPlants?.length > 0">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let plant of listSharedPlants">
+        <a class="card flex-fill" (click)="goToPlantPage(plant)"><img alt="plante" class="card-img-top img-fluid"
+            src={{plant?.picUrl}} />
+          <div class="card-img-overlay">
+            <h5 class="card-title text-white">{{plant?.nickname}}</h5>
+            <p class="card-subtitle mb-2 text-white">{{plant.species}}</p>
+            <p class="card-subtitle mb-2 text-white">Température : {{plant?.temperature}}</p>
+            <p class="card-subtitle mb-2 text-white">Exposé
+              <span *ngIf="plant?.sunExpo === '1'">Faiblement</span>
+              <span *ngIf="plant?.sunExpo === '2'">Modérément</span>
+              <span *ngIf="plant?.sunExpo === '3'">Fortement</span>
+              au soleil
+            </p>
+            <mat-chip-list class="d-flex justify-content-right align-items-center">
+              <mat-chip>{{plant.location}}</mat-chip>
+            </mat-chip-list>
           </div>
-        </div>
+        </a>
+      </div>
     </div>
+  </div>
 
 
 
-    <div *ngIf="listSharedPlants?.length === 0">
-      <p> Il n'y a actuellement aucune plante de cette espèce partagé par les utilisateurs.</p>
-    </div>
+  <div *ngIf="listSharedPlants?.length === 0">
+    <mat-card style="height: 30em; margin: auto; margin-top: 1em; border-radius: 20px !important; overflow: hidden;">
+      <mat-card-content class="content d-flex justify-content-center align-items-center">
+        <img style="width: auto; height: 30vh;" class="mt-4" src="assets/illustration/notif.png" alt="notify">
+        <h6 class="p-5 text-center" style="position:absolute; bottom: 2em;opacity: 0.7;">Il n'y a actuellement aucune
+          plante
+          de cette espèce partagé par les utilisateurs.
+          Soyez le premier à le faire.</h6>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
 
 </div>
-
-
-

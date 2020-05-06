@@ -52,4 +52,10 @@ export class SharedPlantsPageComponent implements OnInit {
     this.router.navigate(['/plant-page'], {state: {data: plant}});
   }
 
+  goBack() {
+    if (this.currentPlant === undefined) {
+      this.router.navigate(['/dashboard']);
+    } else this.router.navigate(['/plant-page'], { state: { data: this.currentPlant } });
+  }
+
 }

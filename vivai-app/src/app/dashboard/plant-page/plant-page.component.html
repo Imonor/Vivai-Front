@@ -1,18 +1,18 @@
 <button class="rightButton d-flex justify-content-center align-items-center mr-4 mt-2 " [matMenuTriggerFor]="menu"
-  aria-label="Menu">
+  aria-label="Menu" *ngIf="isAuthor()">
   <mat-icon class="">
     more_vert</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item (click)="share()" *ngIf = "!currentPlant?.shared && isAuthor()">
+  <button mat-menu-item (click)="share()" *ngIf = "!currentPlant?.shared">
     <mat-icon>share</mat-icon>
     <span>Partager</span>
   </button>
-  <button mat-menu-item (click)="unshare()" *ngIf = "currentPlant?.shared && isAuthor()">
+  <button mat-menu-item (click)="unshare()" *ngIf = "currentPlant?.shared">
     <mat-icon>share</mat-icon>
     <span>Ne plus partager</span>
   </button>
-  <button mat-menu-item (click)="delete()" *ngIf="isAuthor()">
+  <button mat-menu-item (click)="delete()">
     <mat-icon>delete</mat-icon>
     <span>Supprimer</span>
   </button>
@@ -56,7 +56,7 @@
                       <span *ngIf="currentPlant.shared == true">Partagée</span>
                       <span *ngIf="currentPlant.shared == false">Non partagée</span>
                     </p>
-                    <u class="font-italic	font-weight-light" style="cursor: pointer;" (click)="openUpdatePlant()" >Modifier les informations ‣</u>
+                    <u class="font-italic	font-weight-light" style="cursor: pointer;" (click)="openUpdatePlant()" *ngIf="isAuthor()" >Modifier les informations ‣</u>
                   </div>
                 </div>
               </div>
