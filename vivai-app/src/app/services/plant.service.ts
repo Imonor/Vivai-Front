@@ -134,4 +134,12 @@ export class PlantService {
     params = params.append('userId', this.user.getUsername());
     return this.httpClient.get<UserPlant[]>(this.API_URL + 'getSharedPlants', {responseType : 'json', params});
   }
+  getLilaResponse(userMessage): Observable<any> {
+    let params = new HttpParams();
+    console.log(userMessage);
+    params = params.append('lilaRequest', userMessage);
+    params = params.append('userId', this.user.getUsername());
+    console.log(params);
+    return this.httpClient.get<any>(this.API_URL + 'getLilaResponse', {responseType: 'json', params});
+  }
 }

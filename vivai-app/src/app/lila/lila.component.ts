@@ -28,12 +28,13 @@ export class LilaComponent implements OnInit {
   public messageDiv: FormGroup;
 
 
+
   public get Message(): AbstractControl {
     return this.messageDiv.get(this.messageHeardField);
   }
 
   constructor(public dialogRef: MatDialogRef<LilaComponent>, public router: Router,
-              private fb: FormBuilder, public speech: SpeechSupportService,
+              private fb: FormBuilder, public speech: SpeechSupportService = null,
               changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _plantService: PlantService,
               private _notification: NotificationService, ) {
 
@@ -47,20 +48,23 @@ export class LilaComponent implements OnInit {
     this.messageDiv = this.fb.group({
       message: [null]
     });
+    if (this.speech !== null) {
+      this.speech.Result.subscribe((result: RecognitionResult) => {
+        //console.log('Result event on the controller.');
+        //console.log(result);
+        //console.log('target : ' + this.targetElementName);
+        window.document.getElementById(this.targetElementName).focus();
+        if (!result) {
+          this.targetElementName = null;
+          return;
+        }
+        if (this.targetElementName === this.messageHeardField) {
+          this.Message.setValue(result.transcript);
+        }
+      });
+    }
 
-    this.speech.Result.subscribe((result: RecognitionResult) => {
-      //console.log('Result event on the controller.');
-      //console.log(result);
-      //console.log('target : ' + this.targetElementName);
-      window.document.getElementById(this.targetElementName).focus();
-      if (!result) {
-        this.targetElementName = null;
-        return;
-      }
-      if (this.targetElementName === this.messageHeardField) {
-        this.Message.setValue(result.transcript);
-      }
-    });
+
   }
 
   close() {
@@ -93,7 +97,7 @@ export class LilaComponent implements OnInit {
   }
 
   getLilaResponse(userMessage) {
-    this.speech.getLilaResponse(userMessage).subscribe(data => {
+    this._plantService.getLilaResponse(userMessage).subscribe(data => {
       //console.log(data);
       this.receiveMessage(data.Response);
     });

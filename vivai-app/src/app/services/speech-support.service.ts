@@ -52,7 +52,12 @@ export class SpeechSupportService {
 
    private init(): void {
     this._supportRecognition = true;
-    this._speech = new webkitSpeechRecognition();
+    try {
+      this._speech = new webkitSpeechRecognition();
+    } catch {
+
+    }
+
     if (!this._speech) {
       this._supportRecognition = false;
     }
@@ -137,15 +142,6 @@ public stopListening(): void {
   this._isListening = false;
   this._speech.stop();
   console.log('Listening stopped');
-}
-
-getLilaResponse(userMessage): Observable<any> {
-  let params = new HttpParams();
-  console.log(userMessage);
-  params = params.append('lilaRequest', userMessage);
-  params = params.append('userId', this.user.getUsername());
-  console.log(params);
-  return this.httpClient.get<any>(this.API_URL + 'getLilaResponse', {responseType: 'json', params});
 }
 
 }
