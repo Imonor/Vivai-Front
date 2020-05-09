@@ -8,11 +8,13 @@
   <div class ="row p-3">
     <h5>Histoire : </h5>
     <br>
-    <p>{{plant?.history}}</p>
+    <p *ngIf="plant?.history != 'NULL'">{{plant?.history}}</p>
+    <p *ngIf="plant?.history == 'NULL'">Pas encore mis à jours.</p>
   </div>
 
   <div class ="row p-3">
     <h5>Tips écologiques : </h5>
     <br>
-    <p>{{plant?.ecologicalTips}}</p>
+    <p *ngIf="plant?.ecologicalTips != 'NULL'">{{plant?.ecologicalTips}}</p>
+    <p *ngIf="plant?.ecologicalTips == 'NULL'">Pas encore mis à jours.</p>
   </div>
