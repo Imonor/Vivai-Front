@@ -1,0 +1,65 @@
+a:hover {
+    color: rgba(105,172,105, $alpha: 0.5) !important;
+}
+
+.is-active {
+    border-color: rgba(105,172,105, $alpha: 1.0);
+    color: rgba(105,172,105, $alpha: 1.0);
+}
+
+.lilaButton {
+    overflow: hidden;
+    height:2em !important;
+    width:2em!important;
+    font-size:2em !important;
+    position: fixed;
+    bottom: 2em;
+    right: 1em;
+    background-color: rgba(250, 250, 250, 0.9)!important;
+}
+
+.customToolbar {
+    background: #fafafa !important;
+}
+
+.leftButton {
+    // background-image: linear-gradient(to bottom right, red, yellow);
+    z-index: 100;
+    position: absolute;
+    height: 1.3em !important;
+    width: 1.3em !important;
+    font-size: 2em !important;
+    border-radius: 20px 10px 20px 10px;
+    background-color: white;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+// .rightButton {
+//      // background-image: linear-gradient(to bottom right, red, yellow);
+//      z-index: 100;
+//     position: absolute;
+//     height: 1.3em !important;
+//     width: 1.3em !important;
+//     font-size: 2em !important;
+//     border-radius: 20px 10px 20px 10px;
+//     background-color: white;
+//     top: 0.5em;
+//     right: 0.5em;
+//     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+// }
+
+.content {
+    padding: 0.5em;
+}
+
+.footer {
+    position: absolute;
+    bottom: 1em;
+    font-weight: 400;
+    font-size: 0.7em;
+    color: rgba(black, 0.6);
+    font-family: 'Gugi', cursive;
+    margin-left: 20%;
+}

@@ -1,0 +1,24 @@
+<div class="container" *ngIf="displayName">
+    <div class="header" style="text-align: right;">
+        <h3 style=" margin-top: -0.8em;">Bonjour, <a class="settings" routerLink="/settings" routerLinkActive="active"
+            title="Options"><u>{{profile.attributes['given_name'] }}</u></a></h3>
+    </div>
+    <div class="mt-3 ">
+        <h3>Vos plantes :</h3>
+        <vivai-plant-list></vivai-plant-list>
+    </div>
+    <div class="row p-2">
+        <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+            <mat-card>
+                <mat-card-content style="max-height: 20em; overflow: hidden;">
+                    <vivai-info-card [infos]="infos"></vivai-info-card>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-md-5 col-lg-5" style="overflow:auto" *ngIf="displayImageLila()">
+            <div class="arrow-up"></div>
+            <button mat-raised-button class="p-2 dialog" (click)=openDialog()> Tu peux me demander ce que tu veux! <u> Clique ici.</u></button>
+            <img style="width: auto; max-height: 20em;" src="assets/illustration/pablo-done-nbg.png" alt="Lila">
+        </div>
+    </div>
+</div>

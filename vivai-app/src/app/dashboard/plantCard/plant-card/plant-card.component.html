@@ -1,0 +1,10 @@
+<a class="card flex-fill" (click)="goToPage()"><img alt="plante" class="card-img-top img-fluid"
+        src={{plante.picUrl}} />
+    <div class="card-img-overlay">
+        <h5 class="card-title text-white">{{plante?.nickname}}</h5>
+        <p class="card-subtitle mb-2 text-white">{{plante.species}}</p>
+        <mat-chip-list class="d-flex justify-content-right align-items-center">
+            <mat-chip>{{plante.location}}</mat-chip>
+        </mat-chip-list>
+    </div>
+</a>

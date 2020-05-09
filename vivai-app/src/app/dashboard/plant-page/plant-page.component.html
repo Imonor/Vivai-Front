@@ -1,0 +1,230 @@
+<button class="rightButton d-flex justify-content-center align-items-center mr-4 mt-2 " [matMenuTriggerFor]="menu"
+  aria-label="Menu" *ngIf="isAuthor()">
+  <mat-icon class="">
+    more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="share()" *ngIf = "!currentPlant?.shared">
+    <mat-icon>share</mat-icon>
+    <span>Partager</span>
+  </button>
+  <button mat-menu-item (click)="unshare()" *ngIf = "currentPlant?.shared">
+    <mat-icon>share</mat-icon>
+    <span>Ne plus partager</span>
+  </button>
+  <button mat-menu-item (click)="delete()">
+    <mat-icon>delete</mat-icon>
+    <span>Supprimer</span>
+  </button>
+</mat-menu>
+
+
+<div *ngIf="display">
+  <div class="headerImage" *ngIf="mobileQuery.matches">
+    <div class="card flex-fill" style="border-radius: 0 0 15px 15px;"><img alt="plante" class="card-img-top img-fluid"
+        src={{currentPlant.picUrl}} />
+      <div class="card-img-overlay">
+      </div>
+    </div>
+  </div>
+  <div style="height: 12em;" *ngIf="mobileQuery.matches"></div>
+  <div class="container"
+    style="border-radius: 20px !important; margin: 0 !important; max-width: 100% !important; min-width: 100% !important; width: 100% !important; ">
+    <mat-card style="border-radius: 20px !important;">
+      <mat-card-content class="content" [class.p-2]="mobileQuery.matches == false">
+        <div class="row partieduhaut pb-4">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-5" [class.mb-2]="mobileQuery.matches == true">
+            <div class="row m-1">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                <div class="row">
+                  <div class="col-6 col-sm-6 col-md-6 col-lg-12 pl-2" [class.pb-2]="mobileQuery.matches == false">
+                    <h4>{{currentPlant.nickname}}</h4>
+                    <h6>{{currentPlant.species}}</h6>
+                    <mat-chip-list class="d-flex justify-content-right align-items-center">
+                      <mat-chip>{{currentPlant.location}}</mat-chip>
+                    </mat-chip-list>
+                  </div>
+                  <div class="col-6 col-sm-6 col-md-6 col-lg-12 pl-2">
+                    <p class="font-weight-bolder">{{currentPlant.temperature}}</p>
+                    <p>
+                       Ensoleilement <br *ngIf="!mobileQuery.matches"/>
+                      <span *ngIf="currentPlant.sunExpo == '1'"> Faible ☀</span>
+                      <span *ngIf="currentPlant.sunExpo == '2'"> Moyen ☀☀</span>
+                      <span *ngIf="currentPlant.sunExpo == '3'"> Elevé ☀☀☀</span>
+                    </p>
+                    <p>
+                      <span *ngIf="currentPlant.shared == true">Partagée</span>
+                      <span *ngIf="currentPlant.shared == false">Non partagée</span>
+                    </p>
+                    <u class="font-italic	font-weight-light" style="cursor: pointer;" (click)="openUpdatePlant()" *ngIf="isAuthor()" >Modifier les informations ‣</u>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-7" *ngIf="!mobileQuery.matches">
+                <div class="plantImage flex-fill">
+                  <img alt="plante" class="card-img-big img-fluid" src={{currentPlant.picUrl}} />
+                </div>
+              </div>
+            </div>
+            <mat-divider *ngIf="mobileQuery.matches"></mat-divider>
+            <div style="height: 2em;" *ngIf="mobileQuery.matches"></div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-6" [class.mb-2]="mobileQuery.matches == true">
+            <h5>Vos dernières Activités :</h5>
+            <div class="row justify-content-between mt-auto h-100 pl-4 pr-4 pb-4">
+
+              <div class="col-12 d-flex justify-content-center" style="overflow:hidden"
+                *ngIf="(listReport?.length < 1)">
+                <img style="width: auto; max-height: 12em;" src="assets/illustration/ajouteruneactivitée.png"
+                  alt="addActivity">
+                <h6 style="position:absolute; bottom: 0;opacity: 0.7;">Vous n'avez pas encore ajouter d'activités.
+                  Ajoutez en une dans "Fait aujourd'hui".</h6>
+              </div>
+              <div class="col-2 mt-auto p-0" style="cursor: pointer;" *ngFor="let report of listReport"
+                [matTooltip]="getTooltipText((getDate(report.date) | date:'EEEE d MMMM y':'+0200':'fr'),report)">
+                <div class="col-shape pl-4 pr-4 d-flex flex-column align-items-center"
+                  [class.mr-1]="mobileQuery.matches == true" [class.mr-2]="mobileQuery.matches == false"
+                  [class.ml-2]="mobileQuery.matches == false">
+                  <div class="badge d-flex justify-content-center align-items-center m-3 water" *ngIf="report.water">
+                    <mat-icon matSuffix svgIcon="water" aria-hidden="false"></mat-icon>
+                  </div>
+                  <div class="badge d-flex justify-content-center align-items-center m-3 prune" *ngIf="report.prune">
+                    <mat-icon matSuffix svgIcon="prune" aria-hidden="false"></mat-icon>
+                  </div>
+                  <div class="badge d-flex justify-content-center align-items-center m-3 repotting"
+                    *ngIf="report.repotting">
+                    <mat-icon matSuffix svgIcon="repotting" aria-hidden="false"></mat-icon>
+                  </div>
+                  <div class="badge d-flex justify-content-center align-items-center m-3 harvest"
+                    *ngIf="report.harvest">
+                    <mat-icon matSuffix svgIcon="harvest" aria-hidden="false"></mat-icon>
+                  </div>
+                </div>
+                <h6 class="text-center p-1">{{ getDate(report.date) | date:'EEEEEE':'+0200':'fr' | uppercase}}</h6>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row partiedubas">
+
+          <div class="col-12 col-sm-12 col-md-9 col-lg-4" [class.mb-2]="mobileQuery.matches == true" *ngIf="isAuthor()">
+            <div class="reportingForm card m-1 h-100">
+              <h4 class="pt-3 pl-3">Fait aujourd'hui : </h4>
+              <div class="h2line"></div>
+              <div class="checkboxes">
+                <form [formGroup]="reportingForm">
+                  <div class="row justify-content-between">
+                    <div class="col-2 mb-1">
+                      <div class="badge d-flex justify-content-center align-items-center water">
+                        <mat-icon matSuffix svgIcon="water" aria-hidden="false"></mat-icon>
+                      </div>
+                    </div>
+                    <div class="col-6 d-flex justify-content-start align-items-center mb-1">
+                      <h5>Arrosage</h5>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center mb-1">
+                      <mat-checkbox formControlName="water" labelPosition="before" style="margin-top: 0.6em; color:blue"
+                        (click)="checkTaskNumber()"></mat-checkbox>
+                    </div>
+                  </div>
+                  <div class="row justify-content-between">
+                    <div class="col-2 mb-1">
+                      <div class="badge d-flex justify-content-center align-items-center prune">
+                        <mat-icon matSuffix svgIcon="prune" aria-hidden="false"></mat-icon>
+                      </div>
+                    </div>
+                    <div class="col-6 d-flex justify-content-start align-items-center mb-1">
+                      <h5>Taillage</h5>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center mb-1">
+                      <mat-checkbox formControlName="prune" labelPosition="before" style="margin-top: 0.6em;"
+                        (click)="checkTaskNumber()"></mat-checkbox>
+                    </div>
+                  </div>
+                  <div class="row justify-content-between">
+                    <div class="col-2 mb-1">
+                      <div class="badge d-flex justify-content-center align-items-center repotting">
+                        <mat-icon matSuffix svgIcon="repotting" aria-hidden="false"></mat-icon>
+                      </div>
+                    </div>
+                    <div class="col-6 d-flex justify-content-start align-items-center mb-1">
+                      <h5>Replantage</h5>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center mb-1">
+                      <mat-checkbox formControlName="repoting" labelPosition="before" style="margin-top: 0.6em;"
+                        (click)="checkTaskNumber()"></mat-checkbox>
+                    </div>
+                  </div>
+                  <div class="row justify-content-between">
+                    <div class="col-2 mb-1">
+                      <div class="badge d-flex justify-content-center align-items-center harvest">
+                        <mat-icon matSuffix svgIcon="harvest" aria-hidden="false"></mat-icon>
+                      </div>
+                    </div>
+                    <div class="col-6 d-flex justify-content-start align-items-center mb-1">
+                      <h5>Récolte</h5>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center mb-1">
+                      <mat-checkbox formControlName="harvest" labelPosition="before" style="margin-top: 0.6em;"
+                        (click)="checkTaskNumber()"></mat-checkbox>
+                    </div>
+                  </div>
+                  <div class="row justify-content-between">
+                    <h6 class="col-12 m-1" style="font-size: small;">
+                      Notes :
+                    </h6>
+                    <div class="col-12 m-1">
+                      <textarea class="inputNotes p-2" formControlName="note" matInput
+                        placeholder="Ajoutez des notes au suivi journalier de votre plante pour vous souvenir de son état, si vous avez mis trop d'eau..."></textarea>
+                    </div>
+                  </div>
+                </form>
+                <div class="row justify-content-between">
+                  <div class="col-6 d-flex justify-content-start align-items-center pl-4 pt-2 pb-0"
+                    style="font-size: larger;">
+                    {{this.taskNumber}} / 4 tâches
+                  </div>
+                  <div class="col-6 d-flex justify-content-end pl-4 pr-5 pt-2 pb-0">
+                    <button mat-raised-button color="accent" style="height: 40px" (click)="addReporting()"
+                      *ngIf="!alreadyReported">Ajouter</button>
+                    <button mat-raised-button color="warn" style="height: 40px" (click)="addReporting()"
+                      *ngIf="alreadyReported">Modifier</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-5" [class.mb-2]="mobileQuery.matches == true">
+            <div class="recommandations card h-100 m-1">
+              <h4 class="pt-3 pl-3">Recommandations :</h4>
+              <div class="h2line mb-1"></div>
+              <vivai-recommendations [infoCurrentPlant]="infoCurrentPlant" *ngIf="infoCurrentPlant != null"></vivai-recommendations>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-3" [class.mb-2]="mobileQuery.matches == true">
+            <div class="row h-100 m-1">
+              <div class="col-6 col-sm-6 col-md-12 col-lg-12" [class.mb-3]="mobileQuery.matches == false">
+                <button class="card h-100 w-100 bigBtn p-4 text-left"  (click)="goToLilaPlant()">
+                  <h4>Voir la fiche conseil sur le <span class="highlight">{{currentPlant.species}}</span>.</h4>
+                  <!--button mat-raised-button color="accent" style="height: 40px"">Avoir des
+                    infos sur sa plante</button-->
+                </button>
+              </div>
+              <div class="col-6 col-sm-6 col-md-12 col-lg-12">
+                <button class="card h-100 w-100 bigBtn p-4 text-left" (click) = "goToSharedPlants()">
+                  <h4>Voir les plantes <span class="highlight">partagées par les autres utilisateurs.</span></h4>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</div>

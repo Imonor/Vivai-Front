@@ -1,0 +1,15 @@
+.btn {
+    height: 2em;
+    width: 2em;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+.list {
+    width: auto;
+    overflow-y: scroll;
+    height: 32vh;
+    // &::-webkit-scrollbar {
+    //     display: none;
+    // }
+}

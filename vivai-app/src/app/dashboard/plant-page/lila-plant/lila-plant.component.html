@@ -1,0 +1,118 @@
+<button class="leftButton d-flex justify-content-center align-items-center ml-4 mt-2 "
+  aria-label="Menu" (click)="goBack()">
+  <mat-icon class="ml-2">
+    arrow_back_ios</mat-icon>
+</button>
+
+<div *ngIf="display">
+
+  <div class="headerImage" *ngIf="mobileQuery.matches">
+    <div class="card flex-fill" style="border-radius: 0 0 15px 15px;"><img alt="plante" class="card-img-top img-fluid"
+        src={{infoCurrentPlant.picUrl}} />
+      <div class="card-img-overlay">
+      </div>
+    </div>
+  </div>
+  <div style="height: 15em;" *ngIf="mobileQuery.matches"></div>
+  <div class="container"
+    style="border-radius: 20px !important; margin: 0 !important; max-width: 100% !important; min-width: 100% !important; width: 100% !important; ">
+
+    <mat-card style="border-radius: 20px !important;">
+      <mat-card-content class="content p-2">
+        <div class="row partieduhaut pb-4">
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-5">
+            <div class="row m-1">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 p-2">
+                    <h4>{{infoCurrentPlant?.species}}</h4>
+                    <p><i>{{infoCurrentPlant?.latinName}}</i></p>
+                    <mat-chip-list class="d-flex justify-content-right align-items-center">
+                      <mat-chip>{{infoCurrentPlant?.family}}</mat-chip>
+                    </mat-chip-list>
+                    <p class="mt-2"><b>{{infoCurrentPlant?.description}}</b></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-6 p-1" *ngIf="!mobileQuery.matches">
+                <div class="plantImage flex-fill">
+                  <img alt="plante" class="card-img-big img-fluid" src={{infoCurrentPlant.picUrl}} />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-7" [class.mb-2]="mobileQuery.matches == true">
+            <div class="recommandations card h-100 m-1">
+              <h4 class="pt-3 pl-3">Recommandations :</h4>
+              <div class="h2line mb-1"></div>
+              <vivai-recommendations [infoCurrentPlant]="infoCurrentPlant" *ngIf="infoCurrentPlant != null"></vivai-recommendations>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row partiedubas">
+
+          <div class="col-12 col-sm-12 col-md-9 col-lg-3" [class.mb-2]="mobileQuery.matches == true">
+            <div class="card m-1 h-100">
+              <h2>Niveau d'entretien : </h2>
+              <div class="h2line"></div>
+              <div class="content">
+                <h4>{{infoCurrentPlant?.careLevel}}</h4>
+                <p *ngIf="infoCurrentPlant?.careLevel === 'Facile'">
+                  Cette plante ne nécessite pas de soin particulier, ou des soins très simple.
+                </p>
+                <p *ngIf="infoCurrentPlant?.careLevel === 'Modéré'">
+                  Cette plante nécessite des soins réguliers, ou un peu de pratique en jardinage.
+                </p>
+                <p *ngIf="infoCurrentPlant?.careLevel === 'Difficile'">
+                  Cette plante nécessite des soins importants, et un savoir-faire en jardinage
+                </p>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-12 col-sm-12 col-md-9 col-lg-3" [class.mb-2]="mobileQuery.matches == true">
+            <div class="card m-1 h-100">
+              <h2>Caractéristiques : </h2>
+              <div class="h2line"></div>
+              <div class="content">
+                <h5>Type de croissance :</h5>
+                <p>{{infoCurrentPlant?.growth}}</p>
+                <h5>Resistance au froid :</h5>
+                <p>{{infoCurrentPlant?.coldResistance}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-9 col-lg-3" [class.mb-2]="mobileQuery.matches == true">
+            <div class="card m-1 h-100">
+              <h2>Potentielle maladie:</h2>
+              <div class="h2line"></div>
+              <div class="content">
+                <h5>Insectes nuisibles :</h5>
+                <p style="overflow: auto; max-height: 25vh;">{{infoCurrentPlant?.pest}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-9 col-lg" [class.mb-2]="mobileQuery.matches == true">
+            <button mat-raised-button class="card m-1 h-100 w-100 d-flex justify-content-center align-items-center" (click)="openHistoryDialog()">
+              <h6>En savoir plus.</h6>
+            </button>
+          </div>
+
+
+        </div>
+
+
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

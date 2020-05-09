@@ -1,0 +1,19 @@
+<div class="list">
+    <div class="container-fluid">
+        <div class="row flex-nowrap pb-3">
+            <div class="col-4 col-sm-4 col-md-2 col-lg-2 mr-n3 ml-n3 d-flex justify-content-center align-items-center">
+                <button mat-fab class="btn" (click)="openAddNewPlant()">+</button>
+            </div>
+            <div class="col-8 col-sm-4 col-md-4 col-lg-3 d-flex" *ngFor="let plante of listPlant">
+                <vivai-plant-card [plante]="plante"></vivai-plant-card>
+            </div>
+            <div class="col-8 d-flex justify-content-center" style="overflow:hidden"
+                *ngIf="(listPlant?.length < 1)">
+                <img style="width: auto; max-height: 12em;" src="assets/illustration/ajouteruneactivitée.png"
+                  alt="addActivity">
+                <h6 style="position:absolute; bottom: 0;opacity: 0.7;">Vous n'avez pas encore ajouté de plantes.
+                  Ajoutez en une avec le "+".</h6>
+              </div>
+        </div>
+    </div>
+</div>

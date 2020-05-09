@@ -1,0 +1,58 @@
+<form [formGroup]="plantForm">
+    <div style="width: 100%;" class="d-flex justify-content-between align-content-center">
+        <h1 mat-dialog-title>Ajouter une nouvelle plante</h1><button mat-icon-button class="closeBtn" type="button"
+            color="warn" mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content style="overflow-x: hidden;">
+        <mat-form-field appearance="outline" class="mr-4" style="max-width: 50vw;">
+            <mat-label>Le Type de votre plante</mat-label>
+            <input matInput placeholder="Type de Plante" aria-label="Plante" [matAutocomplete]="auto" autocomplete="off"
+                [formControl]="plantTypeControl" required>
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let plantType of filtredPlantType | async" [value]="plantType.species">
+                    <span>{{plantType.species}}</span>
+                </mat-option>
+            </mat-autocomplete>
+            <mat-icon matSuffix svgIcon="plant-type" aria-hidden="false"></mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="mr-4" style="max-width: 50vw;">
+            <mat-label>Le nom de votre plante</mat-label>
+            <input matInput type="text" placeholder="Entrez son Ptit nom" autocomplete="off" formControlName="nickName">
+            <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="mr-4" style="max-width: 50vw;">
+            <mat-label>Ou gardez vous votre plante ?</mat-label>
+            <mat-select matInput placeholder="Salon" formControlName="location" autocomplete="off" required>
+                <mat-option *ngFor="let place of places" [value]="place">
+                    {{place}}
+                </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>location_on</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="mr-4" style="max-width: 50vw;">
+            <mat-label>Température moyenne de ce lieu</mat-label>
+            <mat-select matInput placeholder="18°C - 20°C" formControlName="temperature" autocomplete="off" required>
+                <mat-option *ngFor="let temperature of temperatures" [value]="temperature">
+                    {{temperature}}
+                </mat-option>
+            </mat-select>
+            <mat-icon matSuffix svgIcon="temperature" aria-hidden="false"></mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="mr-4" style="max-width: 50vw;">
+            <mat-label>Exposition au soleil</mat-label>
+            <mat-select matInput placeholder="Moyenne" formControlName="sunExpo" autocomplete="off" required>
+                <mat-option *ngFor="let sunExpo of sunExpos" [value]="sunExpo.value">
+                    {{sunExpo.viewValue}}
+                </mat-option>
+            </mat-select>
+            <mat-icon matSuffix svgIcon="sun" aria-hidden="false"></mat-icon>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions class="d-flex justify-content-end">
+        <button mat-raised-button color="accent" (click)="addPlant()" [disabled]="shouldEnableAdd()">Ajouter une
+            plante</button>
+    </div>
+</form>
