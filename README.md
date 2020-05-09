@@ -33,7 +33,7 @@ Obtenir une anecdote historique et/ou écologique sur une plante | Oui
 Partager une plante avec la communauté | Oui
 Visualiser les plantes partagées par les autres utilisateurs | Oui
 Visualiser une plante partagée | Oui
-Modifier les informations utilisateur | Non
+Modifier les informations utilisateur | Oui
 Filtrer l'affichage des plantes selon les critères d'entretien | Non
 Recevoir une notification sur l'entretien de nos plantes | Non
 Poser une question à l'assistante vocale Lila | Oui
