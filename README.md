@@ -17,6 +17,10 @@ Aujourd'hui, beaucoup de personnes prennent plaisir à s'occuper de leur plante 
 
 En partant de ce besoin, nous avons décidé d'implémenter l'application web Vivai afin de centraliser une vaste quantité de données sur l'entretien et l'histoire des plantes. Ainsi, nous avons fait le choix d'une interface utilisateur simple et intuitive. De plus, l'assistante vocale Lila pourra répondre à la plupart des questions que vous vous posez sur n'importe quelle plante grâce à une intelligence artificielle poussée.
 
+### Fun Facts
+
+La partie front c'est 160 Commit à 2 développeur pour 40 000 Lignes de code. Et tout cela en 2 semaines. Pour un resultat plutot sympa.
+
 ### Fonctionnalités
 Voilà une liste des fonctionnalités présentes sur notre application. Vous y trouverez également d'autres fonctionnalités qui ne sont pas encore implémentés mais qui pourraient voir le jour dans le futur.
 
