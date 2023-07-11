@@ -24,7 +24,7 @@
     "@angular/router": "~8.2.14",
     "@angular/service-worker": "~8.2.14",
     "@aws-amplify/cli": "^4.18.1",
-    "aws-amplify": "^3.0.8",
+    "aws-amplify": "^5.3.3",
     "aws-amplify-angular": "^5.0.8",
     "boostrap": "^2.0.0",
     "bootstrap": "^4.4.1",
